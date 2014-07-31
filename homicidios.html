@@ -23,19 +23,19 @@
   <body ng-app ng-controller='rChartsCtrl'>
     
     
-      <div id = 'chart_1' class = 'rChart datamaps'>
-      <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
-      <span ng-bind='year'></span>
-        
-      <script>
-        function rChartsCtrl($scope){
-          $scope.year = '2013';
-          $scope.$watch('year', function(newYear){
-            mapchart_1.updateChoropleth(chartParams.newData[newYear]);
-          })
-        }
-      </script>
-      </div>       
+                   <div id = 'chart_1' class = 'rChart datamaps'>
+                   <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+                   <span ng-bind='year'></span>
+                   
+                   <script>
+                   function rChartsCtrl($scope){
+                   $scope.year = '2013';
+                   $scope.$watch('year', function(newYear){
+                   mapchart_1.updateChoropleth(chartParams.newData[newYear]);
+                   })
+                   }
+                   </script>
+                   </div>       
     <script id='popup-template' type='text/x-handlebars-template'>
     
 </script>
@@ -68,11 +68,11 @@
   return {path: path, projection: projection};
   } ,
 "fills": {
- "[0,5.19)": "#FFFFB2",
-"[5.19,7.82)": "#FECC5C",
-"[7.82,12.5)": "#FD8D3C",
-"[12.5,20.2)": "#F03B20",
-"[20.2,110]": "#BD0026",
+ "[0,5)": "#FFFFB2",
+"[5,8)": "#FECC5C",
+"[8,12)": "#FD8D3C",
+"[12,20)": "#F03B20",
+"[20,110]": "#BD0026",
 "defaultFill": "#BD0026" 
 },
 "data": {
@@ -85,7 +85,7 @@
 "rate":  36.74,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCN": {
  "state_code": 2,
@@ -96,7 +96,7 @@
 "rate":  20.96,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -107,7 +107,7 @@
 "rate":  13.85,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CAM": {
  "state_code": 4,
@@ -118,7 +118,7 @@
 "rate":   19.5,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "COA": {
  "state_code": 5,
@@ -129,7 +129,7 @@
 "rate":   7.62,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -140,7 +140,7 @@
 "rate":   18.5,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CHP": {
  "state_code": 7,
@@ -151,7 +151,7 @@
 "rate":  34.35,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -162,7 +162,7 @@
 "rate":  23.84,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -173,7 +173,7 @@
 "rate":  10.97,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -184,7 +184,7 @@
 "rate":   4.13,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GUA": {
  "state_code": 11,
@@ -195,7 +195,7 @@
 "rate":  11.22,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "GRO": {
  "state_code": 12,
@@ -206,7 +206,7 @@
 "rate":  39.83,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -217,7 +217,7 @@
 "rate":  15.31,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "JAL": {
  "state_code": 14,
@@ -228,7 +228,7 @@
 "rate":   9.42,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MEX": {
  "state_code": 15,
@@ -239,7 +239,7 @@
 "rate":  24.71,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -250,7 +250,7 @@
 "rate":  18.21,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -261,7 +261,7 @@
 "rate":  11.42,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NAY": {
  "state_code": 18,
@@ -272,7 +272,7 @@
 "rate":  14.32,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -283,7 +283,7 @@
 "rate":   4.32,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -294,7 +294,7 @@
 "rate":  21.83,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -305,7 +305,7 @@
 "rate":  14.36,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "QUE": {
  "state_code": 22,
@@ -316,7 +316,7 @@
 "rate":  15.81,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "QROO": {
  "state_code": 23,
@@ -327,7 +327,7 @@
 "rate":   39.7,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SLP": {
  "state_code": 24,
@@ -338,7 +338,7 @@
 "rate":  12.75,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -349,7 +349,7 @@
 "rate":  27.13,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -360,7 +360,7 @@
 "rate":  24.11,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TAB": {
  "state_code": 27,
@@ -371,7 +371,7 @@
 "rate":  18.59,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAM": {
  "state_code": 28,
@@ -382,7 +382,7 @@
 "rate":  17.89,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TLA": {
  "state_code": 29,
@@ -393,7 +393,7 @@
 "rate":   6.54,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "VER": {
  "state_code": 30,
@@ -404,7 +404,7 @@
 "rate":   10.1,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -415,7 +415,7 @@
 "rate":   6.65,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -426,7 +426,7 @@
 "rate":   7.91,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 } 
 },
 "legend": true,
@@ -442,7 +442,7 @@
 "rate":  36.74,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCN": {
  "state_code": 2,
@@ -453,7 +453,7 @@
 "rate":  20.96,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -464,7 +464,7 @@
 "rate":  13.85,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CAM": {
  "state_code": 4,
@@ -475,7 +475,7 @@
 "rate":   19.5,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "COA": {
  "state_code": 5,
@@ -486,7 +486,7 @@
 "rate":   7.62,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -497,7 +497,7 @@
 "rate":   18.5,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CHP": {
  "state_code": 7,
@@ -508,7 +508,7 @@
 "rate":  34.35,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -519,7 +519,7 @@
 "rate":  23.84,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -530,7 +530,7 @@
 "rate":  10.97,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -541,7 +541,7 @@
 "rate":   4.13,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GUA": {
  "state_code": 11,
@@ -552,7 +552,7 @@
 "rate":  11.22,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "GRO": {
  "state_code": 12,
@@ -563,7 +563,7 @@
 "rate":  39.83,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -574,7 +574,7 @@
 "rate":  15.31,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "JAL": {
  "state_code": 14,
@@ -585,7 +585,7 @@
 "rate":   9.42,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MEX": {
  "state_code": 15,
@@ -596,7 +596,7 @@
 "rate":  24.71,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -607,7 +607,7 @@
 "rate":  18.21,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -618,7 +618,7 @@
 "rate":  11.42,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NAY": {
  "state_code": 18,
@@ -629,7 +629,7 @@
 "rate":  14.32,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -640,7 +640,7 @@
 "rate":   4.32,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -651,7 +651,7 @@
 "rate":  21.83,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -662,7 +662,7 @@
 "rate":  14.36,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "QUE": {
  "state_code": 22,
@@ -673,7 +673,7 @@
 "rate":  15.81,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "QROO": {
  "state_code": 23,
@@ -684,7 +684,7 @@
 "rate":   39.7,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SLP": {
  "state_code": 24,
@@ -695,7 +695,7 @@
 "rate":  12.75,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -706,7 +706,7 @@
 "rate":  27.13,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -717,7 +717,7 @@
 "rate":  24.11,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TAB": {
  "state_code": 27,
@@ -728,7 +728,7 @@
 "rate":  18.59,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAM": {
  "state_code": 28,
@@ -739,7 +739,7 @@
 "rate":  17.89,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TLA": {
  "state_code": 29,
@@ -750,7 +750,7 @@
 "rate":   6.54,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "VER": {
  "state_code": 30,
@@ -761,7 +761,7 @@
 "rate":   10.1,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -772,7 +772,7 @@
 "rate":   6.65,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -783,7 +783,7 @@
 "rate":   7.91,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 } 
 },
 "1998": {
@@ -796,7 +796,7 @@
 "rate":   6.71,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "BCN": {
  "state_code": 2,
@@ -807,7 +807,7 @@
 "rate":  12.02,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "BCS": {
  "state_code": 3,
@@ -818,7 +818,7 @@
 "rate":   4.03,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -829,7 +829,7 @@
 "rate":  17.19,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "COA": {
  "state_code": 5,
@@ -840,7 +840,7 @@
 "rate":   7.07,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -851,7 +851,7 @@
 "rate":  16.44,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CHP": {
  "state_code": 7,
@@ -862,7 +862,7 @@
 "rate":  34.64,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -873,7 +873,7 @@
 "rate":  20.15,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -884,7 +884,7 @@
 "rate":  10.62,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -895,7 +895,7 @@
 "rate":   9.02,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "GUA": {
  "state_code": 11,
@@ -906,7 +906,7 @@
 "rate":   4.51,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -917,7 +917,7 @@
 "rate":  40.68,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -928,7 +928,7 @@
 "rate":  10.56,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "JAL": {
  "state_code": 14,
@@ -939,7 +939,7 @@
 "rate":    9.4,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MEX": {
  "state_code": 15,
@@ -950,7 +950,7 @@
 "rate":   17.7,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MIC": {
  "state_code": 16,
@@ -961,7 +961,7 @@
 "rate":  24.57,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MOR": {
  "state_code": 17,
@@ -972,7 +972,7 @@
 "rate":  13.74,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NAY": {
  "state_code": 18,
@@ -983,7 +983,7 @@
 "rate":  17.79,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -994,7 +994,7 @@
 "rate":   4.16,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -1005,7 +1005,7 @@
 "rate":   0.38,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "PUE": {
  "state_code": 21,
@@ -1016,7 +1016,7 @@
 "rate":   13.1,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "QUE": {
  "state_code": 22,
@@ -1027,7 +1027,7 @@
 "rate":   2.58,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -1038,7 +1038,7 @@
 "rate":  13.27,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -1049,7 +1049,7 @@
 "rate":  12.52,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -1060,7 +1060,7 @@
 "rate":  25.77,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -1071,7 +1071,7 @@
 "rate":  24.94,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TAB": {
  "state_code": 27,
@@ -1082,7 +1082,7 @@
 "rate":  19.06,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAM": {
  "state_code": 28,
@@ -1093,7 +1093,7 @@
 "rate":  15.85,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TLA": {
  "state_code": 29,
@@ -1104,7 +1104,7 @@
 "rate":   4.98,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "VER": {
  "state_code": 30,
@@ -1115,7 +1115,7 @@
 "rate":   9.83,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -1126,7 +1126,7 @@
 "rate":   1.37,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -1137,7 +1137,7 @@
 "rate":  22.15,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 } 
 },
 "1999": {
@@ -1150,7 +1150,7 @@
 "rate":    2.7,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -1161,7 +1161,7 @@
 "rate":  26.18,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -1172,7 +1172,7 @@
 "rate":   6.74,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -1183,7 +1183,7 @@
 "rate":  11.24,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "COA": {
  "state_code": 5,
@@ -1194,7 +1194,7 @@
 "rate":   5.85,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -1205,7 +1205,7 @@
 "rate":   9.69,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHP": {
  "state_code": 7,
@@ -1216,7 +1216,7 @@
 "rate":  35.21,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -1227,7 +1227,7 @@
 "rate":  14.37,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -1238,7 +1238,7 @@
 "rate":   9.85,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -1249,7 +1249,7 @@
 "rate":  19.49,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GUA": {
  "state_code": 11,
@@ -1260,7 +1260,7 @@
 "rate":   5.05,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -1271,7 +1271,7 @@
 "rate":  38.56,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -1282,7 +1282,7 @@
 "rate":   8.35,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "JAL": {
  "state_code": 14,
@@ -1293,7 +1293,7 @@
 "rate":   8.41,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MEX": {
  "state_code": 15,
@@ -1304,7 +1304,7 @@
 "rate":  23.16,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -1315,7 +1315,7 @@
 "rate":  13.82,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -1326,7 +1326,7 @@
 "rate":   21.7,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NAY": {
  "state_code": 18,
@@ -1337,7 +1337,7 @@
 "rate":  15.64,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -1348,7 +1348,7 @@
 "rate":   3.35,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -1359,7 +1359,7 @@
 "rate":  22.47,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -1370,7 +1370,7 @@
 "rate":  11.02,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -1381,7 +1381,7 @@
 "rate":   3.57,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -1392,7 +1392,7 @@
 "rate":  13.37,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -1403,7 +1403,7 @@
 "rate":  17.36,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -1414,7 +1414,7 @@
 "rate":  22.35,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -1425,7 +1425,7 @@
 "rate":  12.87,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAB": {
  "state_code": 27,
@@ -1436,7 +1436,7 @@
 "rate":  11.68,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAM": {
  "state_code": 28,
@@ -1447,7 +1447,7 @@
 "rate":   9.17,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -1458,7 +1458,7 @@
 "rate":  16.26,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "VER": {
  "state_code": 30,
@@ -1469,7 +1469,7 @@
 "rate":   8.17,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -1480,7 +1480,7 @@
 "rate":   0.47,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -1491,7 +1491,7 @@
 "rate":   6.33,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2000": {
@@ -1504,7 +1504,7 @@
 "rate":   1.38,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -1515,7 +1515,7 @@
 "rate":  17.77,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -1526,7 +1526,7 @@
 "rate":   6.55,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -1537,7 +1537,7 @@
 "rate":   7.78,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -1548,7 +1548,7 @@
 "rate":   4.68,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COL": {
  "state_code": 6,
@@ -1559,7 +1559,7 @@
 "rate":   8.12,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHP": {
  "state_code": 7,
@@ -1570,7 +1570,7 @@
 "rate":  30.22,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -1581,7 +1581,7 @@
 "rate":  14.48,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -1592,7 +1592,7 @@
 "rate":   7.92,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -1603,7 +1603,7 @@
 "rate":  17.81,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GUA": {
  "state_code": 11,
@@ -1614,7 +1614,7 @@
 "rate":   4.25,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -1625,7 +1625,7 @@
 "rate":  43.27,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -1636,7 +1636,7 @@
 "rate":   4.79,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -1647,7 +1647,7 @@
 "rate":   7.42,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -1658,7 +1658,7 @@
 "rate":  20.87,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -1669,7 +1669,7 @@
 "rate":  11.68,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -1680,7 +1680,7 @@
 "rate":  21.98,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NAY": {
  "state_code": 18,
@@ -1691,7 +1691,7 @@
 "rate":  12.85,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -1702,7 +1702,7 @@
 "rate":   3.08,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -1713,7 +1713,7 @@
 "rate":  35.16,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -1724,7 +1724,7 @@
 "rate":  10.86,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -1735,7 +1735,7 @@
 "rate":   3.96,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -1746,7 +1746,7 @@
 "rate":  25.58,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SLP": {
  "state_code": 24,
@@ -1757,7 +1757,7 @@
 "rate":  10.59,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SIN": {
  "state_code": 25,
@@ -1768,7 +1768,7 @@
 "rate":  19.61,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SON": {
  "state_code": 26,
@@ -1779,7 +1779,7 @@
 "rate":    8.4,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -1790,7 +1790,7 @@
 "rate":  10.55,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAM": {
  "state_code": 28,
@@ -1801,7 +1801,7 @@
 "rate":   7.83,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -1812,7 +1812,7 @@
 "rate":  27.46,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "VER": {
  "state_code": 30,
@@ -1823,7 +1823,7 @@
 "rate":   6.42,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -1834,7 +1834,7 @@
 "rate":    1.5,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -1845,7 +1845,7 @@
 "rate":   6.76,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2001": {
@@ -1858,7 +1858,7 @@
 "rate":   2.13,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -1869,7 +1869,7 @@
 "rate":  17.11,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -1880,7 +1880,7 @@
 "rate":   5.12,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -1891,7 +1891,7 @@
 "rate":   7.21,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -1902,7 +1902,7 @@
 "rate":   4.81,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COL": {
  "state_code": 6,
@@ -1913,7 +1913,7 @@
 "rate":   9.96,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHP": {
  "state_code": 7,
@@ -1924,7 +1924,7 @@
 "rate":  29.26,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -1935,7 +1935,7 @@
 "rate":  15.59,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -1946,7 +1946,7 @@
 "rate":      9,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -1957,7 +1957,7 @@
 "rate":  21.14,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -1968,7 +1968,7 @@
 "rate":   4.49,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -1979,7 +1979,7 @@
 "rate":  38.62,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -1990,7 +1990,7 @@
 "rate":   6.12,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "JAL": {
  "state_code": 14,
@@ -2001,7 +2001,7 @@
 "rate":   7.36,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -2012,7 +2012,7 @@
 "rate":  21.47,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -2023,7 +2023,7 @@
 "rate":  11.35,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -2034,7 +2034,7 @@
 "rate":  11.91,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NAY": {
  "state_code": 18,
@@ -2045,7 +2045,7 @@
 "rate":  13.33,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -2056,7 +2056,7 @@
 "rate":   3.44,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -2067,7 +2067,7 @@
 "rate":  35.56,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -2078,7 +2078,7 @@
 "rate":   9.41,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -2089,7 +2089,7 @@
 "rate":    5.4,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QROO": {
  "state_code": 23,
@@ -2100,7 +2100,7 @@
 "rate":   25.3,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SLP": {
  "state_code": 24,
@@ -2111,7 +2111,7 @@
 "rate":   8.07,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SIN": {
  "state_code": 25,
@@ -2122,7 +2122,7 @@
 "rate":   21.3,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -2133,7 +2133,7 @@
 "rate":   7.87,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -2144,7 +2144,7 @@
 "rate":   8.37,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAM": {
  "state_code": 28,
@@ -2155,7 +2155,7 @@
 "rate":   5.73,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TLA": {
  "state_code": 29,
@@ -2166,7 +2166,7 @@
 "rate":  33.96,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "VER": {
  "state_code": 30,
@@ -2177,7 +2177,7 @@
 "rate":   6.42,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -2188,7 +2188,7 @@
 "rate":   0.91,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -2199,7 +2199,7 @@
 "rate":    6.6,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2002": {
@@ -2212,7 +2212,7 @@
 "rate":   2.47,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -2223,7 +2223,7 @@
 "rate":  17.01,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -2234,7 +2234,7 @@
 "rate":   5.56,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -2245,7 +2245,7 @@
 "rate":   7.08,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -2256,7 +2256,7 @@
 "rate":   5.26,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -2267,7 +2267,7 @@
 "rate":   7.88,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHP": {
  "state_code": 7,
@@ -2278,7 +2278,7 @@
 "rate":  24.23,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -2289,7 +2289,7 @@
 "rate":  16.83,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -2300,7 +2300,7 @@
 "rate":   8.33,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -2311,7 +2311,7 @@
 "rate":  15.13,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GUA": {
  "state_code": 11,
@@ -2322,7 +2322,7 @@
 "rate":   3.98,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -2333,7 +2333,7 @@
 "rate":  31.68,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -2344,7 +2344,7 @@
 "rate":   5.28,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "JAL": {
  "state_code": 14,
@@ -2355,7 +2355,7 @@
 "rate":   6.42,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -2366,7 +2366,7 @@
 "rate":  21.12,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -2377,7 +2377,7 @@
 "rate":  10.18,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -2388,7 +2388,7 @@
 "rate":  13.79,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NAY": {
  "state_code": 18,
@@ -2399,7 +2399,7 @@
 "rate":  12.13,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NLE": {
  "state_code": 19,
@@ -2410,7 +2410,7 @@
 "rate":   2.99,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -2421,7 +2421,7 @@
 "rate":   38.5,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -2432,7 +2432,7 @@
 "rate":   8.58,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -2443,7 +2443,7 @@
 "rate":   4.38,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -2454,7 +2454,7 @@
 "rate":  18.74,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -2465,7 +2465,7 @@
 "rate":  10.06,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SIN": {
  "state_code": 25,
@@ -2476,7 +2476,7 @@
 "rate":  18.53,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SON": {
  "state_code": 26,
@@ -2487,7 +2487,7 @@
 "rate":   6.89,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAB": {
  "state_code": 27,
@@ -2498,7 +2498,7 @@
 "rate":   6.88,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -2509,7 +2509,7 @@
 "rate":   6.26,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TLA": {
  "state_code": 29,
@@ -2520,7 +2520,7 @@
 "rate":   29.3,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "VER": {
  "state_code": 30,
@@ -2531,7 +2531,7 @@
 "rate":   6.15,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -2542,7 +2542,7 @@
 "rate":   1.68,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -2553,7 +2553,7 @@
 "rate":   7.28,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2003": {
@@ -2566,7 +2566,7 @@
 "rate":   1.96,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -2577,7 +2577,7 @@
 "rate":  17.04,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -2588,7 +2588,7 @@
 "rate":   4.61,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -2599,7 +2599,7 @@
 "rate":   7.35,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -2610,7 +2610,7 @@
 "rate":   4.58,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COL": {
  "state_code": 6,
@@ -2621,7 +2621,7 @@
 "rate":   5.86,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CHP": {
  "state_code": 7,
@@ -2632,7 +2632,7 @@
 "rate":  20.76,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHH": {
  "state_code": 8,
@@ -2643,7 +2643,7 @@
 "rate":  14.75,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -2654,7 +2654,7 @@
 "rate":   7.96,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -2665,7 +2665,7 @@
 "rate":  13.97,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GUA": {
  "state_code": 11,
@@ -2676,7 +2676,7 @@
 "rate":   4.05,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -2687,7 +2687,7 @@
 "rate":   24.6,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -2698,7 +2698,7 @@
 "rate":   4.58,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -2709,7 +2709,7 @@
 "rate":   6.25,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -2720,7 +2720,7 @@
 "rate":  19.79,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MIC": {
  "state_code": 16,
@@ -2731,7 +2731,7 @@
 "rate":  10.44,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -2742,7 +2742,7 @@
 "rate":  10.45,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NAY": {
  "state_code": 18,
@@ -2753,7 +2753,7 @@
 "rate":   9.72,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NLE": {
  "state_code": 19,
@@ -2764,7 +2764,7 @@
 "rate":    3.2,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -2775,7 +2775,7 @@
 "rate":  42.15,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -2786,7 +2786,7 @@
 "rate":   8.94,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -2797,7 +2797,7 @@
 "rate":    4.3,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -2808,7 +2808,7 @@
 "rate":  21.21,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SLP": {
  "state_code": 24,
@@ -2819,7 +2819,7 @@
 "rate":   4.93,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "SIN": {
  "state_code": 25,
@@ -2830,7 +2830,7 @@
 "rate":  18.21,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SON": {
  "state_code": 26,
@@ -2841,7 +2841,7 @@
 "rate":   8.33,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -2852,7 +2852,7 @@
 "rate":   7.22,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -2863,7 +2863,7 @@
 "rate":   8.15,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -2874,7 +2874,7 @@
 "rate":  26.65,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "VER": {
  "state_code": 30,
@@ -2885,7 +2885,7 @@
 "rate":   6.81,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -2896,7 +2896,7 @@
 "rate":   1.77,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -2907,7 +2907,7 @@
 "rate":   7.33,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2004": {
@@ -2920,7 +2920,7 @@
 "rate":   1.56,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -2931,7 +2931,7 @@
 "rate":  16.32,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -2942,7 +2942,7 @@
 "rate":   6.69,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -2953,7 +2953,7 @@
 "rate":   4.86,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COA": {
  "state_code": 5,
@@ -2964,7 +2964,7 @@
 "rate":   4.01,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COL": {
  "state_code": 6,
@@ -2975,7 +2975,7 @@
 "rate":   7.64,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CHP": {
  "state_code": 7,
@@ -2986,7 +2986,7 @@
 "rate":  17.44,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CHH": {
  "state_code": 8,
@@ -2997,7 +2997,7 @@
 "rate":  13.68,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -3008,7 +3008,7 @@
 "rate":    7.9,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -3019,7 +3019,7 @@
 "rate":    7.7,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "GUA": {
  "state_code": 11,
@@ -3030,7 +3030,7 @@
 "rate":   3.66,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -3041,7 +3041,7 @@
 "rate":  16.34,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "HID": {
  "state_code": 13,
@@ -3052,7 +3052,7 @@
 "rate":   4.93,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -3063,7 +3063,7 @@
 "rate":   5.39,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -3074,7 +3074,7 @@
 "rate":  20.24,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "MIC": {
  "state_code": 16,
@@ -3085,7 +3085,7 @@
 "rate":  10.55,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -3096,7 +3096,7 @@
 "rate":  13.09,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NAY": {
  "state_code": 18,
@@ -3107,7 +3107,7 @@
 "rate":  11.01,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NLE": {
  "state_code": 19,
@@ -3118,7 +3118,7 @@
 "rate":   2.73,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -3129,7 +3129,7 @@
 "rate":  30.18,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -3140,7 +3140,7 @@
 "rate":   8.48,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -3151,7 +3151,7 @@
 "rate":   3.69,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -3162,7 +3162,7 @@
 "rate":  12.38,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SLP": {
  "state_code": 24,
@@ -3173,7 +3173,7 @@
 "rate":   8.06,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SIN": {
  "state_code": 25,
@@ -3184,7 +3184,7 @@
 "rate":  19.25,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SON": {
  "state_code": 26,
@@ -3195,7 +3195,7 @@
 "rate":  10.08,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -3206,7 +3206,7 @@
 "rate":    5.7,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -3217,7 +3217,7 @@
 "rate":   7.38,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TLA": {
  "state_code": 29,
@@ -3228,7 +3228,7 @@
 "rate":  23.84,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "VER": {
  "state_code": 30,
@@ -3239,7 +3239,7 @@
 "rate":   6.29,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -3250,7 +3250,7 @@
 "rate":   1.63,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -3261,7 +3261,7 @@
 "rate":   3.83,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 } 
 },
 "2005": {
@@ -3274,7 +3274,7 @@
 "rate":   1.72,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -3285,7 +3285,7 @@
 "rate":   18.3,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -3296,7 +3296,7 @@
 "rate":   6.12,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -3307,7 +3307,7 @@
 "rate":   6.58,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -3318,7 +3318,7 @@
 "rate":   5.33,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -3329,7 +3329,7 @@
 "rate":   5.84,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CHP": {
  "state_code": 7,
@@ -3340,7 +3340,7 @@
 "rate":   9.06,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHH": {
  "state_code": 8,
@@ -3351,7 +3351,7 @@
 "rate":  16.68,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -3362,7 +3362,7 @@
 "rate":   7.77,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "DUR": {
  "state_code": 10,
@@ -3373,7 +3373,7 @@
 "rate":  11.99,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "GUA": {
  "state_code": 11,
@@ -3384,7 +3384,7 @@
 "rate":      4,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -3395,7 +3395,7 @@
 "rate":  22.77,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -3406,7 +3406,7 @@
 "rate":   4.69,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -3417,7 +3417,7 @@
 "rate":   5.52,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -3428,7 +3428,7 @@
 "rate":   16.1,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MIC": {
  "state_code": 16,
@@ -3439,7 +3439,7 @@
 "rate":  10.06,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -3450,7 +3450,7 @@
 "rate":   9.45,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NAY": {
  "state_code": 18,
@@ -3461,7 +3461,7 @@
 "rate":   9.24,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NLE": {
  "state_code": 19,
@@ -3472,7 +3472,7 @@
 "rate":   3.27,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -3483,7 +3483,7 @@
 "rate":  28.07,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -3494,7 +3494,7 @@
 "rate":   6.12,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -3505,7 +3505,7 @@
 "rate":   3.99,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -3516,7 +3516,7 @@
 "rate":  10.31,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SLP": {
  "state_code": 24,
@@ -3527,7 +3527,7 @@
 "rate":   7.07,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "SIN": {
  "state_code": 25,
@@ -3538,7 +3538,7 @@
 "rate":  22.51,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -3549,7 +3549,7 @@
 "rate":   10.9,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -3560,7 +3560,7 @@
 "rate":   3.94,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "TAM": {
  "state_code": 28,
@@ -3571,7 +3571,7 @@
 "rate":  11.51,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -3582,7 +3582,7 @@
 "rate":  31.65,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "VER": {
  "state_code": 30,
@@ -3593,7 +3593,7 @@
 "rate":   6.18,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -3604,7 +3604,7 @@
 "rate":   1.18,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -3615,7 +3615,7 @@
 "rate":   4.02,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 } 
 },
 "2006": {
@@ -3628,7 +3628,7 @@
 "rate":   2.31,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -3639,7 +3639,7 @@
 "rate":  16.05,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -3650,7 +3650,7 @@
 "rate":   3.48,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -3661,7 +3661,7 @@
 "rate":   3.55,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COA": {
  "state_code": 5,
@@ -3672,7 +3672,7 @@
 "rate":   4.12,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COL": {
  "state_code": 6,
@@ -3683,7 +3683,7 @@
 "rate":   5.07,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CHP": {
  "state_code": 7,
@@ -3694,7 +3694,7 @@
 "rate":    7.7,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CHH": {
  "state_code": 8,
@@ -3705,7 +3705,7 @@
 "rate":   17.7,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -3716,7 +3716,7 @@
 "rate":   7.23,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "DUR": {
  "state_code": 10,
@@ -3727,7 +3727,7 @@
 "rate":  12.85,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GUA": {
  "state_code": 11,
@@ -3738,7 +3738,7 @@
 "rate":   4.52,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -3749,7 +3749,7 @@
 "rate":  25.08,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -3760,7 +3760,7 @@
 "rate":   3.96,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -3771,7 +3771,7 @@
 "rate":   6.03,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -3782,7 +3782,7 @@
 "rate":   18.9,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MIC": {
  "state_code": 16,
@@ -3793,7 +3793,7 @@
 "rate":  15.46,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -3804,7 +3804,7 @@
 "rate":   9.27,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NAY": {
  "state_code": 18,
@@ -3815,7 +3815,7 @@
 "rate":   9.16,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NLE": {
  "state_code": 19,
@@ -3826,7 +3826,7 @@
 "rate":   4.05,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "OAX": {
  "state_code": 20,
@@ -3837,7 +3837,7 @@
 "rate":  28.62,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -3848,7 +3848,7 @@
 "rate":   7.38,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -3859,7 +3859,7 @@
 "rate":      3,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -3870,7 +3870,7 @@
 "rate":   9.95,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SLP": {
  "state_code": 24,
@@ -3881,7 +3881,7 @@
 "rate":   5.21,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "SIN": {
  "state_code": 25,
@@ -3892,7 +3892,7 @@
 "rate":  21.99,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -3903,7 +3903,7 @@
 "rate":   9.28,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -3914,7 +3914,7 @@
 "rate":   7.68,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -3925,7 +3925,7 @@
 "rate":  10.96,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -3936,7 +3936,7 @@
 "rate":  16.67,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "VER": {
  "state_code": 30,
@@ -3947,7 +3947,7 @@
 "rate":    5.8,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -3958,7 +3958,7 @@
 "rate":   1.17,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -3969,7 +3969,7 @@
 "rate":   3.44,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 } 
 },
 "2007": {
@@ -3982,7 +3982,7 @@
 "rate":   4.29,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -3993,7 +3993,7 @@
 "rate":  16.62,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -4004,7 +4004,7 @@
 "rate":   4.71,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -4015,7 +4015,7 @@
 "rate":   4.49,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COA": {
  "state_code": 5,
@@ -4026,7 +4026,7 @@
 "rate":   4.51,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COL": {
  "state_code": 6,
@@ -4037,7 +4037,7 @@
 "rate":   4.81,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CHP": {
  "state_code": 7,
@@ -4048,7 +4048,7 @@
 "rate":   7.58,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CHH": {
  "state_code": 8,
@@ -4059,7 +4059,7 @@
 "rate":  18.13,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "DIF": {
  "state_code": 9,
@@ -4070,7 +4070,7 @@
 "rate":   7.96,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -4081,7 +4081,7 @@
 "rate":  15.46,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GUA": {
  "state_code": 11,
@@ -4092,7 +4092,7 @@
 "rate":   4.23,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -4103,7 +4103,7 @@
 "rate":  23.77,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -4114,7 +4114,7 @@
 "rate":   5.69,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "JAL": {
  "state_code": 14,
@@ -4125,7 +4125,7 @@
 "rate":   5.43,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -4136,7 +4136,7 @@
 "rate":   7.56,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MIC": {
  "state_code": 16,
@@ -4147,7 +4147,7 @@
 "rate":  12.22,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MOR": {
  "state_code": 17,
@@ -4158,7 +4158,7 @@
 "rate":   6.49,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "NAY": {
  "state_code": 18,
@@ -4169,7 +4169,7 @@
 "rate":  10.31,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "NLE": {
  "state_code": 19,
@@ -4180,7 +4180,7 @@
 "rate":   6.25,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "OAX": {
  "state_code": 20,
@@ -4191,7 +4191,7 @@
 "rate":  25.02,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "PUE": {
  "state_code": 21,
@@ -4202,7 +4202,7 @@
 "rate":   7.05,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -4213,7 +4213,7 @@
 "rate":   3.23,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -4224,7 +4224,7 @@
 "rate":  14.19,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -4235,7 +4235,7 @@
 "rate":   6.02,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "SIN": {
  "state_code": 25,
@@ -4246,7 +4246,7 @@
 "rate":  26.75,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -4257,7 +4257,7 @@
 "rate":   11.8,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAB": {
  "state_code": 27,
@@ -4268,7 +4268,7 @@
 "rate":   8.82,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TAM": {
  "state_code": 28,
@@ -4279,7 +4279,7 @@
 "rate":   8.25,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -4290,7 +4290,7 @@
 "rate":      0,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "VER": {
  "state_code": 30,
@@ -4301,7 +4301,7 @@
 "rate":   6.34,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -4312,7 +4312,7 @@
 "rate":   1.57,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -4323,7 +4323,7 @@
 "rate":    4.5,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 } 
 },
 "2008": {
@@ -4336,7 +4336,7 @@
 "rate":   5.41,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "BCN": {
  "state_code": 2,
@@ -4347,7 +4347,7 @@
 "rate":  27.19,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -4358,7 +4358,7 @@
 "rate":   4.54,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -4369,7 +4369,7 @@
 "rate":   5.51,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -4380,7 +4380,7 @@
 "rate":   6.57,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COL": {
  "state_code": 6,
@@ -4391,7 +4391,7 @@
 "rate":   5.17,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CHP": {
  "state_code": 7,
@@ -4402,7 +4402,7 @@
 "rate":   6.79,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CHH": {
  "state_code": 8,
@@ -4413,7 +4413,7 @@
 "rate":   58.7,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -4424,7 +4424,7 @@
 "rate":   7.95,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -4435,7 +4435,7 @@
 "rate":  26.23,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -4446,7 +4446,7 @@
 "rate":    4.7,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "GRO": {
  "state_code": 12,
@@ -4457,7 +4457,7 @@
 "rate":  27.99,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -4468,7 +4468,7 @@
 "rate":   5.29,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "JAL": {
  "state_code": 14,
@@ -4479,7 +4479,7 @@
 "rate":   6.35,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -4490,7 +4490,7 @@
 "rate":   8.31,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MIC": {
  "state_code": 16,
@@ -4501,7 +4501,7 @@
 "rate":  12.97,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -4512,7 +4512,7 @@
 "rate":   7.64,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "NAY": {
  "state_code": 18,
@@ -4523,7 +4523,7 @@
 "rate":  13.72,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -4534,7 +4534,7 @@
 "rate":   5.71,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "OAX": {
  "state_code": 20,
@@ -4545,7 +4545,7 @@
 "rate":  19.18,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "PUE": {
  "state_code": 21,
@@ -4556,7 +4556,7 @@
 "rate":   7.45,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -4567,7 +4567,7 @@
 "rate":   3.23,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -4578,7 +4578,7 @@
 "rate":  14.95,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -4589,7 +4589,7 @@
 "rate":   8.47,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SIN": {
  "state_code": 25,
@@ -4600,7 +4600,7 @@
 "rate":  41.23,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -4611,7 +4611,7 @@
 "rate":   14.8,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAB": {
  "state_code": 27,
@@ -4622,7 +4622,7 @@
 "rate":   6.68,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -4633,7 +4633,7 @@
 "rate":   9.43,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -4644,7 +4644,7 @@
 "rate":   3.62,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "VER": {
  "state_code": 30,
@@ -4655,7 +4655,7 @@
 "rate":   6.27,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -4666,7 +4666,7 @@
 "rate":   2.42,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -4677,7 +4677,7 @@
 "rate":   4.98,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 } 
 },
 "2009": {
@@ -4690,7 +4690,7 @@
 "rate":   5.57,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "BCN": {
  "state_code": 2,
@@ -4701,7 +4701,7 @@
 "rate":  23.46,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -4712,7 +4712,7 @@
 "rate":   4.86,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -4723,7 +4723,7 @@
 "rate":   4.94,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "COA": {
  "state_code": 5,
@@ -4734,7 +4734,7 @@
 "rate":   8.69,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "COL": {
  "state_code": 6,
@@ -4745,7 +4745,7 @@
 "rate":   7.98,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHP": {
  "state_code": 7,
@@ -4756,7 +4756,7 @@
 "rate":  10.25,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHH": {
  "state_code": 8,
@@ -4767,7 +4767,7 @@
 "rate":  90.04,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -4778,7 +4778,7 @@
 "rate":   8.33,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -4789,7 +4789,7 @@
 "rate":  56.03,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -4800,7 +4800,7 @@
 "rate":   7.49,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "GRO": {
  "state_code": 12,
@@ -4811,7 +4811,7 @@
 "rate":  41.72,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -4822,7 +4822,7 @@
 "rate":   5.13,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -4833,7 +4833,7 @@
 "rate":   7.72,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MEX": {
  "state_code": 15,
@@ -4844,7 +4844,7 @@
 "rate":   8.71,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MIC": {
  "state_code": 16,
@@ -4855,7 +4855,7 @@
 "rate":  16.54,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -4866,7 +4866,7 @@
 "rate":  17.69,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NAY": {
  "state_code": 18,
@@ -4877,7 +4877,7 @@
 "rate":   13.5,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -4888,7 +4888,7 @@
 "rate":    5.7,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "OAX": {
  "state_code": 20,
@@ -4899,7 +4899,7 @@
 "rate":  19.52,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "PUE": {
  "state_code": 21,
@@ -4910,7 +4910,7 @@
 "rate":    7.1,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -4921,7 +4921,7 @@
 "rate":   4.91,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -4932,7 +4932,7 @@
 "rate":  13.32,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -4943,7 +4943,7 @@
 "rate":   6.07,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "SIN": {
  "state_code": 25,
@@ -4954,7 +4954,7 @@
 "rate":  44.11,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -4965,7 +4965,7 @@
 "rate":  18.42,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAB": {
  "state_code": 27,
@@ -4976,7 +4976,7 @@
 "rate":   5.22,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -4987,7 +4987,7 @@
 "rate":   8.69,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "TLA": {
  "state_code": 29,
@@ -4998,7 +4998,7 @@
 "rate":   4.08,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "VER": {
  "state_code": 30,
@@ -5009,7 +5009,7 @@
 "rate":   4.52,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "YUC": {
  "state_code": 31,
@@ -5020,7 +5020,7 @@
 "rate":   1.68,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -5031,7 +5031,7 @@
 "rate":   5.06,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 } 
 },
 "2010": {
@@ -5044,7 +5044,7 @@
 "rate":   6.22,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "BCN": {
  "state_code": 2,
@@ -5055,7 +5055,7 @@
 "rate":   27.2,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -5066,7 +5066,7 @@
 "rate":   7.26,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -5077,7 +5077,7 @@
 "rate":   6.99,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -5088,7 +5088,7 @@
 "rate":  14.54,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "COL": {
  "state_code": 6,
@@ -5099,7 +5099,7 @@
 "rate":  13.97,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "CHP": {
  "state_code": 7,
@@ -5110,7 +5110,7 @@
 "rate":  10.38,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHH": {
  "state_code": 8,
@@ -5121,7 +5121,7 @@
 "rate": 110.18,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -5132,7 +5132,7 @@
 "rate":   9.06,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -5143,7 +5143,7 @@
 "rate":  60.95,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -5154,7 +5154,7 @@
 "rate":   7.82,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "GRO": {
  "state_code": 12,
@@ -5165,7 +5165,7 @@
 "rate":  43.37,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -5176,7 +5176,7 @@
 "rate":   4.94,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -5187,7 +5187,7 @@
 "rate":  11.85,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MEX": {
  "state_code": 15,
@@ -5198,7 +5198,7 @@
 "rate":   7.34,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "MIC": {
  "state_code": 16,
@@ -5209,7 +5209,7 @@
 "rate":  14.89,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -5220,7 +5220,7 @@
 "rate":  30.79,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NAY": {
  "state_code": 18,
@@ -5231,7 +5231,7 @@
 "rate":  32.75,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NLE": {
  "state_code": 19,
@@ -5242,7 +5242,7 @@
 "rate":  17.39,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "OAX": {
  "state_code": 20,
@@ -5253,7 +5253,7 @@
 "rate":  17.14,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "PUE": {
  "state_code": 21,
@@ -5264,7 +5264,7 @@
 "rate":   7.03,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -5275,7 +5275,7 @@
 "rate":   3.16,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -5286,7 +5286,7 @@
 "rate":  17.04,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -5297,7 +5297,7 @@
 "rate":  15.84,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -5308,7 +5308,7 @@
 "rate":  78.54,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -5319,7 +5319,7 @@
 "rate":  23.81,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TAB": {
  "state_code": 27,
@@ -5330,7 +5330,7 @@
 "rate":   6.31,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -5341,7 +5341,7 @@
 "rate":  21.49,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TLA": {
  "state_code": 29,
@@ -5352,7 +5352,7 @@
 "rate":   4.01,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "VER": {
  "state_code": 30,
@@ -5363,7 +5363,7 @@
 "rate":   7.52,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "YUC": {
  "state_code": 31,
@@ -5374,7 +5374,7 @@
 "rate":    1.8,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -5385,7 +5385,7 @@
 "rate":   7.26,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2011": {
@@ -5398,7 +5398,7 @@
 "rate":    5.8,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "BCN": {
  "state_code": 2,
@@ -5409,7 +5409,7 @@
 "rate":  20.38,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -5420,7 +5420,7 @@
 "rate":   5.56,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -5431,7 +5431,7 @@
 "rate":   6.87,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -5442,7 +5442,7 @@
 "rate":  23.27,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "COL": {
  "state_code": 6,
@@ -5453,7 +5453,7 @@
 "rate":  24.31,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHP": {
  "state_code": 7,
@@ -5464,7 +5464,7 @@
 "rate":  12.22,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHH": {
  "state_code": 8,
@@ -5475,7 +5475,7 @@
 "rate":   86.2,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -5486,7 +5486,7 @@
 "rate":   8.72,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -5497,7 +5497,7 @@
 "rate":  44.94,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -5508,7 +5508,7 @@
 "rate":  10.71,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "GRO": {
  "state_code": 12,
@@ -5519,7 +5519,7 @@
 "rate":   61.9,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -5530,7 +5530,7 @@
 "rate":   4.04,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -5541,7 +5541,7 @@
 "rate":  16.09,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MEX": {
  "state_code": 15,
@@ -5552,7 +5552,7 @@
 "rate":   9.46,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MIC": {
  "state_code": 16,
@@ -5563,7 +5563,7 @@
 "rate":  17.27,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -5574,7 +5574,7 @@
 "rate":  30.23,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NAY": {
  "state_code": 18,
@@ -5585,7 +5585,7 @@
 "rate":  39.87,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NLE": {
  "state_code": 19,
@@ -5596,7 +5596,7 @@
 "rate":  41.44,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "OAX": {
  "state_code": 20,
@@ -5607,7 +5607,7 @@
 "rate":  16.37,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "PUE": {
  "state_code": 21,
@@ -5618,7 +5618,7 @@
 "rate":  10.37,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -5629,7 +5629,7 @@
 "rate":   5.17,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "QROO": {
  "state_code": 23,
@@ -5640,7 +5640,7 @@
 "rate":  18.97,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -5651,7 +5651,7 @@
 "rate":   15.1,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -5662,7 +5662,7 @@
 "rate":   65.9,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -5673,7 +5673,7 @@
 "rate":  16.93,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAB": {
  "state_code": 27,
@@ -5684,7 +5684,7 @@
 "rate":   7.06,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -5695,7 +5695,7 @@
 "rate":  25.16,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TLA": {
  "state_code": 29,
@@ -5706,7 +5706,7 @@
 "rate":   5.84,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "VER": {
  "state_code": 30,
@@ -5717,7 +5717,7 @@
 "rate":  11.37,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -5728,7 +5728,7 @@
 "rate":   2.27,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -5739,7 +5739,7 @@
 "rate":   7.78,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 } 
 },
 "2012": {
@@ -5752,7 +5752,7 @@
 "rate":   3.54,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -5763,7 +5763,7 @@
 "rate":  17.59,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "BCS": {
  "state_code": 3,
@@ -5774,7 +5774,7 @@
 "rate":   4.95,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "CAM": {
  "state_code": 4,
@@ -5785,7 +5785,7 @@
 "rate":    7.9,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "COA": {
  "state_code": 5,
@@ -5796,7 +5796,7 @@
 "rate":  26.84,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "COL": {
  "state_code": 6,
@@ -5807,7 +5807,7 @@
 "rate":  41.48,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHP": {
  "state_code": 7,
@@ -5818,7 +5818,7 @@
 "rate":  11.27,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHH": {
  "state_code": 8,
@@ -5829,7 +5829,7 @@
 "rate":  55.21,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -5840,7 +5840,7 @@
 "rate":   8.73,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -5851,7 +5851,7 @@
 "rate":  35.95,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -5862,7 +5862,7 @@
 "rate":  13.54,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "GRO": {
  "state_code": 12,
@@ -5873,7 +5873,7 @@
 "rate":  65.78,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -5884,7 +5884,7 @@
 "rate":   2.98,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -5895,7 +5895,7 @@
 "rate":  15.39,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MEX": {
  "state_code": 15,
@@ -5906,7 +5906,7 @@
 "rate":  13.12,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MIC": {
  "state_code": 16,
@@ -5917,7 +5917,7 @@
 "rate":  16.73,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -5928,7 +5928,7 @@
 "rate":  46.28,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NAY": {
  "state_code": 18,
@@ -5939,7 +5939,7 @@
 "rate":  20.91,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NLE": {
  "state_code": 19,
@@ -5950,7 +5950,7 @@
 "rate":  29.75,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "OAX": {
  "state_code": 20,
@@ -5961,7 +5961,7 @@
 "rate":  11.96,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "PUE": {
  "state_code": 21,
@@ -5972,7 +5972,7 @@
 "rate":   9.58,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "QUE": {
  "state_code": 22,
@@ -5983,7 +5983,7 @@
 "rate":    5.7,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QROO": {
  "state_code": 23,
@@ -5994,7 +5994,7 @@
 "rate":  17.09,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -6005,7 +6005,7 @@
 "rate":  14.73,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SIN": {
  "state_code": 25,
@@ -6016,7 +6016,7 @@
 "rate":  50.29,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -6027,7 +6027,7 @@
 "rate":   17.7,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAB": {
  "state_code": 27,
@@ -6038,7 +6038,7 @@
 "rate":   5.34,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -6049,7 +6049,7 @@
 "rate":  29.53,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "TLA": {
  "state_code": 29,
@@ -6060,7 +6060,7 @@
 "rate":   4.78,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "VER": {
  "state_code": 30,
@@ -6071,7 +6071,7 @@
 "rate":  12.27,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -6082,7 +6082,7 @@
 "rate":   1.85,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -6093,7 +6093,7 @@
 "rate":  12.63,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 } 
 },
 "2013": {
@@ -6106,7 +6106,7 @@
 "rate":   3.09,
 "name": "AGU",
 "long_name": "Aguascalientes",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "BCN": {
  "state_code": 2,
@@ -6117,7 +6117,7 @@
 "rate":  22.75,
 "name": "BCN",
 "long_name": "Baja California",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "BCS": {
  "state_code": 3,
@@ -6128,7 +6128,7 @@
 "rate":   7.68,
 "name": "BCS",
 "long_name": "Baja California Sur",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "CAM": {
  "state_code": 4,
@@ -6139,7 +6139,7 @@
 "rate":   7.55,
 "name": "CAM",
 "long_name": "Campeche",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "COA": {
  "state_code": 5,
@@ -6150,7 +6150,7 @@
 "rate":  22.18,
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "COL": {
  "state_code": 6,
@@ -6161,7 +6161,7 @@
 "rate":  25.26,
 "name": "COL",
 "long_name": "Colima",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "CHP": {
  "state_code": 7,
@@ -6172,7 +6172,7 @@
 "rate":  10.48,
 "name": "CHP",
 "long_name": "Chiapas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "CHH": {
  "state_code": 8,
@@ -6183,7 +6183,7 @@
 "rate":  39.48,
 "name": "CHH",
 "long_name": "Chihuahua",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "DIF": {
  "state_code": 9,
@@ -6194,7 +6194,7 @@
 "rate":   8.41,
 "name": "DIF",
 "long_name": "Distrito Federal",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "DUR": {
  "state_code": 10,
@@ -6205,7 +6205,7 @@
 "rate":  27.39,
 "name": "DUR",
 "long_name": "Durango",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "GUA": {
  "state_code": 11,
@@ -6216,7 +6216,7 @@
 "rate":  11.16,
 "name": "GUA",
 "long_name": "Guanajuato",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "GRO": {
  "state_code": 12,
@@ -6227,7 +6227,7 @@
 "rate":  59.03,
 "name": "GRO",
 "long_name": "Guerrero",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "HID": {
  "state_code": 13,
@@ -6238,7 +6238,7 @@
 "rate":   4.39,
 "name": "HID",
 "long_name": "Hidalgo",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "JAL": {
  "state_code": 14,
@@ -6249,7 +6249,7 @@
 "rate":  14.11,
 "name": "JAL",
 "long_name": "Jalisco",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MEX": {
  "state_code": 15,
@@ -6260,7 +6260,7 @@
 "rate":  11.72,
 "name": "MEX",
 "long_name": "Estado de México",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "MIC": {
  "state_code": 16,
@@ -6271,7 +6271,7 @@
 "rate":  19.84,
 "name": "MIC",
 "long_name": "Michoacán de Ocampo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "MOR": {
  "state_code": 17,
@@ -6282,7 +6282,7 @@
 "rate":  31.66,
 "name": "MOR",
 "long_name": "Morelos",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "NAY": {
  "state_code": 18,
@@ -6293,7 +6293,7 @@
 "rate":  12.69,
 "name": "NAY",
 "long_name": "Nayarit",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "NLE": {
  "state_code": 19,
@@ -6304,7 +6304,7 @@
 "rate":  14.45,
 "name": "NLE",
 "long_name": "Nuevo León",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "OAX": {
  "state_code": 20,
@@ -6315,7 +6315,7 @@
 "rate":  13.49,
 "name": "OAX",
 "long_name": "Oaxaca",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "PUE": {
  "state_code": 21,
@@ -6326,7 +6326,7 @@
 "rate":   7.02,
 "name": "PUE",
 "long_name": "Puebla",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QUE": {
  "state_code": 22,
@@ -6337,7 +6337,7 @@
 "rate":   5.67,
 "name": "QUE",
 "long_name": "Querétaro",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "QROO": {
  "state_code": 23,
@@ -6348,7 +6348,7 @@
 "rate":   14.2,
 "name": "QROO",
 "long_name": "Quintana Roo",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "SLP": {
  "state_code": 24,
@@ -6359,7 +6359,7 @@
 "rate":   9.61,
 "name": "SLP",
 "long_name": "San Luis Potosí",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "SIN": {
  "state_code": 25,
@@ -6370,7 +6370,7 @@
 "rate":  41.01,
 "name": "SIN",
 "long_name": "Sinaloa",
-"fillKey": "[20.2,110]" 
+"fillKey": "[20,110]" 
 },
 "SON": {
  "state_code": 26,
@@ -6381,7 +6381,7 @@
 "rate":  20.02,
 "name": "SON",
 "long_name": "Sonora",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TAB": {
  "state_code": 27,
@@ -6392,7 +6392,7 @@
 "rate":   5.97,
 "name": "TAB",
 "long_name": "Tabasco",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "TAM": {
  "state_code": 28,
@@ -6403,7 +6403,7 @@
 "rate":  15.94,
 "name": "TAM",
 "long_name": "Tamaulipas",
-"fillKey": "[12.5,20.2)" 
+"fillKey": "[12,20)" 
 },
 "TLA": {
  "state_code": 29,
@@ -6414,7 +6414,7 @@
 "rate":   5.59,
 "name": "TLA",
 "long_name": "Tlaxcala",
-"fillKey": "[5.19,7.82)" 
+"fillKey": "[5,8)" 
 },
 "VER": {
  "state_code": 30,
@@ -6425,7 +6425,7 @@
 "rate":  10.85,
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 },
 "YUC": {
  "state_code": 31,
@@ -6436,7 +6436,7 @@
 "rate":   1.93,
 "name": "YUC",
 "long_name": "Yucatán",
-"fillKey": "[0,5.19)" 
+"fillKey": "[0,5)" 
 },
 "ZAC": {
  "state_code": 32,
@@ -6447,7 +6447,7 @@
 "rate":  10.73,
 "name": "ZAC",
 "long_name": "Zacatecas",
-"fillKey": "[7.82,12.5)" 
+"fillKey": "[8,12)" 
 } 
 } 
 } 

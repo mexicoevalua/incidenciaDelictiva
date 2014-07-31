@@ -7,10 +7,21 @@
 #====
 
 # Separar homicidios en intervalos
+# Calcular cortes por quintil
+table(with(dat, cut(rate,
+                    breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 1, include.lowest=T, right=F)))
+
+# Labels
+l  <-  c("[0,5)","[5,8)","[8,12)","[12,20)","[20,110]")
+# Eliminar decimales
 dat <- transform(homicidios,
-                 fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
+                 fillKey = cut(rate,
+                               labels= l,
+                               breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 2, include.lowest=T, right=F)
 )
+
 table(dat$fillKey)
+str(dat$fillKey)
 keyNames <- levels(dat$fillKey)
 
 # Colores
@@ -20,6 +31,7 @@ fills = setNames(
   c(levels(dat$fillKey), 'defaultFill')
 )
 str(fills)
+fills
 
 dat2 <- plyr::dlply(na.omit(dat), "year", function(x){
   y = rCharts::toJSONArray2(x, json = F)
@@ -70,19 +82,19 @@ d1$addAssets(
   jshead = "http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"
 )
 d1$setTemplate(chartDiv = "
-  <div id = 'chart_1' class = 'rChart datamaps'>
-  <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
-  <span ng-bind='year'></span>
-    
-  <script>
-    function rChartsCtrl($scope){
-      $scope.year = '2013';
-      $scope.$watch('year', function(newYear){
-        mapchart_1.updateChoropleth(chartParams.newData[newYear]);
-      })
-    }
-  </script>
-  </div>   "
+               <div id = 'chart_1' class = 'rChart datamaps'>
+               <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+               <span ng-bind='year'></span>
+               
+               <script>
+               function rChartsCtrl($scope){
+               $scope.year = '2013';
+               $scope.$watch('year', function(newYear){
+               mapchart_1.updateChoropleth(chartParams.newData[newYear]);
+               })
+               }
+               </script>
+               </div>   "
 )
 d1$set(newData = dat2)
 d1$save("homicidios.html", cdn = TRUE)
