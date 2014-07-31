@@ -1,0 +1,6498 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    
+    <script src='http://d3js.org/d3.v3.min.js' type='text/javascript'></script>
+    <script src='http://d3js.org/topojson.v1.min.js' type='text/javascript'></script>
+    <script src='http://datamaps.github.io/scripts/datamaps.all.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    </style>
+    
+  </head>
+  <body ng-app ng-controller='rChartsCtrl'>
+    
+    
+      <div id = 'chart_1' class = 'rChart datamaps'>
+      <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+      <span ng-bind='year'></span>
+        
+      <script>
+        function rChartsCtrl($scope){
+          $scope.year = '2013';
+          $scope.$watch('year', function(newYear){
+            mapchart_1.updateChoropleth(chartParams.newData[newYear]);
+          })
+        }
+      </script>
+      </div>       
+    <script id='popup-template' type='text/x-handlebars-template'>
+    
+</script>
+<script>
+  var chartParams = {
+ "dom": "chart_1",
+"width":    800,
+"height":    400,
+"geographyConfig": {
+ "dataUrl": "shapefiles/mx_states.json",
+"popupTemplate":  function(geography, data) { //this function should just return a string
+    return '<div class=hoverinfo><strong>' + geography.properties.name + '</strong></div>';
+    }   
+},
+"scope": "states",
+"labels": true,
+"bodyattrs": "ng-app ng-controller='rChartsCtrl'",
+"setProjection":  function( element, options ) {
+  
+  var projection, path;
+  
+  projection = d3.geo.mercator()
+  .center([-90, 24])
+  .scale(element.offsetWidth)
+  .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+  
+  path = d3.geo.path()
+  .projection( projection );
+  
+  return {path: path, projection: projection};
+  } ,
+"fills": {
+ "[13.36,480.4)": "#FFFFB2",
+"[480.4,651.3)": "#FECC5C",
+"[651.3,848.8)": "#FD8D3C",
+"[848.8,1173)": "#F03B20",
+"[1173,3731]": "#BD0026",
+"defaultFill": "#BD0026" 
+},
+"data": {
+ "AGU": {
+ "state_code": 1,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   3667,
+"population": 966192,
+"rate": 379.53,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[13.36,480.4)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  87558,
+"population": 2347037,
+"rate": 3730.6,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   7560,
+"population": 433282,
+"rate": 1744.8,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   6865,
+"population": 666544,
+"rate": 1029.9,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[848.8,1173)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  14763,
+"population": 2295840,
+"rate": 643.03,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[480.4,651.3)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   9524,
+"population": 535262,
+"rate": 1779.3,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[1173,3731]" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23819,
+"population": 3950814,
+"rate": 602.89,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  43176,
+"population": 2839556,
+"rate": 1520.5,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[1173,3731]" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  91593,
+"population": 8904064,
+"rate": 1028.7,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   6471,
+"population": 1477610,
+"rate": 437.94,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23640,
+"population": 5054560,
+"rate":  467.7,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[13.36,480.4)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  19544,
+"population": 3196368,
+"rate": 611.44,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  15420,
+"population": 2351497,
+"rate": 655.75,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  51382,
+"population": 6369852,
+"rate": 806.64,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.0985e+05,
+"population": 12289466,
+"rate": 893.85,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  20997,
+"population": 4156338,
+"rate": 505.18,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[480.4,651.3)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  16726,
+"population": 1558634,
+"rate": 1073.1,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[848.8,1173)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   5483,
+"population": 921764,
+"rate": 594.84,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[480.4,651.3)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  22049,
+"population": 3770918,
+"rate": 584.71,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[480.4,651.3)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  28744,
+"population": 3609795,
+"rate": 796.28,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  30760,
+"population": 5077647,
+"rate": 605.79,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  13766,
+"population": 1480321,
+"rate": 929.93,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[848.8,1173)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  11040,
+"population": 843751,
+"rate": 1308.4,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23476,
+"population": 2360336,
+"rate":  994.6,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[848.8,1173)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   8884,
+"population": 2466280,
+"rate": 360.22,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  21692,
+"population": 2182008,
+"rate": 994.13,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[848.8,1173)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23886,
+"population": 1898572,
+"rate": 1258.1,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  28433,
+"population": 2643636,
+"rate": 1075.5,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   6820,
+"population": 963404,
+"rate": 707.91,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[651.3,848.8)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  50245,
+"population": 7151310,
+"rate":  702.6,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[651.3,848.8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  16314,
+"population": 1655361,
+"rate": 985.53,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[848.8,1173)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   7669,
+"population": 1428402,
+"rate": 536.89,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"legend": true,
+"id": "chart_1",
+"newData": {
+ "1997": {
+ "AGU": {
+ "state_code": 1,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   3667,
+"population": 966192,
+"rate": 379.53,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[13.36,480.4)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  87558,
+"population": 2347037,
+"rate": 3730.6,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   7560,
+"population": 433282,
+"rate": 1744.8,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   6865,
+"population": 666544,
+"rate": 1029.9,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[848.8,1173)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  14763,
+"population": 2295840,
+"rate": 643.03,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[480.4,651.3)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   9524,
+"population": 535262,
+"rate": 1779.3,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[1173,3731]" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23819,
+"population": 3950814,
+"rate": 602.89,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  43176,
+"population": 2839556,
+"rate": 1520.5,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[1173,3731]" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  91593,
+"population": 8904064,
+"rate": 1028.7,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   6471,
+"population": 1477610,
+"rate": 437.94,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23640,
+"population": 5054560,
+"rate":  467.7,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[13.36,480.4)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  19544,
+"population": 3196368,
+"rate": 611.44,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  15420,
+"population": 2351497,
+"rate": 655.75,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  51382,
+"population": 6369852,
+"rate": 806.64,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.0985e+05,
+"population": 12289466,
+"rate": 893.85,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  20997,
+"population": 4156338,
+"rate": 505.18,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[480.4,651.3)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  16726,
+"population": 1558634,
+"rate": 1073.1,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[848.8,1173)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   5483,
+"population": 921764,
+"rate": 594.84,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[480.4,651.3)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  22049,
+"population": 3770918,
+"rate": 584.71,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[480.4,651.3)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  28744,
+"population": 3609795,
+"rate": 796.28,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  30760,
+"population": 5077647,
+"rate": 605.79,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  13766,
+"population": 1480321,
+"rate": 929.93,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[848.8,1173)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  11040,
+"population": 843751,
+"rate": 1308.4,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23476,
+"population": 2360336,
+"rate":  994.6,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[848.8,1173)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   8884,
+"population": 2466280,
+"rate": 360.22,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  21692,
+"population": 2182008,
+"rate": 994.13,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[848.8,1173)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  23886,
+"population": 1898572,
+"rate": 1258.1,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  28433,
+"population": 2643636,
+"rate": 1075.5,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   6820,
+"population": 963404,
+"rate": 707.91,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[651.3,848.8)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  50245,
+"population": 7151310,
+"rate":  702.6,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[651.3,848.8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":  16314,
+"population": 1655361,
+"rate": 985.53,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[848.8,1173)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1997,
+"group": "OTROS DELITOS",
+"averiguaciones":   7669,
+"population": 1428402,
+"rate": 536.89,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"1998": {
+ "AGU": {
+ "state_code": 1,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   6391,
+"population": 983399,
+"rate": 649.89,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[480.4,651.3)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  74102,
+"population": 2428435,
+"rate": 3051.4,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   7169,
+"population": 446626,
+"rate": 1605.2,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   7925,
+"population": 680547,
+"rate": 1164.5,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[848.8,1173)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  11354,
+"population": 2334921,
+"rate": 486.27,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[480.4,651.3)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   9490,
+"population": 541355,
+"rate":   1753,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[1173,3731]" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  21323,
+"population": 4038868,
+"rate": 527.94,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  42288,
+"population": 2897672,
+"rate": 1459.4,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[1173,3731]" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  85941,
+"population": 8920544,
+"rate": 963.41,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   7247,
+"population": 1485282,
+"rate": 487.92,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[480.4,651.3)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  16666,
+"population": 5094451,
+"rate": 327.14,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[13.36,480.4)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  17195,
+"population": 3210085,
+"rate": 535.66,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  12686,
+"population": 2367270,
+"rate": 535.89,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[480.4,651.3)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  42500,
+"population": 6426789,
+"rate": 661.29,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  60828,
+"population": 12551530,
+"rate": 484.63,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[480.4,651.3)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  21846,
+"population": 4160121,
+"rate": 525.13,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[480.4,651.3)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  15629,
+"population": 1572018,
+"rate":  994.2,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[848.8,1173)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   4309,
+"population": 927663,
+"rate":  464.5,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  24210,
+"population": 3841802,
+"rate": 630.17,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[480.4,651.3)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  18654,
+"population": 3639204,
+"rate": 512.58,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[480.4,651.3)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  29791,
+"population": 5150852,
+"rate": 578.37,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  10699,
+"population": 1511212,
+"rate": 707.97,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   7515,
+"population": 881598,
+"rate": 852.43,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[848.8,1173)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  17087,
+"population": 2372958,
+"rate": 720.07,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[651.3,848.8)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   7363,
+"population": 2494684,
+"rate": 295.15,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  26591,
+"population": 2225692,
+"rate": 1194.7,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[1173,3731]" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  18415,
+"population": 1930380,
+"rate": 953.96,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[848.8,1173)" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  21043,
+"population": 2700636,
+"rate": 779.19,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[651.3,848.8)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   4658,
+"population": 983404,
+"rate": 473.66,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  42833,
+"population": 7191469,
+"rate": 595.61,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":  37085,
+"population": 1682140,
+"rate": 2204.6,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1998,
+"group": "OTROS DELITOS",
+"averiguaciones":   5695,
+"population": 1426816,
+"rate": 399.14,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[13.36,480.4)" 
+} 
+},
+"1999": {
+ "AGU": {
+ "state_code": 1,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   7415,
+"population": 1000152,
+"rate": 741.39,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  68420,
+"population": 2509531,
+"rate": 2726.4,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   7223,
+"population": 459898,
+"rate": 1570.6,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   6180,
+"population": 694065,
+"rate": 890.41,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[848.8,1173)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  12826,
+"population": 2374093,
+"rate": 540.25,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[480.4,651.3)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   3697,
+"population": 547220,
+"rate":  675.6,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[651.3,848.8)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  23193,
+"population": 4124132,
+"rate": 562.37,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  34685,
+"population": 2957462,
+"rate": 1172.8,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[1173,3731]" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  77981,
+"population": 8936556,
+"rate": 872.61,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   8780,
+"population": 1492959,
+"rate": 588.09,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[480.4,651.3)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  19911,
+"population": 5128910,
+"rate": 388.21,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[13.36,480.4)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  19703,
+"population": 3221127,
+"rate": 611.68,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  12708,
+"population": 2382633,
+"rate": 533.36,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[480.4,651.3)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  44064,
+"population": 6482823,
+"rate":  679.7,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.0413e+05,
+"population": 12805993,
+"rate": 813.13,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[651.3,848.8)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  17446,
+"population": 4160466,
+"rate": 419.33,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  18472,
+"population": 1584898,
+"rate": 1165.5,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[848.8,1173)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   3088,
+"population": 933374,
+"rate": 330.84,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  31733,
+"population": 3913478,
+"rate": 810.86,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[651.3,848.8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  25188,
+"population": 3663176,
+"rate":  687.6,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  31389,
+"population": 5219266,
+"rate": 601.41,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  10576,
+"population": 1540766,
+"rate": 686.41,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  10252,
+"population": 919795,
+"rate": 1114.6,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[848.8,1173)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  32475,
+"population": 2384274,
+"rate":   1362,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   8111,
+"population": 2523038,
+"rate": 321.48,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  17860,
+"population": 2268909,
+"rate": 787.16,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[651.3,848.8)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  16582,
+"population": 1961040,
+"rate": 845.57,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[651.3,848.8)" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  24743,
+"population": 2760094,
+"rate": 896.45,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   3575,
+"population": 1002730,
+"rate": 356.53,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  42241,
+"population": 7220880,
+"rate": 584.98,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":  40309,
+"population": 1708452,
+"rate": 2359.4,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1999,
+"group": "OTROS DELITOS",
+"averiguaciones":   7738,
+"population": 1422351,
+"rate": 544.03,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2000": {
+ "AGU": {
+ "state_code": 1,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   7538,
+"population": 1017005,
+"rate":  741.2,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  56740,
+"population": 2588605,
+"rate": 2191.9,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   8075,
+"population": 473322,
+"rate":   1706,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   4456,
+"population": 707358,
+"rate": 629.95,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[480.4,651.3)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  17655,
+"population": 2413499,
+"rate": 731.51,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[651.3,848.8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   3353,
+"population": 554130,
+"rate": 605.09,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[480.4,651.3)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  21717,
+"population": 4202342,
+"rate": 516.78,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  30034,
+"population": 3018308,
+"rate": 995.06,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  67345,
+"population": 8953032,
+"rate":  752.2,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  15086,
+"population": 1504712,
+"rate": 1002.6,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[848.8,1173)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  37065,
+"population": 5157152,
+"rate": 718.71,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[651.3,848.8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  21082,
+"population": 3233460,
+"rate":    652,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[651.3,848.8)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  11228,
+"population": 2399371,
+"rate": 467.96,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[13.36,480.4)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  48427,
+"population": 6552940,
+"rate": 739.01,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.1007e+05,
+"population": 13064174,
+"rate":  842.5,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[651.3,848.8)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  13829,
+"population": 4169568,
+"rate": 331.67,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  17668,
+"population": 1601568,
+"rate": 1103.2,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[848.8,1173)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   5107,
+"population": 941794,
+"rate": 542.26,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[480.4,651.3)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  33821,
+"population": 3988482,
+"rate": 847.97,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[651.3,848.8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  24403,
+"population": 3674628,
+"rate": 664.09,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  35605,
+"population": 5275734,
+"rate": 674.88,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   8935,
+"population": 1566797,
+"rate": 570.27,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[480.4,651.3)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  13063,
+"population": 957640,
+"rate": 1364.1,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  38730,
+"population": 2398757,
+"rate": 1614.6,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  10845,
+"population": 2554568,
+"rate": 424.53,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  14316,
+"population": 2310246,
+"rate": 619.67,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[480.4,651.3)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  29106,
+"population": 1990196,
+"rate": 1462.5,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  26693,
+"population": 2821330,
+"rate": 946.11,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   3420,
+"population": 1019616,
+"rate": 335.42,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  42698,
+"population": 7245217,
+"rate": 589.33,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":  37284,
+"population": 1733690,
+"rate": 2150.6,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2000,
+"group": "OTROS DELITOS",
+"averiguaciones":   8497,
+"population": 1419814,
+"rate": 598.46,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2001": {
+ "AGU": {
+ "state_code": 1,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   7203,
+"population": 1034673,
+"rate": 696.16,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  58338,
+"population": 2665100,
+"rate":   2189,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   7166,
+"population": 487856,
+"rate": 1468.9,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   3022,
+"population": 720777,
+"rate": 419.27,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  19928,
+"population": 2453082,
+"rate": 812.37,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[651.3,848.8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   3535,
+"population": 562178,
+"rate":  628.8,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[480.4,651.3)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  25320,
+"population": 4279389,
+"rate": 591.67,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  35054,
+"population": 3078290,
+"rate": 1138.8,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  67607,
+"population": 8967336,
+"rate": 753.93,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  15185,
+"population": 1518804,
+"rate":  999.8,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[848.8,1173)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  45543,
+"population": 5189584,
+"rate": 877.58,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  19887,
+"population": 3249338,
+"rate": 612.03,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  15756,
+"population": 2419951,
+"rate": 651.09,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[480.4,651.3)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  53568,
+"population": 6632028,
+"rate": 807.72,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.1815e+05,
+"population": 13327545,
+"rate": 886.51,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  15215,
+"population": 4185422,
+"rate": 363.52,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  22731,
+"population": 1620334,
+"rate": 1402.9,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   5058,
+"population": 952620,
+"rate": 530.96,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[480.4,651.3)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  33410,
+"population": 4065193,
+"rate": 821.86,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[651.3,848.8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  30266,
+"population": 3687110,
+"rate": 820.86,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  38390,
+"population": 5332966,
+"rate": 719.86,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  11192,
+"population": 1593332,
+"rate": 702.43,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  12713,
+"population": 995884,
+"rate": 1276.5,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  36275,
+"population": 2416516,
+"rate": 1501.1,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  10078,
+"population": 2586842,
+"rate": 389.59,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  11834,
+"population": 2351912,
+"rate": 503.17,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[480.4,651.3)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  29100,
+"population": 2019088,
+"rate": 1441.2,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  28416,
+"population": 2881544,
+"rate": 986.14,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   2840,
+"population": 1036475,
+"rate": 274.01,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  42946,
+"population": 7275892,
+"rate": 590.25,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":  36340,
+"population": 1758905,
+"rate": 2066.1,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2001,
+"group": "OTROS DELITOS",
+"averiguaciones":   8615,
+"population": 1424152,
+"rate": 604.92,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2002": {
+ "AGU": {
+ "state_code": 1,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   8453,
+"population": 1053016,
+"rate": 802.74,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  55231,
+"population": 2739379,
+"rate": 2016.2,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   7654,
+"population": 503676,
+"rate": 1519.6,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   1978,
+"population": 734330,
+"rate": 269.36,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  18540,
+"population": 2492591,
+"rate":  743.8,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[651.3,848.8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   3532,
+"population": 570900,
+"rate": 618.67,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[480.4,651.3)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  25651,
+"population": 4358108,
+"rate": 588.58,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  37456,
+"population": 3136673,
+"rate": 1194.1,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[1173,3731]" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  79916,
+"population": 8977879,
+"rate": 890.14,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  10726,
+"population": 1533026,
+"rate": 699.66,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[651.3,848.8)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  43679,
+"population": 5228205,
+"rate": 835.45,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[651.3,848.8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  20273,
+"population": 3267370,
+"rate": 620.47,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  16164,
+"population": 2443912,
+"rate":  661.4,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  58038,
+"population": 6712270,
+"rate": 864.66,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[848.8,1173)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.3266e+05,
+"population": 13591628,
+"rate": 976.08,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  15997,
+"population": 4203024,
+"rate": 380.61,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  21812,
+"population": 1639014,
+"rate": 1330.8,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   3290,
+"population": 964650,
+"rate": 341.06,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  30986,
+"population": 4141875,
+"rate": 748.12,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[651.3,848.8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  25838,
+"population": 3706164,
+"rate": 697.16,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  37690,
+"population": 5396324,
+"rate": 698.44,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  11637,
+"population": 1622074,
+"rate": 717.41,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  14716,
+"population": 1034970,
+"rate": 1421.9,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  34410,
+"population": 2435418,
+"rate": 1412.9,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  10822,
+"population": 2617824,
+"rate":  413.4,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  11781,
+"population": 2394924,
+"rate": 491.92,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[480.4,651.3)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  29318,
+"population": 2048198,
+"rate": 1431.4,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  28016,
+"population": 2939834,
+"rate": 952.98,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   3033,
+"population": 1054524,
+"rate": 287.62,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  46654,
+"population": 7313628,
+"rate": 637.91,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":  39697,
+"population": 1784528,
+"rate": 2224.5,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2002,
+"group": "OTROS DELITOS",
+"averiguaciones":   9709,
+"population": 1428980,
+"rate": 679.44,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[651.3,848.8)" 
+} 
+},
+"2003": {
+ "AGU": {
+ "state_code": 1,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   8111,
+"population": 1071032,
+"rate": 757.31,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  51237,
+"population": 2810931,
+"rate": 1822.8,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   7892,
+"population": 520478,
+"rate": 1516.3,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   1484,
+"population": 747868,
+"rate": 198.43,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  19073,
+"population": 2531234,
+"rate": 753.51,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[651.3,848.8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   3604,
+"population": 579781,
+"rate": 621.61,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[480.4,651.3)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  24788,
+"population": 4436926,
+"rate": 558.68,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  33324,
+"population": 3192160,
+"rate": 1043.9,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  75433,
+"population": 8982537,
+"rate": 839.77,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   7465,
+"population": 1545979,
+"rate": 482.87,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[480.4,651.3)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  40947,
+"population": 5265170,
+"rate":  777.7,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[651.3,848.8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  22393,
+"population": 3284024,
+"rate": 681.88,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[651.3,848.8)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  18557,
+"population": 2468402,
+"rate": 751.78,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  55424,
+"population": 6788019,
+"rate":  816.5,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.3377e+05,
+"population": 13850796,
+"rate": 965.78,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  14927,
+"population": 4216484,
+"rate": 354.02,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  22602,
+"population": 1656148,
+"rate": 1364.7,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   3834,
+"population": 976988,
+"rate": 392.43,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  25523,
+"population": 4217487,
+"rate": 605.17,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[480.4,651.3)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  30452,
+"population": 3727409,
+"rate": 816.98,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  41549,
+"population": 5460820,
+"rate": 760.86,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  12468,
+"population": 1651460,
+"rate": 754.97,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  16341,
+"population": 1074714,
+"rate": 1520.5,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  35185,
+"population": 2452722,
+"rate": 1434.5,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  10468,
+"population": 2646634,
+"rate": 395.52,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  11073,
+"population": 2438414,
+"rate": 454.11,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[13.36,480.4)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  30773,
+"population": 2077382,
+"rate": 1481.3,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  28273,
+"population": 2995520,
+"rate": 943.84,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   3307,
+"population": 1073033,
+"rate": 308.19,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  49108,
+"population": 7352821,
+"rate": 667.88,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[651.3,848.8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":  44147,
+"population": 1810254,
+"rate": 2438.7,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2003,
+"group": "OTROS DELITOS",
+"averiguaciones":   9274,
+"population": 1432102,
+"rate": 647.58,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2004": {
+ "AGU": {
+ "state_code": 1,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   8700,
+"population": 1088275,
+"rate": 799.43,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  57739,
+"population": 2879305,
+"rate": 2005.3,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   7793,
+"population": 537950,
+"rate": 1448.7,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   1325,
+"population": 761360,
+"rate": 174.03,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  18566,
+"population": 2568863,
+"rate": 722.73,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[651.3,848.8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   3799,
+"population": 588989,
+"rate":    645,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[480.4,651.3)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  25996,
+"population": 4512810,
+"rate": 576.05,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  31660,
+"population": 3244587,
+"rate": 975.78,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  72010,
+"population": 8982860,
+"rate": 801.64,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   7297,
+"population": 1558966,
+"rate": 468.07,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  46048,
+"population": 5295090,
+"rate": 869.64,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  15795,
+"population": 3298900,
+"rate":  478.8,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[13.36,480.4)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  20809,
+"population": 2492457,
+"rate": 834.88,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  50286,
+"population": 6863332,
+"rate": 732.68,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.4314e+05,
+"population": 14105797,
+"rate": 1014.8,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  13766,
+"population": 4227404,
+"rate": 325.64,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  24198,
+"population": 1672916,
+"rate": 1446.5,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   2938,
+"population": 990286,
+"rate": 296.68,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  25079,
+"population": 4292596,
+"rate": 584.24,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[480.4,651.3)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  28076,
+"population": 3744217,
+"rate": 749.85,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  41521,
+"population": 5519573,
+"rate": 752.25,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  11106,
+"population": 1679348,
+"rate": 661.33,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  15825,
+"population": 1114536,
+"rate": 1419.9,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  35508,
+"population": 2469055,
+"rate": 1438.1,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   8737,
+"population": 2674642,
+"rate": 326.66,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  18909,
+"population": 2480978,
+"rate": 762.16,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[651.3,848.8)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  15207,
+"population": 2106198,
+"rate": 722.01,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[651.3,848.8)" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  31087,
+"population": 3048880,
+"rate": 1019.6,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   3041,
+"population": 1090566,
+"rate": 278.85,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  45835,
+"population": 7391162,
+"rate": 620.13,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":  41878,
+"population": 1835636,
+"rate": 2281.4,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2004,
+"group": "OTROS DELITOS",
+"averiguaciones":   8874,
+"population": 1434982,
+"rate":  618.4,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2005": {
+ "AGU": {
+ "state_code": 1,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   8598,
+"population": 1105418,
+"rate": 777.81,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[651.3,848.8)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  48840,
+"population": 2945057,
+"rate": 1658.4,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   8797,
+"population": 555900,
+"rate": 1582.5,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":    966,
+"population": 774858,
+"rate": 124.67,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  15155,
+"population": 2606425,
+"rate": 581.45,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[480.4,651.3)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   7030,
+"population": 599444,
+"rate": 1172.8,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[848.8,1173)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  22714,
+"population": 4582616,
+"rate": 495.66,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[480.4,651.3)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  35332,
+"population": 3296374,
+"rate": 1071.8,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  70984,
+"population": 8981434,
+"rate": 790.34,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   6361,
+"population": 1575853,
+"rate": 403.65,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  52458,
+"population": 5320564,
+"rate": 985.95,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  13268,
+"population": 3315913,
+"rate": 400.13,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[13.36,480.4)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  22814,
+"population": 2518216,
+"rate": 905.96,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[848.8,1173)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  42358,
+"population": 6952212,
+"rate": 609.27,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.532e+05,
+"population": 14365268,
+"rate": 1066.5,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  12956,
+"population": 4246321,
+"rate": 305.11,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  28416,
+"population": 1693254,
+"rate": 1678.2,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   6700,
+"population": 1006746,
+"rate": 665.51,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[651.3,848.8)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  20401,
+"population": 4369661,
+"rate": 466.88,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  22288,
+"population": 3751652,
+"rate": 594.08,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[480.4,651.3)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  35821,
+"population": 5568212,
+"rate": 643.31,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   9491,
+"population": 1704588,
+"rate": 556.79,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[480.4,651.3)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  14646,
+"population": 1154464,
+"rate": 1268.6,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  30615,
+"population": 2488784,
+"rate": 1230.1,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  10578,
+"population": 2705409,
+"rate": 390.99,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  29549,
+"population": 2521866,
+"rate": 1171.7,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[848.8,1173)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":    285,
+"population": 2133711,
+"rate":  13.36,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[13.36,480.4)" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  30851,
+"population": 3102344,
+"rate": 994.44,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  14877,
+"population": 1105902,
+"rate": 1345.2,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[1173,3731]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  47597,
+"population": 7430703,
+"rate": 640.55,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":  42343,
+"population": 1860330,
+"rate": 2276.1,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2005,
+"group": "OTROS DELITOS",
+"averiguaciones":   7425,
+"population": 1442668,
+"rate": 514.67,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2006": {
+ "AGU": {
+ "state_code": 1,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   9831,
+"population": 1123566,
+"rate": 874.98,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  52121,
+"population": 3009612,
+"rate": 1731.8,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   8888,
+"population": 574832,
+"rate": 1546.2,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   1176,
+"population": 788535,
+"rate": 149.14,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  16662,
+"population": 2644676,
+"rate": 630.02,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[480.4,651.3)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   7112,
+"population": 611104,
+"rate": 1163.8,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[848.8,1173)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  20365,
+"population": 4652106,
+"rate": 437.76,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  31648,
+"population": 3349492,
+"rate": 944.86,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  69407,
+"population": 8978979,
+"rate": 772.99,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   6517,
+"population": 1595446,
+"rate": 408.48,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  53983,
+"population": 5355276,
+"rate":   1008,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  13967,
+"population": 3337660,
+"rate": 418.47,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[13.36,480.4)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  22832,
+"population": 2548586,
+"rate": 895.87,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[848.8,1173)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  45224,
+"population": 7051282,
+"rate": 641.36,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.5477e+05,
+"population": 14631162,
+"rate": 1057.8,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  14741,
+"population": 4274492,
+"rate": 344.86,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  28692,
+"population": 1716033,
+"rate":   1672,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  16344,
+"population": 1025905,
+"rate": 1593.1,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[1173,3731]" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  19104,
+"population": 4448021,
+"rate": 429.49,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  26058,
+"population": 3763658,
+"rate": 692.36,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  30876,
+"population": 5620901,
+"rate": 549.31,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   9262,
+"population": 1731919,
+"rate": 534.78,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[480.4,651.3)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  15634,
+"population": 1196419,
+"rate": 1306.7,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  33674,
+"population": 2512494,
+"rate": 1340.3,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  10150,
+"population": 2737707,
+"rate": 370.75,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  24057,
+"population": 2564069,
+"rate": 938.24,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[848.8,1173)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  18931,
+"population": 2160778,
+"rate": 876.12,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[848.8,1173)" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  30086,
+"population": 3156966,
+"rate":    953,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   3227,
+"population": 1121774,
+"rate": 287.67,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  51109,
+"population": 7478378,
+"rate": 683.42,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[651.3,848.8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":  43335,
+"population": 1885603,
+"rate": 2298.2,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2006,
+"group": "OTROS DELITOS",
+"averiguaciones":   7786,
+"population": 1453956,
+"rate":  535.5,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2007": {
+ "AGU": {
+ "state_code": 1,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  11719,
+"population": 1143522,
+"rate": 1024.8,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  55843,
+"population": 3073746,
+"rate": 1816.8,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  11089,
+"population": 594991,
+"rate": 1863.7,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   1084,
+"population": 802543,
+"rate": 135.07,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  20861,
+"population": 2683962,
+"rate": 777.25,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[651.3,848.8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   7631,
+"population": 623876,
+"rate": 1223.2,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[1173,3731]" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  22158,
+"population": 4725047,
+"rate": 468.95,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  21483,
+"population": 3404030,
+"rate":  631.1,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[480.4,651.3)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  74190,
+"population": 8975327,
+"rate":  826.6,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[651.3,848.8)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   6563,
+"population": 1616868,
+"rate": 405.91,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  57609,
+"population": 5407332,
+"rate": 1065.4,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  17225,
+"population": 3365386,
+"rate": 511.83,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  22985,
+"population": 2585203,
+"rate":  889.1,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[848.8,1173)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  46169,
+"population": 7157616,
+"rate": 645.03,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.5382e+05,
+"population": 14902842,
+"rate": 1032.1,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  17097,
+"population": 4311970,
+"rate":  396.5,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  29726,
+"population": 1740340,
+"rate": 1708.1,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   8757,
+"population": 1047288,
+"rate": 836.16,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[651.3,848.8)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  17297,
+"population": 4527038,
+"rate": 382.08,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  23233,
+"population": 3788825,
+"rate":  613.2,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[480.4,651.3)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  34050,
+"population": 5686766,
+"rate": 598.76,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   8921,
+"population": 1763790,
+"rate": 505.79,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[480.4,651.3)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  15942,
+"population": 1240082,
+"rate": 1285.6,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  35678,
+"population": 2540415,
+"rate": 1404.4,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[1173,3731]" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  13638,
+"population": 2770426,
+"rate": 492.27,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[480.4,651.3)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  25220,
+"population": 2609126,
+"rate": 966.61,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[848.8,1173)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  47228,
+"population": 2188334,
+"rate": 2158.2,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  27777,
+"population": 3211860,
+"rate": 864.83,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   3966,
+"population": 1139929,
+"rate": 347.92,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  54156,
+"population": 7538346,
+"rate": 718.41,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[651.3,848.8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":  49545,
+"population": 1912247,
+"rate": 2590.9,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2007,
+"group": "OTROS DELITOS",
+"averiguaciones":   8073,
+"population": 1468020,
+"rate": 549.92,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2008": {
+ "AGU": {
+ "state_code": 1,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  11243,
+"population": 1164976,
+"rate": 965.08,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  57719,
+"population": 3137014,
+"rate": 1839.9,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  11170,
+"population": 616122,
+"rate":   1813,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":    995,
+"population": 816854,
+"rate": 121.81,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  26312,
+"population": 2723936,
+"rate": 965.96,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[848.8,1173)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":   6377,
+"population": 637828,
+"rate":  999.8,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[848.8,1173)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  17544,
+"population": 4799203,
+"rate": 365.56,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  27418,
+"population": 3458305,
+"rate": 792.82,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[651.3,848.8)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  78199,
+"population": 8971100,
+"rate": 871.68,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":   7350,
+"population": 1639182,
+"rate": 448.39,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  50419,
+"population": 5470487,
+"rate": 921.65,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  17992,
+"population": 3398068,
+"rate": 529.48,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  26792,
+"population": 2627220,
+"rate": 1019.8,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[848.8,1173)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  45444,
+"population": 7272788,
+"rate": 624.85,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.5282e+05,
+"population": 15178014,
+"rate": 1006.9,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  19510,
+"population": 4357648,
+"rate": 447.72,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  29640,
+"population": 1766432,
+"rate":   1678,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":   4169,
+"population": 1071224,
+"rate": 389.18,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  14833,
+"population": 4606526,
+"rate":    322,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  18452,
+"population": 3821208,
+"rate": 482.88,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[480.4,651.3)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  35671,
+"population": 5759463,
+"rate": 619.35,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[480.4,651.3)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":   8657,
+"population": 1798021,
+"rate": 481.47,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[480.4,651.3)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  20180,
+"population": 1283928,
+"rate": 1571.7,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  27320,
+"population": 2572386,
+"rate":   1062,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[848.8,1173)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  12462,
+"population": 2804003,
+"rate": 444.44,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  22855,
+"population": 2655846,
+"rate": 860.55,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[848.8,1173)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  54268,
+"population": 2215935,
+"rate":   2449,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  30835,
+"population": 3264686,
+"rate":  944.5,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":   2853,
+"population": 1159150,
+"rate": 246.13,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  48017,
+"population": 7608848,
+"rate": 631.07,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":  47409,
+"population": 1939845,
+"rate":   2444,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2008,
+"group": "OTROS DELITOS",
+"averiguaciones":   7435,
+"population": 1485152,
+"rate": 500.62,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2009": {
+ "AGU": {
+ "state_code": 1,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  11591,
+"population": 1185864,
+"rate": 977.43,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  53454,
+"population": 3196582,
+"rate": 1672.2,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  10208,
+"population": 638258,
+"rate": 1599.3,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":    847,
+"population": 830410,
+"rate":    102,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  27918,
+"population": 2762990,
+"rate": 1010.4,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[848.8,1173)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":   6254,
+"population": 651980,
+"rate": 959.23,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[848.8,1173)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  13851,
+"population": 4870040,
+"rate": 284.41,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  24275,
+"population": 3505183,
+"rate": 692.55,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[651.3,848.8)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  88934,
+"population": 8964855,
+"rate": 992.03,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":   7431,
+"population": 1659928,
+"rate": 447.67,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[13.36,480.4)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  49553,
+"population": 5530928,
+"rate": 895.93,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  17961,
+"population": 3429734,
+"rate": 523.68,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  25790,
+"population": 2669675,
+"rate": 966.04,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[848.8,1173)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  46487,
+"population": 7387309,
+"rate": 629.28,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.5557e+05,
+"population": 15443662,
+"rate": 1007.4,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  19660,
+"population": 4400943,
+"rate": 446.72,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  25778,
+"population": 1791524,
+"rate": 1438.9,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":   4238,
+"population": 1096316,
+"rate": 386.57,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  12545,
+"population": 4684726,
+"rate": 267.79,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  43687,
+"population": 3853224,
+"rate": 1133.8,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[848.8,1173)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  44102,
+"population": 5830130,
+"rate": 756.45,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":   6989,
+"population": 1831825,
+"rate": 381.53,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[13.36,480.4)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  20773,
+"population": 1328415,
+"rate": 1563.7,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  27674,
+"population": 2602748,
+"rate": 1063.3,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[848.8,1173)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  12910,
+"population": 2836121,
+"rate":  455.2,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[13.36,480.4)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  18836,
+"population": 2703266,
+"rate": 696.79,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[651.3,848.8)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  52947,
+"population": 2241154,
+"rate": 2362.5,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  29858,
+"population": 3312431,
+"rate": 901.39,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[848.8,1173)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":   2098,
+"population": 1177494,
+"rate": 178.18,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  34777,
+"population": 7679265,
+"rate": 452.87,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[13.36,480.4)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":  48995,
+"population": 1967260,
+"rate": 2490.5,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2009,
+"group": "OTROS DELITOS",
+"averiguaciones":   6524,
+"population": 1501594,
+"rate": 434.47,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[13.36,480.4)" 
+} 
+},
+"2010": {
+ "AGU": {
+ "state_code": 1,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  11136,
+"population": 1205440,
+"rate": 923.81,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  46831,
+"population": 3250122,
+"rate": 1440.9,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   9256,
+"population": 661149,
+"rate":   1400,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   1178,
+"population": 844560,
+"rate": 139.48,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  25038,
+"population": 2800045,
+"rate":  894.2,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[848.8,1173)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   4410,
+"population": 665586,
+"rate": 662.57,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[651.3,848.8)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  14660,
+"population": 4942194,
+"rate": 296.63,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  24782,
+"population": 3542260,
+"rate": 699.61,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[651.3,848.8)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  94594,
+"population": 8951680,
+"rate": 1056.7,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  12851,
+"population": 1680116,
+"rate": 764.89,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[651.3,848.8)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  47424,
+"population": 5586600,
+"rate": 848.89,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  15996,
+"population": 3458859,
+"rate": 462.46,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[13.36,480.4)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  27005,
+"population": 2710328,
+"rate": 996.37,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[848.8,1173)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  48722,
+"population": 7492929,
+"rate": 650.24,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.5038e+05,
+"population": 15708618,
+"rate": 957.32,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  13994,
+"population": 4439186,
+"rate": 315.24,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  23293,
+"population": 1815264,
+"rate": 1283.2,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   4222,
+"population": 1120538,
+"rate": 376.78,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  12187,
+"population": 4760268,
+"rate": 256.01,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  42869,
+"population": 3884764,
+"rate": 1103.5,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[848.8,1173)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  42700,
+"population": 5899418,
+"rate":  723.8,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   7749,
+"population": 1864648,
+"rate": 415.57,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[13.36,480.4)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  19447,
+"population": 1373151,
+"rate": 1416.2,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  28998,
+"population": 2632014,
+"rate": 1101.7,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[848.8,1173)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  14462,
+"population": 2864930,
+"rate": 504.79,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[480.4,651.3)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  16715,
+"population": 2747198,
+"rate": 608.44,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[480.4,651.3)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  49357,
+"population": 2267890,
+"rate": 2176.3,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  22546,
+"population": 3355590,
+"rate": 671.89,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[651.3,848.8)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   2180,
+"population": 1196217,
+"rate": 182.24,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  44555,
+"population": 7752024,
+"rate": 574.75,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":  46092,
+"population": 1994925,
+"rate": 2310.5,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2010,
+"group": "OTROS DELITOS",
+"averiguaciones":   6221,
+"population": 1515880,
+"rate": 410.39,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[13.36,480.4)" 
+} 
+},
+"2011": {
+ "AGU": {
+ "state_code": 1,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  10776,
+"population": 1224508,
+"rate": 880.03,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  44416,
+"population": 3302011,
+"rate": 1345.1,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  10049,
+"population": 684046,
+"rate":   1469,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":   1741,
+"population": 859374,
+"rate": 202.59,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  26173,
+"population": 2836206,
+"rate": 922.82,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[848.8,1173)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":   4426,
+"population": 678828,
+"rate": 652.01,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[651.3,848.8)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  14900,
+"population": 5015600,
+"rate": 297.07,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  29351,
+"population": 3579020,
+"rate": 820.08,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[651.3,848.8)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  91709,
+"population": 8935150,
+"rate": 1026.4,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  14587,
+"population": 1700080,
+"rate": 858.02,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[848.8,1173)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  47464,
+"population": 5641440,
+"rate": 841.35,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[651.3,848.8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  25074,
+"population": 3486480,
+"rate": 719.18,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[651.3,848.8)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  19327,
+"population": 2749772,
+"rate": 702.86,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  49423,
+"population": 7593692,
+"rate": 650.84,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[480.4,651.3)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.5538e+05,
+"population": 15976022,
+"rate": 972.56,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  13404,
+"population": 4476415,
+"rate": 299.44,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  22286,
+"population": 1839000,
+"rate": 1211.8,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":   4199,
+"population": 1143832,
+"rate":  367.1,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  10733,
+"population": 4833054,
+"rate": 222.07,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  35819,
+"population": 3916126,
+"rate": 914.65,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[848.8,1173)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  46045,
+"population": 5968588,
+"rate": 771.46,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  10219,
+"population": 1896954,
+"rate": 538.71,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[480.4,651.3)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  18627,
+"population": 1417736,
+"rate": 1313.9,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  23238,
+"population": 2661440,
+"rate": 873.14,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[848.8,1173)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  14927,
+"population": 2892138,
+"rate": 516.12,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[480.4,651.3)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  17195,
+"population": 2788585,
+"rate": 616.62,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[480.4,651.3)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  48982,
+"population": 2296106,
+"rate": 2133.3,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  19812,
+"population": 3397926,
+"rate": 583.06,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[480.4,651.3)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":   2802,
+"population": 1215464,
+"rate": 230.53,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  45539,
+"population": 7825202,
+"rate": 581.95,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":  41925,
+"population": 2022927,
+"rate": 2072.5,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2011,
+"group": "OTROS DELITOS",
+"averiguaciones":   6438,
+"population": 1529708,
+"rate": 420.86,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[13.36,480.4)" 
+} 
+},
+"2012": {
+ "AGU": {
+ "state_code": 1,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  12095,
+"population": 1243093,
+"rate": 972.98,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  44577,
+"population": 3354852,
+"rate": 1328.7,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  11633,
+"population": 706802,
+"rate": 1645.9,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":    728,
+"population": 873337,
+"rate":  83.36,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  25213,
+"population": 2872221,
+"rate": 877.82,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[848.8,1173)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":   5750,
+"population": 691844,
+"rate": 831.11,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[651.3,848.8)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  13994,
+"population": 5084877,
+"rate": 275.21,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  35137,
+"population": 3617379,
+"rate": 971.34,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  88880,
+"population": 8918638,
+"rate": 996.56,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  14585,
+"population": 1719085,
+"rate": 848.42,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[651.3,848.8)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  45433,
+"population": 5693945,
+"rate": 797.92,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[651.3,848.8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  21924,
+"population": 3511682,
+"rate": 624.32,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  19087,
+"population": 2787654,
+"rate":  684.7,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  53040,
+"population": 7693228,
+"rate": 689.44,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.6356e+05,
+"population": 16235348,
+"rate": 1007.4,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  13064,
+"population": 4512322,
+"rate": 289.52,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  23736,
+"population": 1862500,
+"rate": 1274.4,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":   4397,
+"population": 1166926,
+"rate":  376.8,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  13289,
+"population": 4904952,
+"rate": 270.93,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  38195,
+"population": 3944938,
+"rate":  968.2,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[848.8,1173)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  50253,
+"population": 6034884,
+"rate": 832.71,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  12634,
+"population": 1928346,
+"rate": 655.17,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  20393,
+"population": 1462538,
+"rate": 1394.4,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  22153,
+"population": 2688728,
+"rate": 823.92,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[651.3,848.8)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  15802,
+"population": 2919032,
+"rate": 541.34,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[480.4,651.3)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  20258,
+"population": 2830634,
+"rate": 715.67,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[651.3,848.8)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  48952,
+"population": 2321782,
+"rate": 2108.4,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  18753,
+"population": 3440337,
+"rate": 545.09,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[480.4,651.3)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":   2827,
+"population": 1233686,
+"rate": 229.15,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  47678,
+"population": 7890901,
+"rate": 604.21,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":  39514,
+"population": 2050422,
+"rate": 1927.1,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2012,
+"group": "OTROS DELITOS",
+"averiguaciones":   7534,
+"population": 1543426,
+"rate": 488.13,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[480.4,651.3)" 
+} 
+},
+"2013": {
+ "AGU": {
+ "state_code": 1,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  11985,
+"population": 1261220,
+"rate": 950.27,
+"name": "AGU",
+"long_name": "Aguascalientes",
+"fillKey": "[848.8,1173)" 
+},
+"BCN": {
+ "state_code": 2,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  45959,
+"population": 3407012,
+"rate":   1349,
+"name": "BCN",
+"long_name": "Baja California",
+"fillKey": "[1173,3731]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  13050,
+"population": 729616,
+"rate": 1788.6,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[1173,3731]" 
+},
+"CAM": {
+ "state_code": 4,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":    923,
+"population": 887218,
+"rate": 104.03,
+"name": "CAM",
+"long_name": "Campeche",
+"fillKey": "[13.36,480.4)" 
+},
+"COA": {
+ "state_code": 5,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  27640,
+"population": 2907851,
+"rate": 950.53,
+"name": "COA",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[848.8,1173)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":   6014,
+"population": 704638,
+"rate": 853.49,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[848.8,1173)" 
+},
+"CHP": {
+ "state_code": 7,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  13424,
+"population": 5152879,
+"rate": 260.51,
+"name": "CHP",
+"long_name": "Chiapas",
+"fillKey": "[13.36,480.4)" 
+},
+"CHH": {
+ "state_code": 8,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  39292,
+"population": 3654654,
+"rate": 1075.1,
+"name": "CHH",
+"long_name": "Chihuahua",
+"fillKey": "[848.8,1173)" 
+},
+"DIF": {
+ "state_code": 9,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  89787,
+"population": 8901210,
+"rate": 1008.7,
+"name": "DIF",
+"long_name": "Distrito Federal",
+"fillKey": "[848.8,1173)" 
+},
+"DUR": {
+ "state_code": 10,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  13727,
+"population": 1737617,
+"rate": 789.99,
+"name": "DUR",
+"long_name": "Durango",
+"fillKey": "[651.3,848.8)" 
+},
+"GUA": {
+ "state_code": 11,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  49634,
+"population": 5744616,
+"rate": 864.01,
+"name": "GUA",
+"long_name": "Guanajuato",
+"fillKey": "[848.8,1173)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  22848,
+"population": 3535284,
+"rate": 646.28,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[480.4,651.3)" 
+},
+"HID": {
+ "state_code": 13,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  22835,
+"population": 2824559,
+"rate": 808.44,
+"name": "HID",
+"long_name": "Hidalgo",
+"fillKey": "[651.3,848.8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  55323,
+"population": 7790156,
+"rate": 710.17,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[651.3,848.8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones": 1.6256e+05,
+"population": 16491570,
+"rate": 985.73,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[848.8,1173)" 
+},
+"MIC": {
+ "state_code": 16,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  13744,
+"population": 4546882,
+"rate": 302.27,
+"name": "MIC",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[13.36,480.4)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  26385,
+"population": 1885790,
+"rate": 1399.2,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[1173,3731]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":   5379,
+"population": 1189802,
+"rate": 452.09,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[13.36,480.4)" 
+},
+"NLE": {
+ "state_code": 19,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  21844,
+"population": 4977324,
+"rate": 438.87,
+"name": "NLE",
+"long_name": "Nuevo León",
+"fillKey": "[13.36,480.4)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  31279,
+"population": 3972624,
+"rate": 787.36,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[651.3,848.8)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  41629,
+"population": 6099552,
+"rate": 682.49,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[651.3,848.8)" 
+},
+"QUE": {
+ "state_code": 22,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  13612,
+"population": 1959162,
+"rate": 694.79,
+"name": "QUE",
+"long_name": "Querétaro",
+"fillKey": "[651.3,848.8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  20419,
+"population": 1507418,
+"rate": 1354.6,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[1173,3731]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  15348,
+"population": 2715176,
+"rate": 565.27,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[480.4,651.3)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  16683,
+"population": 2945502,
+"rate": 566.39,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[480.4,651.3)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  21294,
+"population": 2871963,
+"rate": 741.44,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[651.3,848.8)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  44646,
+"population": 2346968,
+"rate": 1902.3,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[1173,3731]" 
+},
+"TAM": {
+ "state_code": 28,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  17270,
+"population": 3482028,
+"rate": 495.98,
+"name": "TAM",
+"long_name": "Tamaulipas",
+"fillKey": "[480.4,651.3)" 
+},
+"TLA": {
+ "state_code": 29,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":   3505,
+"population": 1251681,
+"rate": 280.02,
+"name": "TLA",
+"long_name": "Tlaxcala",
+"fillKey": "[13.36,480.4)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  42835,
+"population": 7954546,
+"rate":  538.5,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[480.4,651.3)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":  38342,
+"population": 2077832,
+"rate": 1845.3,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[1173,3731]" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2013,
+"group": "OTROS DELITOS",
+"averiguaciones":   6966,
+"population": 1556752,
+"rate": 447.47,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[13.36,480.4)" 
+} 
+} 
+} 
+}
+  chartParams.element = document.getElementById('chart_1')
+  
+  
+  var mapchart_1 = new Datamap(chartParams);
+  
+  
+    
+  // draw a bubble map if specified
+  if (chartParams.bubbles) {
+    var bubbles = chartParams.bubbles
+    mapchart_1.bubbles(bubbles)
+  }
+  
+  if (chartParams.labels){
+    mapchart_1.labels()
+  }
+  
+  if (chartParams.legend){
+    mapchart_1.legend()
+  }
+  
+  setProjection = function( element, options ) {
+    var projection, path;
+ 
+      projection = d3.geo.albersUsa()
+        .scale(element.offsetWidth)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+ 
+    path = d3.geo.path()
+      .projection( projection );
+ 
+    return {path: path, projection: projection};
+  }
+</script>
+
+<style>
+.datamaps {
+  position: relative;
+}
+</style>
+    
+    <script></script>    
+  </body>
+</html>
