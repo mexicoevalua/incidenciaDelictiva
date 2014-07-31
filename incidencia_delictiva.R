@@ -2,7 +2,6 @@
 #======
 # Crea mapas interactivos sobre crímenes del fuero común a nivel municipal
 #======
-
 # Vease el script "descarga_datos.R" para referencia de cómo se obtuvieron las estadísticas
 #====
 require(reshape)
