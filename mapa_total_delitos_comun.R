@@ -7,12 +7,17 @@
 # Requiere un servidor local, en la terminal de Mac usar: python -m SimpleHTTPServer 8888
 #====
 summary(aveTot)
-# Separar Otros Delitos en quintiles
+# Separar el total de delitos en quintiles
 dat <- transform(aveTot,
                  fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
 )
+table(dat$fillKey)
+# Quitar decimales y agregar espacios
+l  <- c("[145 - 822)", "[822 - 1,057)","[1,057 - 1,438)","[1,438 - 1,949)","[1,949 - 6,322]")
 
-head(dat)
+dat <- transform(aveTot,
+                 fillKey = cut(rate, labels =l,breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
+)
 table(dat$fillKey)
 keyNames <- levels(dat$fillKey)
 

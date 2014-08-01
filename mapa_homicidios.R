@@ -12,7 +12,7 @@ table(with(dat, cut(rate,
                     breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 1, include.lowest=T, right=F)))
 
 # Labels
-l  <-  c("[0,5)","[5,8)","[8,12)","[12,20)","[20,110]")
+l  <-  c("[0 - 5)","[5 - 8)","[8 - 12)","[12 - 20)","[20 - 110]")
 # Eliminar decimales
 dat <- transform(homicidios,
                  fillKey = cut(rate,

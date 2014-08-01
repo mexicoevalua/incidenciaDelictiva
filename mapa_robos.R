@@ -10,11 +10,18 @@
 
 # Separar Otros Delitos en intervalos
 dat <- transform(robos,
-                 fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
+                 fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
 )
 table(dat$fillKey)
-keyNames <- levels(dat$fillKey)
+l  <-  c("[47 - 246)","[246 - 370)","[370 - 504)","[504 - 749)","[749 - 2,825]")
 
+# Quitar decimales y ajustar leyenda
+dat <- transform(robos,
+                 fillKey = cut(rate,labels=l, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
+)
+
+keyNames <- levels(dat$fillKey)
+keyNames
 # Colores
 
 fills = setNames(

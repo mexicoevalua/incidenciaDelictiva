@@ -8,10 +8,14 @@
 summary(secuestro)
 # Separar Otros Delitos en quintiles
 dat <- transform(secuestro,
-                 fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
+                 fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 2, include.lowest=T, right=F)
 )
-head(dat)
 table(dat$fillKey)
+l  <-  c("[0.0 - 0.1)","[0.1 - 0.2)","[0.2 - 0.5)","[0.5 - 1.1)","[1.1 - 36]")
+dat <- transform(secuestro,
+                 fillKey = cut(rate,labels=l, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
+)
+
 keyNames <- levels(dat$fillKey)
 
 # Colores

@@ -13,6 +13,11 @@ dat <- transform(otros,
                  fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
 )
 table(dat$fillKey)
+l  <-  c("[13 - 480)","[480 - 651)","[651 - 849)","[849 - 1,173)","[1,173 - 3,731]")
+# Quitar decimales y arreglar leyenda
+dat <- transform(otros,
+                 fillKey = cut(rate,labels=l, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 4, include.lowest=T, right=F)
+)
 keyNames <- levels(dat$fillKey)
 
 # Colores
