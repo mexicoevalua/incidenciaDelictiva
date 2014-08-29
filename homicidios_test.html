@@ -1,0 +1,6498 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    
+    <script src='http://d3js.org/d3.v3.min.js' type='text/javascript'></script>
+    <script src='http://d3js.org/topojson.v1.min.js' type='text/javascript'></script>
+    <script src='http://datamaps.github.io/scripts/datamaps.all.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    </style>
+    
+  </head>
+  <body ng-app ng-controller='rChartsCtrl'>
+    
+    
+                   <div id = 'chart_1' class = 'rChart datamaps'>
+                   <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+                   <span ng-bind='year'></span>
+                   
+                   <script>
+                   function rChartsCtrl($scope){
+                   $scope.year = '2013';
+                   $scope.$watch('year', function(newYear){
+                   mapchart_1.updateChoropleth(chartParams.newData[newYear]);
+                   })
+                   }
+                   </script>
+                   </div>       
+    <script id='popup-template' type='text/x-handlebars-template'>
+    
+</script>
+<script>
+  var chartParams = {
+ "dom": "chart_1",
+"width":    800,
+"height":    400,
+"geographyConfig": {
+ "dataUrl": "shapefiles/mx_states.json",
+"popupTemplate":  function(geography, data) { //this function should just return a string
+    return '<div class=hoverinfo>' + geography.properties.name + ': ' + data.rate + '</div>';
+    }   
+},
+"scope": "states",
+"labels": true,
+"bodyattrs": "ng-app ng-controller='rChartsCtrl'",
+"setProjection":  function( element, options ) {
+  
+  var projection, path;
+  
+  projection = d3.geo.mercator()
+  .center([-90, 24])
+  .scale(element.offsetWidth)
+  .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+  
+  path = d3.geo.path()
+  .projection( projection );
+  
+  return {path: path, projection: projection};
+  } ,
+"fills": {
+ "[0 - 5)": "#FFFFB2",
+"[5 - 8)": "#FECC5C",
+"[8 - 12)": "#FD8D3C",
+"[12 - 20)": "#F03B20",
+"[20 - 110]": "#BD0026",
+"defaultFill": "#BD0026" 
+},
+"data": {
+ "AGS": {
+ "state_code": 1,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    355,
+"population": 966192,
+"rate":  36.74,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[20 - 110]" 
+},
+"BC": {
+ "state_code": 2,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    492,
+"population": 2347037,
+"rate":  20.96,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     60,
+"population": 433282,
+"rate":  13.85,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[12 - 20)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    130,
+"population": 666544,
+"rate":   19.5,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[12 - 20)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    175,
+"population": 2295840,
+"rate":   7.62,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     99,
+"population": 535262,
+"rate":   18.5,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[12 - 20)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1357,
+"population": 3950814,
+"rate":  34.35,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    677,
+"population": 2839556,
+"rate":  23.84,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    977,
+"population": 8904064,
+"rate":  10.97,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     61,
+"population": 1477610,
+"rate":   4.13,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[0 - 5)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    567,
+"population": 5054560,
+"rate":  11.22,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[8 - 12)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1273,
+"population": 3196368,
+"rate":  39.83,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    360,
+"population": 2351497,
+"rate":  15.31,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[12 - 20)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    600,
+"population": 6369852,
+"rate":   9.42,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[8 - 12)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   3037,
+"population": 12289466,
+"rate":  24.71,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    757,
+"population": 4156338,
+"rate":  18.21,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    178,
+"population": 1558634,
+"rate":  11.42,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[8 - 12)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    132,
+"population": 921764,
+"rate":  14.32,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    163,
+"population": 3770918,
+"rate":   4.32,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    788,
+"population": 3609795,
+"rate":  21.83,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    729,
+"population": 5077647,
+"rate":  14.36,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[12 - 20)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    234,
+"population": 1480321,
+"rate":  15.81,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[12 - 20)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    335,
+"population": 843751,
+"rate":   39.7,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[20 - 110]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    301,
+"population": 2360336,
+"rate":  12.75,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    669,
+"population": 2466280,
+"rate":  27.13,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    526,
+"population": 2182008,
+"rate":  24.11,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[20 - 110]" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    353,
+"population": 1898572,
+"rate":  18.59,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[12 - 20)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    473,
+"population": 2643636,
+"rate":  17.89,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[12 - 20)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     63,
+"population": 963404,
+"rate":   6.54,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[5 - 8)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    722,
+"population": 7151310,
+"rate":   10.1,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    110,
+"population": 1655361,
+"rate":   6.65,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[5 - 8)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    113,
+"population": 1428402,
+"rate":   7.91,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[8 - 12)" 
+} 
+},
+"legend": true,
+"id": "chart_1",
+"newData": {
+ "1997": {
+ "AGS": {
+ "state_code": 1,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    355,
+"population": 966192,
+"rate":  36.74,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[20 - 110]" 
+},
+"BC": {
+ "state_code": 2,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    492,
+"population": 2347037,
+"rate":  20.96,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     60,
+"population": 433282,
+"rate":  13.85,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[12 - 20)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    130,
+"population": 666544,
+"rate":   19.5,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[12 - 20)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    175,
+"population": 2295840,
+"rate":   7.62,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     99,
+"population": 535262,
+"rate":   18.5,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[12 - 20)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1357,
+"population": 3950814,
+"rate":  34.35,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    677,
+"population": 2839556,
+"rate":  23.84,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    977,
+"population": 8904064,
+"rate":  10.97,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     61,
+"population": 1477610,
+"rate":   4.13,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[0 - 5)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    567,
+"population": 5054560,
+"rate":  11.22,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[8 - 12)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1273,
+"population": 3196368,
+"rate":  39.83,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    360,
+"population": 2351497,
+"rate":  15.31,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[12 - 20)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    600,
+"population": 6369852,
+"rate":   9.42,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[8 - 12)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   3037,
+"population": 12289466,
+"rate":  24.71,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    757,
+"population": 4156338,
+"rate":  18.21,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    178,
+"population": 1558634,
+"rate":  11.42,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[8 - 12)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    132,
+"population": 921764,
+"rate":  14.32,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    163,
+"population": 3770918,
+"rate":   4.32,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    788,
+"population": 3609795,
+"rate":  21.83,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    729,
+"population": 5077647,
+"rate":  14.36,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[12 - 20)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    234,
+"population": 1480321,
+"rate":  15.81,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[12 - 20)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    335,
+"population": 843751,
+"rate":   39.7,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[20 - 110]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    301,
+"population": 2360336,
+"rate":  12.75,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    669,
+"population": 2466280,
+"rate":  27.13,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    526,
+"population": 2182008,
+"rate":  24.11,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[20 - 110]" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    353,
+"population": 1898572,
+"rate":  18.59,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[12 - 20)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    473,
+"population": 2643636,
+"rate":  17.89,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[12 - 20)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     63,
+"population": 963404,
+"rate":   6.54,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[5 - 8)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    722,
+"population": 7151310,
+"rate":   10.1,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    110,
+"population": 1655361,
+"rate":   6.65,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[5 - 8)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1997,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    113,
+"population": 1428402,
+"rate":   7.91,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[8 - 12)" 
+} 
+},
+"1998": {
+ "AGS": {
+ "state_code": 1,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     66,
+"population": 983399,
+"rate":   6.71,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[5 - 8)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    292,
+"population": 2428435,
+"rate":  12.02,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[8 - 12)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     18,
+"population": 446626,
+"rate":   4.03,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    117,
+"population": 680547,
+"rate":  17.19,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[12 - 20)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    165,
+"population": 2334921,
+"rate":   7.07,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     89,
+"population": 541355,
+"rate":  16.44,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[12 - 20)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1399,
+"population": 4038868,
+"rate":  34.64,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    584,
+"population": 2897672,
+"rate":  20.15,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    947,
+"population": 8920544,
+"rate":  10.62,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    134,
+"population": 1485282,
+"rate":   9.02,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[8 - 12)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    230,
+"population": 5094451,
+"rate":   4.51,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1306,
+"population": 3210085,
+"rate":  40.68,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    250,
+"population": 2367270,
+"rate":  10.56,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[8 - 12)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    604,
+"population": 6426789,
+"rate":    9.4,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[8 - 12)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2221,
+"population": 12551530,
+"rate":   17.7,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[12 - 20)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1022,
+"population": 4160121,
+"rate":  24.57,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[20 - 110]" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    216,
+"population": 1572018,
+"rate":  13.74,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[12 - 20)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    165,
+"population": 927663,
+"rate":  17.79,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    160,
+"population": 3841802,
+"rate":   4.16,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     14,
+"population": 3639204,
+"rate":   0.38,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[0 - 5)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    675,
+"population": 5150852,
+"rate":   13.1,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[12 - 20)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     39,
+"population": 1511212,
+"rate":   2.58,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    117,
+"population": 881598,
+"rate":  13.27,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    297,
+"population": 2372958,
+"rate":  12.52,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    643,
+"population": 2494684,
+"rate":  25.77,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    555,
+"population": 2225692,
+"rate":  24.94,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[20 - 110]" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    368,
+"population": 1930380,
+"rate":  19.06,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[12 - 20)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    428,
+"population": 2700636,
+"rate":  15.85,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[12 - 20)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     49,
+"population": 983404,
+"rate":   4.98,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[0 - 5)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    707,
+"population": 7191469,
+"rate":   9.83,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     23,
+"population": 1682140,
+"rate":   1.37,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1998,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    316,
+"population": 1426816,
+"rate":  22.15,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[20 - 110]" 
+} 
+},
+"1999": {
+ "AGS": {
+ "state_code": 1,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     27,
+"population": 1000152,
+"rate":    2.7,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    657,
+"population": 2509531,
+"rate":  26.18,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     31,
+"population": 459898,
+"rate":   6.74,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     78,
+"population": 694065,
+"rate":  11.24,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[8 - 12)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    139,
+"population": 2374093,
+"rate":   5.85,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     53,
+"population": 547220,
+"rate":   9.69,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[8 - 12)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1452,
+"population": 4124132,
+"rate":  35.21,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    425,
+"population": 2957462,
+"rate":  14.37,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    880,
+"population": 8936556,
+"rate":   9.85,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    291,
+"population": 1492959,
+"rate":  19.49,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[12 - 20)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    259,
+"population": 5128910,
+"rate":   5.05,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1242,
+"population": 3221127,
+"rate":  38.56,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    199,
+"population": 2382633,
+"rate":   8.35,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[8 - 12)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    545,
+"population": 6482823,
+"rate":   8.41,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[8 - 12)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2966,
+"population": 12805993,
+"rate":  23.16,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    575,
+"population": 4160466,
+"rate":  13.82,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    344,
+"population": 1584898,
+"rate":   21.7,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[20 - 110]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    146,
+"population": 933374,
+"rate":  15.64,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    131,
+"population": 3913478,
+"rate":   3.35,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    823,
+"population": 3663176,
+"rate":  22.47,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    575,
+"population": 5219266,
+"rate":  11.02,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     55,
+"population": 1540766,
+"rate":   3.57,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    123,
+"population": 919795,
+"rate":  13.37,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    414,
+"population": 2384274,
+"rate":  17.36,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    564,
+"population": 2523038,
+"rate":  22.35,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    292,
+"population": 2268909,
+"rate":  12.87,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[12 - 20)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    229,
+"population": 1961040,
+"rate":  11.68,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[8 - 12)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    253,
+"population": 2760094,
+"rate":   9.17,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    163,
+"population": 1002730,
+"rate":  16.26,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[12 - 20)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    590,
+"population": 7220880,
+"rate":   8.17,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":      8,
+"population": 1708452,
+"rate":   0.47,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 1999,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     90,
+"population": 1422351,
+"rate":   6.33,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2000": {
+ "AGS": {
+ "state_code": 1,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     14,
+"population": 1017005,
+"rate":   1.38,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    460,
+"population": 2588605,
+"rate":  17.77,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     31,
+"population": 473322,
+"rate":   6.55,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     55,
+"population": 707358,
+"rate":   7.78,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    113,
+"population": 2413499,
+"rate":   4.68,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[0 - 5)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     45,
+"population": 554130,
+"rate":   8.12,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[8 - 12)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1270,
+"population": 4202342,
+"rate":  30.22,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    437,
+"population": 3018308,
+"rate":  14.48,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    709,
+"population": 8953032,
+"rate":   7.92,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    268,
+"population": 1504712,
+"rate":  17.81,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[12 - 20)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    219,
+"population": 5157152,
+"rate":   4.25,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1399,
+"population": 3233460,
+"rate":  43.27,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    115,
+"population": 2399371,
+"rate":   4.79,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    486,
+"population": 6552940,
+"rate":   7.42,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2726,
+"population": 13064174,
+"rate":  20.87,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    487,
+"population": 4169568,
+"rate":  11.68,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    352,
+"population": 1601568,
+"rate":  21.98,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[20 - 110]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    121,
+"population": 941794,
+"rate":  12.85,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    123,
+"population": 3988482,
+"rate":   3.08,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1292,
+"population": 3674628,
+"rate":  35.16,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    573,
+"population": 5275734,
+"rate":  10.86,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     62,
+"population": 1566797,
+"rate":   3.96,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    245,
+"population": 957640,
+"rate":  25.58,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[20 - 110]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    254,
+"population": 2398757,
+"rate":  10.59,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[8 - 12)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    501,
+"population": 2554568,
+"rate":  19.61,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[12 - 20)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    194,
+"population": 2310246,
+"rate":    8.4,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    210,
+"population": 1990196,
+"rate":  10.55,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[8 - 12)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    221,
+"population": 2821330,
+"rate":   7.83,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    280,
+"population": 1019616,
+"rate":  27.46,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[20 - 110]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    465,
+"population": 7245217,
+"rate":   6.42,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     26,
+"population": 1733690,
+"rate":    1.5,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2000,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     96,
+"population": 1419814,
+"rate":   6.76,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2001": {
+ "AGS": {
+ "state_code": 1,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     22,
+"population": 1034673,
+"rate":   2.13,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    456,
+"population": 2665100,
+"rate":  17.11,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     25,
+"population": 487856,
+"rate":   5.12,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     52,
+"population": 720777,
+"rate":   7.21,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    118,
+"population": 2453082,
+"rate":   4.81,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[0 - 5)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     56,
+"population": 562178,
+"rate":   9.96,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[8 - 12)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1252,
+"population": 4279389,
+"rate":  29.26,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    480,
+"population": 3078290,
+"rate":  15.59,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    807,
+"population": 8967336,
+"rate":      9,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    321,
+"population": 1518804,
+"rate":  21.14,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    233,
+"population": 5189584,
+"rate":   4.49,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1255,
+"population": 3249338,
+"rate":  38.62,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    148,
+"population": 2419951,
+"rate":   6.12,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[5 - 8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    488,
+"population": 6632028,
+"rate":   7.36,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2862,
+"population": 13327545,
+"rate":  21.47,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    475,
+"population": 4185422,
+"rate":  11.35,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    193,
+"population": 1620334,
+"rate":  11.91,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[8 - 12)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    127,
+"population": 952620,
+"rate":  13.33,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    140,
+"population": 4065193,
+"rate":   3.44,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1311,
+"population": 3687110,
+"rate":  35.56,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    502,
+"population": 5332966,
+"rate":   9.41,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     86,
+"population": 1593332,
+"rate":    5.4,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[5 - 8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    252,
+"population": 995884,
+"rate":   25.3,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[20 - 110]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    195,
+"population": 2416516,
+"rate":   8.07,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[8 - 12)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    551,
+"population": 2586842,
+"rate":   21.3,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    185,
+"population": 2351912,
+"rate":   7.87,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    169,
+"population": 2019088,
+"rate":   8.37,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[8 - 12)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    165,
+"population": 2881544,
+"rate":   5.73,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[5 - 8)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    352,
+"population": 1036475,
+"rate":  33.96,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[20 - 110]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    467,
+"population": 7275892,
+"rate":   6.42,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     16,
+"population": 1758905,
+"rate":   0.91,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2001,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     94,
+"population": 1424152,
+"rate":    6.6,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2002": {
+ "AGS": {
+ "state_code": 1,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     26,
+"population": 1053016,
+"rate":   2.47,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    466,
+"population": 2739379,
+"rate":  17.01,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     28,
+"population": 503676,
+"rate":   5.56,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     52,
+"population": 734330,
+"rate":   7.08,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    131,
+"population": 2492591,
+"rate":   5.26,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     45,
+"population": 570900,
+"rate":   7.88,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[8 - 12)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1056,
+"population": 4358108,
+"rate":  24.23,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    528,
+"population": 3136673,
+"rate":  16.83,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    748,
+"population": 8977879,
+"rate":   8.33,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    232,
+"population": 1533026,
+"rate":  15.13,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[12 - 20)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    208,
+"population": 5228205,
+"rate":   3.98,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1035,
+"population": 3267370,
+"rate":  31.68,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    129,
+"population": 2443912,
+"rate":   5.28,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[5 - 8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    431,
+"population": 6712270,
+"rate":   6.42,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2870,
+"population": 13591628,
+"rate":  21.12,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    428,
+"population": 4203024,
+"rate":  10.18,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    226,
+"population": 1639014,
+"rate":  13.79,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[12 - 20)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    117,
+"population": 964650,
+"rate":  12.13,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[8 - 12)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    124,
+"population": 4141875,
+"rate":   2.99,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1427,
+"population": 3706164,
+"rate":   38.5,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    463,
+"population": 5396324,
+"rate":   8.58,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     71,
+"population": 1622074,
+"rate":   4.38,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    194,
+"population": 1034970,
+"rate":  18.74,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    245,
+"population": 2435418,
+"rate":  10.06,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[8 - 12)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    485,
+"population": 2617824,
+"rate":  18.53,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[12 - 20)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    165,
+"population": 2394924,
+"rate":   6.89,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[5 - 8)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    141,
+"population": 2048198,
+"rate":   6.88,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    184,
+"population": 2939834,
+"rate":   6.26,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[5 - 8)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    309,
+"population": 1054524,
+"rate":   29.3,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[20 - 110]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    450,
+"population": 7313628,
+"rate":   6.15,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     30,
+"population": 1784528,
+"rate":   1.68,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2002,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    104,
+"population": 1428980,
+"rate":   7.28,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2003": {
+ "AGS": {
+ "state_code": 1,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     21,
+"population": 1071032,
+"rate":   1.96,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    479,
+"population": 2810931,
+"rate":  17.04,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     24,
+"population": 520478,
+"rate":   4.61,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     55,
+"population": 747868,
+"rate":   7.35,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    116,
+"population": 2531234,
+"rate":   4.58,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[0 - 5)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     34,
+"population": 579781,
+"rate":   5.86,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[5 - 8)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    921,
+"population": 4436926,
+"rate":  20.76,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[20 - 110]" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    471,
+"population": 3192160,
+"rate":  14.75,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    715,
+"population": 8982537,
+"rate":   7.96,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    216,
+"population": 1545979,
+"rate":  13.97,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[12 - 20)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    213,
+"population": 5265170,
+"rate":   4.05,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    808,
+"population": 3284024,
+"rate":   24.6,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    113,
+"population": 2468402,
+"rate":   4.58,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    424,
+"population": 6788019,
+"rate":   6.25,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2741,
+"population": 13850796,
+"rate":  19.79,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[12 - 20)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    440,
+"population": 4216484,
+"rate":  10.44,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    173,
+"population": 1656148,
+"rate":  10.45,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[8 - 12)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     95,
+"population": 976988,
+"rate":   9.72,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[8 - 12)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    135,
+"population": 4217487,
+"rate":    3.2,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1571,
+"population": 3727409,
+"rate":  42.15,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    488,
+"population": 5460820,
+"rate":   8.94,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     71,
+"population": 1651460,
+"rate":    4.3,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    228,
+"population": 1074714,
+"rate":  21.21,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[20 - 110]" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    121,
+"population": 2452722,
+"rate":   4.93,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[0 - 5)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    482,
+"population": 2646634,
+"rate":  18.21,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[12 - 20)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    203,
+"population": 2438414,
+"rate":   8.33,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    150,
+"population": 2077382,
+"rate":   7.22,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    244,
+"population": 2995520,
+"rate":   8.15,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    286,
+"population": 1073033,
+"rate":  26.65,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[20 - 110]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    501,
+"population": 7352821,
+"rate":   6.81,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     32,
+"population": 1810254,
+"rate":   1.77,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2003,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    105,
+"population": 1432102,
+"rate":   7.33,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2004": {
+ "AGS": {
+ "state_code": 1,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     17,
+"population": 1088275,
+"rate":   1.56,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    470,
+"population": 2879305,
+"rate":  16.32,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     36,
+"population": 537950,
+"rate":   6.69,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     37,
+"population": 761360,
+"rate":   4.86,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[0 - 5)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    103,
+"population": 2568863,
+"rate":   4.01,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[0 - 5)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     45,
+"population": 588989,
+"rate":   7.64,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[5 - 8)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    787,
+"population": 4512810,
+"rate":  17.44,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[12 - 20)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    444,
+"population": 3244587,
+"rate":  13.68,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    710,
+"population": 8982860,
+"rate":    7.9,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    120,
+"population": 1558966,
+"rate":    7.7,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[5 - 8)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    194,
+"population": 5295090,
+"rate":   3.66,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    539,
+"population": 3298900,
+"rate":  16.34,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[12 - 20)" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    123,
+"population": 2492457,
+"rate":   4.93,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    370,
+"population": 6863332,
+"rate":   5.39,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2855,
+"population": 14105797,
+"rate":  20.24,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[20 - 110]" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    446,
+"population": 4227404,
+"rate":  10.55,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    219,
+"population": 1672916,
+"rate":  13.09,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[12 - 20)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    109,
+"population": 990286,
+"rate":  11.01,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[8 - 12)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    117,
+"population": 4292596,
+"rate":   2.73,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1130,
+"population": 3744217,
+"rate":  30.18,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    468,
+"population": 5519573,
+"rate":   8.48,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     62,
+"population": 1679348,
+"rate":   3.69,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    138,
+"population": 1114536,
+"rate":  12.38,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[8 - 12)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    199,
+"population": 2469055,
+"rate":   8.06,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[8 - 12)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    515,
+"population": 2674642,
+"rate":  19.25,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[12 - 20)" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    250,
+"population": 2480978,
+"rate":  10.08,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    120,
+"population": 2106198,
+"rate":    5.7,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    225,
+"population": 3048880,
+"rate":   7.38,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[5 - 8)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    260,
+"population": 1090566,
+"rate":  23.84,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[20 - 110]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    465,
+"population": 7391162,
+"rate":   6.29,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     30,
+"population": 1835636,
+"rate":   1.63,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2004,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     55,
+"population": 1434982,
+"rate":   3.83,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[0 - 5)" 
+} 
+},
+"2005": {
+ "AGS": {
+ "state_code": 1,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     19,
+"population": 1105418,
+"rate":   1.72,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    539,
+"population": 2945057,
+"rate":   18.3,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     34,
+"population": 555900,
+"rate":   6.12,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     51,
+"population": 774858,
+"rate":   6.58,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    139,
+"population": 2606425,
+"rate":   5.33,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     35,
+"population": 599444,
+"rate":   5.84,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[5 - 8)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    415,
+"population": 4582616,
+"rate":   9.06,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[8 - 12)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    550,
+"population": 3296374,
+"rate":  16.68,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    698,
+"population": 8981434,
+"rate":   7.77,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[5 - 8)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    189,
+"population": 1575853,
+"rate":  11.99,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[8 - 12)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    213,
+"population": 5320564,
+"rate":      4,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    755,
+"population": 3315913,
+"rate":  22.77,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    118,
+"population": 2518216,
+"rate":   4.69,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    384,
+"population": 6952212,
+"rate":   5.52,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2313,
+"population": 14365268,
+"rate":   16.1,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[12 - 20)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    427,
+"population": 4246321,
+"rate":  10.06,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    160,
+"population": 1693254,
+"rate":   9.45,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[8 - 12)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     93,
+"population": 1006746,
+"rate":   9.24,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[8 - 12)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    143,
+"population": 4369661,
+"rate":   3.27,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1053,
+"population": 3751652,
+"rate":  28.07,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    341,
+"population": 5568212,
+"rate":   6.12,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     68,
+"population": 1704588,
+"rate":   3.99,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    119,
+"population": 1154464,
+"rate":  10.31,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[8 - 12)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    176,
+"population": 2488784,
+"rate":   7.07,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[5 - 8)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    609,
+"population": 2705409,
+"rate":  22.51,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    275,
+"population": 2521866,
+"rate":   10.9,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     84,
+"population": 2133711,
+"rate":   3.94,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[0 - 5)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    357,
+"population": 3102344,
+"rate":  11.51,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    350,
+"population": 1105902,
+"rate":  31.65,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[20 - 110]" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    459,
+"population": 7430703,
+"rate":   6.18,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     22,
+"population": 1860330,
+"rate":   1.18,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2005,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     58,
+"population": 1442668,
+"rate":   4.02,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[0 - 5)" 
+} 
+},
+"2006": {
+ "AGS": {
+ "state_code": 1,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     26,
+"population": 1123566,
+"rate":   2.31,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    483,
+"population": 3009612,
+"rate":  16.05,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     20,
+"population": 574832,
+"rate":   3.48,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     28,
+"population": 788535,
+"rate":   3.55,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[0 - 5)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    109,
+"population": 2644676,
+"rate":   4.12,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[0 - 5)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     31,
+"population": 611104,
+"rate":   5.07,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[0 - 5)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    358,
+"population": 4652106,
+"rate":    7.7,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[5 - 8)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    593,
+"population": 3349492,
+"rate":   17.7,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    649,
+"population": 8978979,
+"rate":   7.23,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[5 - 8)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    205,
+"population": 1595446,
+"rate":  12.85,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[12 - 20)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    242,
+"population": 5355276,
+"rate":   4.52,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    837,
+"population": 3337660,
+"rate":  25.08,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    101,
+"population": 2548586,
+"rate":   3.96,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    425,
+"population": 7051282,
+"rate":   6.03,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2766,
+"population": 14631162,
+"rate":   18.9,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[12 - 20)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    661,
+"population": 4274492,
+"rate":  15.46,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    159,
+"population": 1716033,
+"rate":   9.27,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[8 - 12)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     94,
+"population": 1025905,
+"rate":   9.16,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[8 - 12)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    180,
+"population": 4448021,
+"rate":   4.05,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[0 - 5)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1077,
+"population": 3763658,
+"rate":  28.62,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    415,
+"population": 5620901,
+"rate":   7.38,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     52,
+"population": 1731919,
+"rate":      3,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    119,
+"population": 1196419,
+"rate":   9.95,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[8 - 12)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    131,
+"population": 2512494,
+"rate":   5.21,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[5 - 8)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    602,
+"population": 2737707,
+"rate":  21.99,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    238,
+"population": 2564069,
+"rate":   9.28,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    166,
+"population": 2160778,
+"rate":   7.68,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    346,
+"population": 3156966,
+"rate":  10.96,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    187,
+"population": 1121774,
+"rate":  16.67,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[12 - 20)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    434,
+"population": 7478378,
+"rate":    5.8,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     22,
+"population": 1885603,
+"rate":   1.17,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2006,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     50,
+"population": 1453956,
+"rate":   3.44,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[0 - 5)" 
+} 
+},
+"2007": {
+ "AGS": {
+ "state_code": 1,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     49,
+"population": 1143522,
+"rate":   4.29,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    511,
+"population": 3073746,
+"rate":  16.62,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     28,
+"population": 594991,
+"rate":   4.71,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     36,
+"population": 802543,
+"rate":   4.49,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[0 - 5)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    121,
+"population": 2683962,
+"rate":   4.51,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[0 - 5)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     30,
+"population": 623876,
+"rate":   4.81,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[0 - 5)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    358,
+"population": 4725047,
+"rate":   7.58,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[5 - 8)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    617,
+"population": 3404030,
+"rate":  18.13,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[12 - 20)" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    714,
+"population": 8975327,
+"rate":   7.96,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    250,
+"population": 1616868,
+"rate":  15.46,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[12 - 20)" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    229,
+"population": 5407332,
+"rate":   4.23,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    800,
+"population": 3365386,
+"rate":  23.77,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    147,
+"population": 2585203,
+"rate":   5.69,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[5 - 8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    389,
+"population": 7157616,
+"rate":   5.43,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1127,
+"population": 14902842,
+"rate":   7.56,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[5 - 8)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    527,
+"population": 4311970,
+"rate":  12.22,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[8 - 12)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    113,
+"population": 1740340,
+"rate":   6.49,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[5 - 8)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    108,
+"population": 1047288,
+"rate":  10.31,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[8 - 12)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    283,
+"population": 4527038,
+"rate":   6.25,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[5 - 8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    948,
+"population": 3788825,
+"rate":  25.02,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[20 - 110]" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    401,
+"population": 5686766,
+"rate":   7.05,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     57,
+"population": 1763790,
+"rate":   3.23,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    176,
+"population": 1240082,
+"rate":  14.19,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    153,
+"population": 2540415,
+"rate":   6.02,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[5 - 8)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    741,
+"population": 2770426,
+"rate":  26.75,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    308,
+"population": 2609126,
+"rate":   11.8,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[8 - 12)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    193,
+"population": 2188334,
+"rate":   8.82,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[8 - 12)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    265,
+"population": 3211860,
+"rate":   8.25,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":      0,
+"population": 1139929,
+"rate":      0,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[0 - 5)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    478,
+"population": 7538346,
+"rate":   6.34,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     30,
+"population": 1912247,
+"rate":   1.57,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2007,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     66,
+"population": 1468020,
+"rate":    4.5,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[0 - 5)" 
+} 
+},
+"2008": {
+ "AGS": {
+ "state_code": 1,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     63,
+"population": 1164976,
+"rate":   5.41,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[5 - 8)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    853,
+"population": 3137014,
+"rate":  27.19,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     28,
+"population": 616122,
+"rate":   4.54,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     45,
+"population": 816854,
+"rate":   5.51,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    179,
+"population": 2723936,
+"rate":   6.57,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[5 - 8)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     33,
+"population": 637828,
+"rate":   5.17,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[0 - 5)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    326,
+"population": 4799203,
+"rate":   6.79,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[5 - 8)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2030,
+"population": 3458305,
+"rate":   58.7,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    713,
+"population": 8971100,
+"rate":   7.95,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    430,
+"population": 1639182,
+"rate":  26.23,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    257,
+"population": 5470487,
+"rate":    4.7,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[0 - 5)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    951,
+"population": 3398068,
+"rate":  27.99,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    139,
+"population": 2627220,
+"rate":   5.29,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[5 - 8)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    462,
+"population": 7272788,
+"rate":   6.35,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1261,
+"population": 15178014,
+"rate":   8.31,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[8 - 12)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    565,
+"population": 4357648,
+"rate":  12.97,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    135,
+"population": 1766432,
+"rate":   7.64,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[5 - 8)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    147,
+"population": 1071224,
+"rate":  13.72,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    263,
+"population": 4606526,
+"rate":   5.71,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[5 - 8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    733,
+"population": 3821208,
+"rate":  19.18,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[12 - 20)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    429,
+"population": 5759463,
+"rate":   7.45,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     58,
+"population": 1798021,
+"rate":   3.23,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    192,
+"population": 1283928,
+"rate":  14.95,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    218,
+"population": 2572386,
+"rate":   8.47,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[8 - 12)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1156,
+"population": 2804003,
+"rate":  41.23,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    393,
+"population": 2655846,
+"rate":   14.8,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[12 - 20)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    148,
+"population": 2215935,
+"rate":   6.68,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    308,
+"population": 3264686,
+"rate":   9.43,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     42,
+"population": 1159150,
+"rate":   3.62,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[0 - 5)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    477,
+"population": 7608848,
+"rate":   6.27,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     47,
+"population": 1939845,
+"rate":   2.42,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2008,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     74,
+"population": 1485152,
+"rate":   4.98,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[0 - 5)" 
+} 
+},
+"2009": {
+ "AGS": {
+ "state_code": 1,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     66,
+"population": 1185864,
+"rate":   5.57,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[5 - 8)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    750,
+"population": 3196582,
+"rate":  23.46,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     31,
+"population": 638258,
+"rate":   4.86,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     41,
+"population": 830410,
+"rate":   4.94,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[0 - 5)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    240,
+"population": 2762990,
+"rate":   8.69,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[8 - 12)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     52,
+"population": 651980,
+"rate":   7.98,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[8 - 12)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    499,
+"population": 4870040,
+"rate":  10.25,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[8 - 12)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   3156,
+"population": 3505183,
+"rate":  90.04,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    747,
+"population": 8964855,
+"rate":   8.33,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    930,
+"population": 1659928,
+"rate":  56.03,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    414,
+"population": 5530928,
+"rate":   7.49,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[5 - 8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1431,
+"population": 3429734,
+"rate":  41.72,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    137,
+"population": 2669675,
+"rate":   5.13,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    570,
+"population": 7387309,
+"rate":   7.72,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[5 - 8)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1345,
+"population": 15443662,
+"rate":   8.71,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[8 - 12)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    728,
+"population": 4400943,
+"rate":  16.54,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    317,
+"population": 1791524,
+"rate":  17.69,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[12 - 20)" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    148,
+"population": 1096316,
+"rate":   13.5,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    267,
+"population": 4684726,
+"rate":    5.7,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[5 - 8)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    752,
+"population": 3853224,
+"rate":  19.52,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[12 - 20)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    414,
+"population": 5830130,
+"rate":    7.1,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     90,
+"population": 1831825,
+"rate":   4.91,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    177,
+"population": 1328415,
+"rate":  13.32,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    158,
+"population": 2602748,
+"rate":   6.07,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[5 - 8)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1251,
+"population": 2836121,
+"rate":  44.11,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    498,
+"population": 2703266,
+"rate":  18.42,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[12 - 20)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    117,
+"population": 2241154,
+"rate":   5.22,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    288,
+"population": 3312431,
+"rate":   8.69,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[8 - 12)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     48,
+"population": 1177494,
+"rate":   4.08,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[0 - 5)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    347,
+"population": 7679265,
+"rate":   4.52,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[0 - 5)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     33,
+"population": 1967260,
+"rate":   1.68,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2009,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     76,
+"population": 1501594,
+"rate":   5.06,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[0 - 5)" 
+} 
+},
+"2010": {
+ "AGS": {
+ "state_code": 1,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     75,
+"population": 1205440,
+"rate":   6.22,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[5 - 8)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    884,
+"population": 3250122,
+"rate":   27.2,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     48,
+"population": 661149,
+"rate":   7.26,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     59,
+"population": 844560,
+"rate":   6.99,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    407,
+"population": 2800045,
+"rate":  14.54,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[12 - 20)" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     93,
+"population": 665586,
+"rate":  13.97,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[12 - 20)" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    513,
+"population": 4942194,
+"rate":  10.38,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[8 - 12)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   3903,
+"population": 3542260,
+"rate": 110.18,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    811,
+"population": 8951680,
+"rate":   9.06,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1024,
+"population": 1680116,
+"rate":  60.95,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    437,
+"population": 5586600,
+"rate":   7.82,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[5 - 8)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1500,
+"population": 3458859,
+"rate":  43.37,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    134,
+"population": 2710328,
+"rate":   4.94,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    888,
+"population": 7492929,
+"rate":  11.85,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[8 - 12)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1153,
+"population": 15708618,
+"rate":   7.34,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[5 - 8)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    661,
+"population": 4439186,
+"rate":  14.89,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    559,
+"population": 1815264,
+"rate":  30.79,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[20 - 110]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    367,
+"population": 1120538,
+"rate":  32.75,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[20 - 110]" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    828,
+"population": 4760268,
+"rate":  17.39,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[12 - 20)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    666,
+"population": 3884764,
+"rate":  17.14,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[12 - 20)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    415,
+"population": 5899418,
+"rate":   7.03,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     59,
+"population": 1864648,
+"rate":   3.16,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    234,
+"population": 1373151,
+"rate":  17.04,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    417,
+"population": 2632014,
+"rate":  15.84,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2250,
+"population": 2864930,
+"rate":  78.54,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    654,
+"population": 2747198,
+"rate":  23.81,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[20 - 110]" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    143,
+"population": 2267890,
+"rate":   6.31,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    721,
+"population": 3355590,
+"rate":  21.49,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[20 - 110]" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     48,
+"population": 1196217,
+"rate":   4.01,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[0 - 5)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    583,
+"population": 7752024,
+"rate":   7.52,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[5 - 8)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     36,
+"population": 1994925,
+"rate":    1.8,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2010,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    110,
+"population": 1515880,
+"rate":   7.26,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2011": {
+ "AGS": {
+ "state_code": 1,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     71,
+"population": 1224508,
+"rate":    5.8,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[5 - 8)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    673,
+"population": 3302011,
+"rate":  20.38,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     38,
+"population": 684046,
+"rate":   5.56,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     59,
+"population": 859374,
+"rate":   6.87,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    660,
+"population": 2836206,
+"rate":  23.27,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[20 - 110]" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    165,
+"population": 678828,
+"rate":  24.31,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[20 - 110]" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    613,
+"population": 5015600,
+"rate":  12.22,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[8 - 12)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   3085,
+"population": 3579020,
+"rate":   86.2,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    779,
+"population": 8935150,
+"rate":   8.72,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    764,
+"population": 1700080,
+"rate":  44.94,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    604,
+"population": 5641440,
+"rate":  10.71,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[8 - 12)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2158,
+"population": 3486480,
+"rate":   61.9,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    111,
+"population": 2749772,
+"rate":   4.04,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1222,
+"population": 7593692,
+"rate":  16.09,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[12 - 20)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1512,
+"population": 15976022,
+"rate":   9.46,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[8 - 12)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    773,
+"population": 4476415,
+"rate":  17.27,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    556,
+"population": 1839000,
+"rate":  30.23,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[20 - 110]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    456,
+"population": 1143832,
+"rate":  39.87,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[20 - 110]" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2003,
+"population": 4833054,
+"rate":  41.44,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[20 - 110]" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    641,
+"population": 3916126,
+"rate":  16.37,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[12 - 20)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    619,
+"population": 5968588,
+"rate":  10.37,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     98,
+"population": 1896954,
+"rate":   5.17,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[0 - 5)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    269,
+"population": 1417736,
+"rate":  18.97,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    402,
+"population": 2661440,
+"rate":   15.1,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1906,
+"population": 2892138,
+"rate":   65.9,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    472,
+"population": 2788585,
+"rate":  16.93,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[12 - 20)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    162,
+"population": 2296106,
+"rate":   7.06,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    855,
+"population": 3397926,
+"rate":  25.16,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[20 - 110]" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     71,
+"population": 1215464,
+"rate":   5.84,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[5 - 8)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    890,
+"population": 7825202,
+"rate":  11.37,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     46,
+"population": 2022927,
+"rate":   2.27,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2011,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    119,
+"population": 1529708,
+"rate":   7.78,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[5 - 8)" 
+} 
+},
+"2012": {
+ "AGS": {
+ "state_code": 1,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     44,
+"population": 1243093,
+"rate":   3.54,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    590,
+"population": 3354852,
+"rate":  17.59,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[12 - 20)" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     35,
+"population": 706802,
+"rate":   4.95,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[0 - 5)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     69,
+"population": 873337,
+"rate":    7.9,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[8 - 12)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    771,
+"population": 2872221,
+"rate":  26.84,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[20 - 110]" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    287,
+"population": 691844,
+"rate":  41.48,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[20 - 110]" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    573,
+"population": 5084877,
+"rate":  11.27,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[8 - 12)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1997,
+"population": 3617379,
+"rate":  55.21,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    779,
+"population": 8918638,
+"rate":   8.73,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    618,
+"population": 1719085,
+"rate":  35.95,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    771,
+"population": 5693945,
+"rate":  13.54,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[12 - 20)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2310,
+"population": 3511682,
+"rate":  65.78,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     83,
+"population": 2787654,
+"rate":   2.98,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1184,
+"population": 7693228,
+"rate":  15.39,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[12 - 20)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2130,
+"population": 16235348,
+"rate":  13.12,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[12 - 20)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    755,
+"population": 4512322,
+"rate":  16.73,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    862,
+"population": 1862500,
+"rate":  46.28,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[20 - 110]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    244,
+"population": 1166926,
+"rate":  20.91,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[20 - 110]" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1459,
+"population": 4904952,
+"rate":  29.75,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[20 - 110]" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    472,
+"population": 3944938,
+"rate":  11.96,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[8 - 12)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    578,
+"population": 6034884,
+"rate":   9.58,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[8 - 12)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    110,
+"population": 1928346,
+"rate":    5.7,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[5 - 8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    250,
+"population": 1462538,
+"rate":  17.09,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    396,
+"population": 2688728,
+"rate":  14.73,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[12 - 20)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1468,
+"population": 2919032,
+"rate":  50.29,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    501,
+"population": 2830634,
+"rate":   17.7,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[12 - 20)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    124,
+"population": 2321782,
+"rate":   5.34,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1016,
+"population": 3440337,
+"rate":  29.53,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[20 - 110]" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     59,
+"population": 1233686,
+"rate":   4.78,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[0 - 5)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    968,
+"population": 7890901,
+"rate":  12.27,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     38,
+"population": 2050422,
+"rate":   1.85,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2012,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    195,
+"population": 1543426,
+"rate":  12.63,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[12 - 20)" 
+} 
+},
+"2013": {
+ "AGS": {
+ "state_code": 1,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     39,
+"population": 1261220,
+"rate":   3.09,
+"name": "AGS",
+"long_name": "Aguascalientes",
+"fillKey": "[0 - 5)" 
+},
+"BC": {
+ "state_code": 2,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    775,
+"population": 3407012,
+"rate":  22.75,
+"name": "BC",
+"long_name": "Baja California",
+"fillKey": "[20 - 110]" 
+},
+"BCS": {
+ "state_code": 3,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     56,
+"population": 729616,
+"rate":   7.68,
+"name": "BCS",
+"long_name": "Baja California Sur",
+"fillKey": "[5 - 8)" 
+},
+"CAMP": {
+ "state_code": 4,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     67,
+"population": 887218,
+"rate":   7.55,
+"name": "CAMP",
+"long_name": "Campeche",
+"fillKey": "[5 - 8)" 
+},
+"COAH": {
+ "state_code": 5,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    645,
+"population": 2907851,
+"rate":  22.18,
+"name": "COAH",
+"long_name": "Coahuila de Zaragoza",
+"fillKey": "[20 - 110]" 
+},
+"COL": {
+ "state_code": 6,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    178,
+"population": 704638,
+"rate":  25.26,
+"name": "COL",
+"long_name": "Colima",
+"fillKey": "[20 - 110]" 
+},
+"CHIS": {
+ "state_code": 7,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    540,
+"population": 5152879,
+"rate":  10.48,
+"name": "CHIS",
+"long_name": "Chiapas",
+"fillKey": "[8 - 12)" 
+},
+"CHIH": {
+ "state_code": 8,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1443,
+"population": 3654654,
+"rate":  39.48,
+"name": "CHIH",
+"long_name": "Chihuahua",
+"fillKey": "[20 - 110]" 
+},
+"DF": {
+ "state_code": 9,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    749,
+"population": 8901210,
+"rate":   8.41,
+"name": "DF",
+"long_name": "Distrito Federal",
+"fillKey": "[8 - 12)" 
+},
+"DGO": {
+ "state_code": 10,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    476,
+"population": 1737617,
+"rate":  27.39,
+"name": "DGO",
+"long_name": "Durango",
+"fillKey": "[20 - 110]" 
+},
+"GTO": {
+ "state_code": 11,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    641,
+"population": 5744616,
+"rate":  11.16,
+"name": "GTO",
+"long_name": "Guanajuato",
+"fillKey": "[8 - 12)" 
+},
+"GRO": {
+ "state_code": 12,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   2087,
+"population": 3535284,
+"rate":  59.03,
+"name": "GRO",
+"long_name": "Guerrero",
+"fillKey": "[20 - 110]" 
+},
+"HGO": {
+ "state_code": 13,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    124,
+"population": 2824559,
+"rate":   4.39,
+"name": "HGO",
+"long_name": "Hidalgo",
+"fillKey": "[0 - 5)" 
+},
+"JAL": {
+ "state_code": 14,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1099,
+"population": 7790156,
+"rate":  14.11,
+"name": "JAL",
+"long_name": "Jalisco",
+"fillKey": "[12 - 20)" 
+},
+"MEX": {
+ "state_code": 15,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1932,
+"population": 16491570,
+"rate":  11.72,
+"name": "MEX",
+"long_name": "Estado de México",
+"fillKey": "[8 - 12)" 
+},
+"MICH": {
+ "state_code": 16,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    902,
+"population": 4546882,
+"rate":  19.84,
+"name": "MICH",
+"long_name": "Michoacán de Ocampo",
+"fillKey": "[12 - 20)" 
+},
+"MOR": {
+ "state_code": 17,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    597,
+"population": 1885790,
+"rate":  31.66,
+"name": "MOR",
+"long_name": "Morelos",
+"fillKey": "[20 - 110]" 
+},
+"NAY": {
+ "state_code": 18,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    151,
+"population": 1189802,
+"rate":  12.69,
+"name": "NAY",
+"long_name": "Nayarit",
+"fillKey": "[12 - 20)" 
+},
+"NL": {
+ "state_code": 19,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    719,
+"population": 4977324,
+"rate":  14.45,
+"name": "NL",
+"long_name": "Nuevo León",
+"fillKey": "[12 - 20)" 
+},
+"OAX": {
+ "state_code": 20,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    536,
+"population": 3972624,
+"rate":  13.49,
+"name": "OAX",
+"long_name": "Oaxaca",
+"fillKey": "[12 - 20)" 
+},
+"PUE": {
+ "state_code": 21,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    428,
+"population": 6099552,
+"rate":   7.02,
+"name": "PUE",
+"long_name": "Puebla",
+"fillKey": "[5 - 8)" 
+},
+"QRO": {
+ "state_code": 22,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    111,
+"population": 1959162,
+"rate":   5.67,
+"name": "QRO",
+"long_name": "Querétaro",
+"fillKey": "[5 - 8)" 
+},
+"QROO": {
+ "state_code": 23,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    214,
+"population": 1507418,
+"rate":   14.2,
+"name": "QROO",
+"long_name": "Quintana Roo",
+"fillKey": "[12 - 20)" 
+},
+"SLP": {
+ "state_code": 24,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    261,
+"population": 2715176,
+"rate":   9.61,
+"name": "SLP",
+"long_name": "San Luis Potosí",
+"fillKey": "[8 - 12)" 
+},
+"SIN": {
+ "state_code": 25,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":   1208,
+"population": 2945502,
+"rate":  41.01,
+"name": "SIN",
+"long_name": "Sinaloa",
+"fillKey": "[20 - 110]" 
+},
+"SON": {
+ "state_code": 26,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    575,
+"population": 2871963,
+"rate":  20.02,
+"name": "SON",
+"long_name": "Sonora",
+"fillKey": "[12 - 20)" 
+},
+"TAB": {
+ "state_code": 27,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    140,
+"population": 2346968,
+"rate":   5.97,
+"name": "TAB",
+"long_name": "Tabasco",
+"fillKey": "[5 - 8)" 
+},
+"TAMPS": {
+ "state_code": 28,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    555,
+"population": 3482028,
+"rate":  15.94,
+"name": "TAMPS",
+"long_name": "Tamaulipas",
+"fillKey": "[12 - 20)" 
+},
+"TLAX": {
+ "state_code": 29,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     70,
+"population": 1251681,
+"rate":   5.59,
+"name": "TLAX",
+"long_name": "Tlaxcala",
+"fillKey": "[5 - 8)" 
+},
+"VER": {
+ "state_code": 30,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    863,
+"population": 7954546,
+"rate":  10.85,
+"name": "VER",
+"long_name": "Veracruz de Ignacio de la Llave",
+"fillKey": "[8 - 12)" 
+},
+"YUC": {
+ "state_code": 31,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":     40,
+"population": 2077832,
+"rate":   1.93,
+"name": "YUC",
+"long_name": "Yucatán",
+"fillKey": "[0 - 5)" 
+},
+"ZAC": {
+ "state_code": 32,
+"year": 2013,
+"group": "HOMICIDIOS DOLOSOS",
+"averiguaciones":    167,
+"population": 1556752,
+"rate":  10.73,
+"name": "ZAC",
+"long_name": "Zacatecas",
+"fillKey": "[8 - 12)" 
+} 
+} 
+} 
+}
+  chartParams.element = document.getElementById('chart_1')
+  
+  
+  var mapchart_1 = new Datamap(chartParams);
+  
+  
+    
+  // draw a bubble map if specified
+  if (chartParams.bubbles) {
+    var bubbles = chartParams.bubbles
+    mapchart_1.bubbles(bubbles)
+  }
+  
+  if (chartParams.labels){
+    mapchart_1.labels()
+  }
+  
+  if (chartParams.legend){
+    mapchart_1.legend()
+  }
+  
+  setProjection = function( element, options ) {
+    var projection, path;
+ 
+      projection = d3.geo.albersUsa()
+        .scale(element.offsetWidth)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+ 
+    path = d3.geo.path()
+      .projection( projection );
+ 
+    return {path: path, projection: projection};
+  }
+</script>
+
+<style>
+.datamaps {
+  position: relative;
+}
+</style>
+    
+    <script></script>    
+  </body>
+</html>
