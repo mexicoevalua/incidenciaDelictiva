@@ -1,16 +1,13 @@
-# Primero ejecutar el makefile
-# Segundo ejecutar este script para modificar las abreviaturas de los estados
-# Tercero ejectuar to_topo_json.txt en la terminal para transformar todo a topo.json
-
 ### Agregar abreviaturas para los nombres de los estados
+
 ### Cargar rgdal
 require(rgdal)
 
 # Cargar abreviaturas
 codes  <-  read.csv("data/state_names.csv", encoding="utf8")
 codes$state_code  <- sprintf("%02d", codes$state_code)
+codes  <- codes[,-3]
 
-head(codes)
 # Load shapefile using "UTF-8". Notice the "." is the directory and the shapefile name 
 # has no extention
 shp  <- readOGR("shapefiles", "states", stringsAsFactors=FALSE, encoding="UTF-8")
@@ -25,7 +22,7 @@ names(temp)
 
 # Change name for short name
 temp$NOM_ENT  <- temp$name
-head(temp$NOM_ENT)
+
 # Check your locale and set shapefile encoding to UTF-8
 Sys.getlocale("LC_CTYPE")
 getCPLConfigOption("SHAPE_ENCODING")

@@ -1,3 +1,3 @@
-#Execute in terminal
+mx_states.json: states.shp
 	## id-property needed so that DataMaps knows how to color the map
 	topojson -o mx_states.json -s 1e-7 -q 1e5 states.shp -p state_code=+CVE_ENT,name=NOM_ENT --id-property NOM_ENT
