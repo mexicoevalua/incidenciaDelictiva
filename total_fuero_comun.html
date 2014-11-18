@@ -2,7 +2,7 @@
 <meta charset = 'utf-8'>
 <html>
   <head>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    
     <script src='http://d3js.org/d3.v3.min.js' type='text/javascript'></script>
     <script src='http://d3js.org/topojson.v1.min.js' type='text/javascript'></script>
     <script src='http://datamaps.github.io/scripts/datamaps.all.min.js' type='text/javascript'></script>
@@ -47,7 +47,7 @@
 "geographyConfig": {
  "dataUrl": "shapefiles/mx_states.json",
 "popupTemplate":  function(geography, data) { //this function should just return a string
-    return '<div class=hoverinfo><strong>' + geography.properties.name + '</strong></div>';
+    return '<div class=hoverinfo>' + geography.properties.name + ': ' + data.rate + '</div>';
     }   
 },
 "scope": "states",
@@ -76,23 +76,23 @@
 "defaultFill": "#BD0026" 
 },
 "data": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 1997,
 "averiguaciones":   9110,
 "population": 966192,
-"rate": 942.88,
-"name": "AGU",
+"rate": "  943",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[822 - 1,057)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 1997,
 "averiguaciones": 1.4838e+05,
 "population": 2347037,
-"rate": 6322.1,
-"name": "BCN",
+"rate": "6,322",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -101,7 +101,7 @@
 "year": 1997,
 "averiguaciones":  13211,
 "population": 433282,
-"rate": 3049.1,
+"rate": "3,049",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -111,7 +111,7 @@
 "year": 1997,
 "averiguaciones":  10119,
 "population": 666544,
-"rate": 1518.1,
+"rate": "1,518",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[1,438 - 1,949)" 
@@ -121,7 +121,7 @@
 "year": 1997,
 "averiguaciones":  25612,
 "population": 2295840,
-"rate": 1115.6,
+"rate": "1,116",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -131,38 +131,38 @@
 "year": 1997,
 "averiguaciones":  14374,
 "population": 535262,
-"rate": 2685.4,
+"rate": "2,685",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,949 - 6,322]" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 1997,
 "averiguaciones":  33220,
 "population": 3950814,
-"rate": 840.84,
-"name": "CHP",
+"rate": "  841",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[822 - 1,057)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 1997,
 "averiguaciones":  74920,
 "population": 2839556,
-"rate": 2638.4,
-"name": "CHH",
+"rate": "2,638",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 1997,
 "averiguaciones": 2.3566e+05,
 "population": 8904064,
-"rate": 2646.7,
-"name": "DIF",
+"rate": "2,647",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -171,18 +171,18 @@
 "year": 1997,
 "averiguaciones":   8701,
 "population": 1477610,
-"rate": 588.86,
+"rate": "  589",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 1997,
 "averiguaciones":  42021,
 "population": 5054560,
-"rate": 831.35,
-"name": "GUA",
+"rate": "  831",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[822 - 1,057)" 
 },
@@ -191,18 +191,18 @@
 "year": 1997,
 "averiguaciones":  31178,
 "population": 3196368,
-"rate": 975.42,
+"rate": "  975",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 1997,
 "averiguaciones":  21594,
 "population": 2351497,
-"rate": 918.31,
-"name": "HID",
+"rate": "  918",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[822 - 1,057)" 
 },
@@ -211,7 +211,7 @@
 "year": 1997,
 "averiguaciones":  97423,
 "population": 6369852,
-"rate": 1529.4,
+"rate": "1,529",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,438 - 1,949)" 
@@ -221,19 +221,19 @@
 "year": 1997,
 "averiguaciones": 1.8081e+05,
 "population": 12289466,
-"rate": 1471.3,
+"rate": "1,471",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 1997,
 "averiguaciones":  34282,
 "population": 4156338,
-"rate": 824.81,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  825",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[822 - 1,057)" 
 },
 "MOR": {
@@ -241,7 +241,7 @@
 "year": 1997,
 "averiguaciones":  25580,
 "population": 1558634,
-"rate": 1641.2,
+"rate": "1,641",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -251,19 +251,19 @@
 "year": 1997,
 "averiguaciones":   8611,
 "population": 921764,
-"rate": 934.19,
+"rate": "  934",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[822 - 1,057)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 1997,
 "averiguaciones":  37582,
 "population": 3770918,
-"rate": 996.63,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "  997",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -271,7 +271,7 @@
 "year": 1997,
 "averiguaciones":  36439,
 "population": 3609795,
-"rate": 1009.5,
+"rate": "1,009",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -281,19 +281,19 @@
 "year": 1997,
 "averiguaciones":  49216,
 "population": 5077647,
-"rate": 969.27,
+"rate": "  969",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 1997,
 "averiguaciones":  22203,
 "population": 1480321,
-"rate": 1499.9,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,500",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,438 - 1,949)" 
 },
 "QROO": {
@@ -301,7 +301,7 @@
 "year": 1997,
 "averiguaciones":  19313,
 "population": 843751,
-"rate": 2288.9,
+"rate": "2,289",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -311,9 +311,9 @@
 "year": 1997,
 "averiguaciones":  31681,
 "population": 2360336,
-"rate": 1342.2,
+"rate": "1,342",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,057 - 1,438)" 
 },
 "SIN": {
@@ -321,7 +321,7 @@
 "year": 1997,
 "averiguaciones":  20291,
 "population": 2466280,
-"rate": 822.74,
+"rate": "  823",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[822 - 1,057)" 
@@ -331,7 +331,7 @@
 "year": 1997,
 "averiguaciones":  40652,
 "population": 2182008,
-"rate":   1863,
+"rate": "1,863",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,438 - 1,949)" 
@@ -341,7 +341,7 @@
 "year": 1997,
 "averiguaciones":  35848,
 "population": 1898572,
-"rate": 1888.2,
+"rate": "1,888",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -351,7 +351,7 @@
 "year": 1997,
 "averiguaciones":  45567,
 "population": 2643636,
-"rate": 1723.7,
+"rate": "1,724",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -361,7 +361,7 @@
 "year": 1997,
 "averiguaciones":   9078,
 "population": 963404,
-"rate": 942.28,
+"rate": "  942",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[822 - 1,057)" 
@@ -371,7 +371,7 @@
 "year": 1997,
 "averiguaciones":  75037,
 "population": 7151310,
-"rate": 1049.3,
+"rate": "1,049",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -381,9 +381,9 @@
 "year": 1997,
 "averiguaciones":  21484,
 "population": 1655361,
-"rate": 1297.8,
+"rate": "1,298",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "ZAC": {
@@ -391,7 +391,7 @@
 "year": 1997,
 "averiguaciones":  11743,
 "population": 1428402,
-"rate": 822.11,
+"rate": "  822",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[145 - 822)" 
@@ -401,23 +401,23 @@
 "id": "chart_1",
 "newData": {
  "1997": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 1997,
 "averiguaciones":   9110,
 "population": 966192,
-"rate": 942.88,
-"name": "AGU",
+"rate": "  943",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[822 - 1,057)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 1997,
 "averiguaciones": 1.4838e+05,
 "population": 2347037,
-"rate": 6322.1,
-"name": "BCN",
+"rate": "6,322",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -426,7 +426,7 @@
 "year": 1997,
 "averiguaciones":  13211,
 "population": 433282,
-"rate": 3049.1,
+"rate": "3,049",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -436,7 +436,7 @@
 "year": 1997,
 "averiguaciones":  10119,
 "population": 666544,
-"rate": 1518.1,
+"rate": "1,518",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[1,438 - 1,949)" 
@@ -446,7 +446,7 @@
 "year": 1997,
 "averiguaciones":  25612,
 "population": 2295840,
-"rate": 1115.6,
+"rate": "1,116",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -456,38 +456,38 @@
 "year": 1997,
 "averiguaciones":  14374,
 "population": 535262,
-"rate": 2685.4,
+"rate": "2,685",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,949 - 6,322]" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 1997,
 "averiguaciones":  33220,
 "population": 3950814,
-"rate": 840.84,
-"name": "CHP",
+"rate": "  841",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[822 - 1,057)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 1997,
 "averiguaciones":  74920,
 "population": 2839556,
-"rate": 2638.4,
-"name": "CHH",
+"rate": "2,638",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 1997,
 "averiguaciones": 2.3566e+05,
 "population": 8904064,
-"rate": 2646.7,
-"name": "DIF",
+"rate": "2,647",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -496,18 +496,18 @@
 "year": 1997,
 "averiguaciones":   8701,
 "population": 1477610,
-"rate": 588.86,
+"rate": "  589",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 1997,
 "averiguaciones":  42021,
 "population": 5054560,
-"rate": 831.35,
-"name": "GUA",
+"rate": "  831",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[822 - 1,057)" 
 },
@@ -516,18 +516,18 @@
 "year": 1997,
 "averiguaciones":  31178,
 "population": 3196368,
-"rate": 975.42,
+"rate": "  975",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 1997,
 "averiguaciones":  21594,
 "population": 2351497,
-"rate": 918.31,
-"name": "HID",
+"rate": "  918",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[822 - 1,057)" 
 },
@@ -536,7 +536,7 @@
 "year": 1997,
 "averiguaciones":  97423,
 "population": 6369852,
-"rate": 1529.4,
+"rate": "1,529",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,438 - 1,949)" 
@@ -546,19 +546,19 @@
 "year": 1997,
 "averiguaciones": 1.8081e+05,
 "population": 12289466,
-"rate": 1471.3,
+"rate": "1,471",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 1997,
 "averiguaciones":  34282,
 "population": 4156338,
-"rate": 824.81,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  825",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[822 - 1,057)" 
 },
 "MOR": {
@@ -566,7 +566,7 @@
 "year": 1997,
 "averiguaciones":  25580,
 "population": 1558634,
-"rate": 1641.2,
+"rate": "1,641",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -576,19 +576,19 @@
 "year": 1997,
 "averiguaciones":   8611,
 "population": 921764,
-"rate": 934.19,
+"rate": "  934",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[822 - 1,057)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 1997,
 "averiguaciones":  37582,
 "population": 3770918,
-"rate": 996.63,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "  997",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -596,7 +596,7 @@
 "year": 1997,
 "averiguaciones":  36439,
 "population": 3609795,
-"rate": 1009.5,
+"rate": "1,009",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -606,19 +606,19 @@
 "year": 1997,
 "averiguaciones":  49216,
 "population": 5077647,
-"rate": 969.27,
+"rate": "  969",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 1997,
 "averiguaciones":  22203,
 "population": 1480321,
-"rate": 1499.9,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,500",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,438 - 1,949)" 
 },
 "QROO": {
@@ -626,7 +626,7 @@
 "year": 1997,
 "averiguaciones":  19313,
 "population": 843751,
-"rate": 2288.9,
+"rate": "2,289",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -636,9 +636,9 @@
 "year": 1997,
 "averiguaciones":  31681,
 "population": 2360336,
-"rate": 1342.2,
+"rate": "1,342",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,057 - 1,438)" 
 },
 "SIN": {
@@ -646,7 +646,7 @@
 "year": 1997,
 "averiguaciones":  20291,
 "population": 2466280,
-"rate": 822.74,
+"rate": "  823",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[822 - 1,057)" 
@@ -656,7 +656,7 @@
 "year": 1997,
 "averiguaciones":  40652,
 "population": 2182008,
-"rate":   1863,
+"rate": "1,863",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,438 - 1,949)" 
@@ -666,7 +666,7 @@
 "year": 1997,
 "averiguaciones":  35848,
 "population": 1898572,
-"rate": 1888.2,
+"rate": "1,888",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -676,7 +676,7 @@
 "year": 1997,
 "averiguaciones":  45567,
 "population": 2643636,
-"rate": 1723.7,
+"rate": "1,724",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -686,7 +686,7 @@
 "year": 1997,
 "averiguaciones":   9078,
 "population": 963404,
-"rate": 942.28,
+"rate": "  942",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[822 - 1,057)" 
@@ -696,7 +696,7 @@
 "year": 1997,
 "averiguaciones":  75037,
 "population": 7151310,
-"rate": 1049.3,
+"rate": "1,049",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -706,9 +706,9 @@
 "year": 1997,
 "averiguaciones":  21484,
 "population": 1655361,
-"rate": 1297.8,
+"rate": "1,298",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "ZAC": {
@@ -716,30 +716,30 @@
 "year": 1997,
 "averiguaciones":  11743,
 "population": 1428402,
-"rate": 822.11,
+"rate": "  822",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[145 - 822)" 
 } 
 },
 "1998": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 1998,
 "averiguaciones":  10007,
 "population": 983399,
-"rate": 1017.6,
-"name": "AGU",
+"rate": "1,018",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[822 - 1,057)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 1998,
 "averiguaciones": 1.4336e+05,
 "population": 2428435,
-"rate": 5903.2,
-"name": "BCN",
+"rate": "5,903",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -748,7 +748,7 @@
 "year": 1998,
 "averiguaciones":  12153,
 "population": 446626,
-"rate": 2721.1,
+"rate": "2,721",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -758,7 +758,7 @@
 "year": 1998,
 "averiguaciones":  10924,
 "population": 680547,
-"rate": 1605.2,
+"rate": "1,605",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[1,438 - 1,949)" 
@@ -768,7 +768,7 @@
 "year": 1998,
 "averiguaciones":  18829,
 "population": 2334921,
-"rate": 806.41,
+"rate": "  806",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[145 - 822)" 
@@ -778,38 +778,38 @@
 "year": 1998,
 "averiguaciones":  13784,
 "population": 541355,
-"rate": 2546.2,
+"rate": "2,546",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,949 - 6,322]" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 1998,
 "averiguaciones":  30520,
 "population": 4038868,
-"rate": 755.66,
-"name": "CHP",
+"rate": "  756",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 1998,
 "averiguaciones":  73202,
 "population": 2897672,
-"rate": 2526.2,
-"name": "CHH",
+"rate": "2,526",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 1998,
 "averiguaciones": 2.378e+05,
 "population": 8920544,
-"rate": 2665.8,
-"name": "DIF",
+"rate": "2,666",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -818,18 +818,18 @@
 "year": 1998,
 "averiguaciones":  11007,
 "population": 1485282,
-"rate": 741.07,
+"rate": "  741",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 1998,
 "averiguaciones":  34097,
 "population": 5094451,
-"rate":  669.3,
-"name": "GUA",
+"rate": "  669",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[145 - 822)" 
 },
@@ -838,18 +838,18 @@
 "year": 1998,
 "averiguaciones":  27532,
 "population": 3210085,
-"rate": 857.67,
+"rate": "  858",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 1998,
 "averiguaciones":  18371,
 "population": 2367270,
-"rate": 776.04,
-"name": "HID",
+"rate": "  776",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[145 - 822)" 
 },
@@ -858,7 +858,7 @@
 "year": 1998,
 "averiguaciones":  81701,
 "population": 6426789,
-"rate": 1271.3,
+"rate": "1,271",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -868,19 +868,19 @@
 "year": 1998,
 "averiguaciones": 1.5422e+05,
 "population": 12551530,
-"rate": 1228.7,
+"rate": "1,229",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,057 - 1,438)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 1998,
 "averiguaciones":  35460,
 "population": 4160121,
-"rate": 852.38,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  852",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[822 - 1,057)" 
 },
 "MOR": {
@@ -888,7 +888,7 @@
 "year": 1998,
 "averiguaciones":  24254,
 "population": 1572018,
-"rate": 1542.9,
+"rate": "1,543",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -898,19 +898,19 @@
 "year": 1998,
 "averiguaciones":   7762,
 "population": 927663,
-"rate": 836.73,
+"rate": "  837",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[822 - 1,057)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 1998,
 "averiguaciones":  31828,
 "population": 3841802,
-"rate": 828.47,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "  828",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -918,7 +918,7 @@
 "year": 1998,
 "averiguaciones":  24354,
 "population": 3639204,
-"rate": 669.21,
+"rate": "  669",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[145 - 822)" 
@@ -928,19 +928,19 @@
 "year": 1998,
 "averiguaciones":  49163,
 "population": 5150852,
-"rate": 954.46,
+"rate": "  954",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 1998,
 "averiguaciones":  19464,
 "population": 1511212,
-"rate":   1288,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,288",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -948,7 +948,7 @@
 "year": 1998,
 "averiguaciones":  10507,
 "population": 881598,
-"rate": 1191.8,
+"rate": "1,192",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,057 - 1,438)" 
@@ -958,9 +958,9 @@
 "year": 1998,
 "averiguaciones":  25043,
 "population": 2372958,
-"rate": 1055.3,
+"rate": "1,055",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[822 - 1,057)" 
 },
 "SIN": {
@@ -968,7 +968,7 @@
 "year": 1998,
 "averiguaciones":  19520,
 "population": 2494684,
-"rate": 782.46,
+"rate": "  782",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -978,7 +978,7 @@
 "year": 1998,
 "averiguaciones":  48066,
 "population": 2225692,
-"rate": 2159.6,
+"rate": "2,160",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,949 - 6,322]" 
@@ -988,7 +988,7 @@
 "year": 1998,
 "averiguaciones":  31146,
 "population": 1930380,
-"rate": 1613.5,
+"rate": "1,613",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -998,7 +998,7 @@
 "year": 1998,
 "averiguaciones":  38074,
 "population": 2700636,
-"rate": 1409.8,
+"rate": "1,410",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,057 - 1,438)" 
@@ -1008,7 +1008,7 @@
 "year": 1998,
 "averiguaciones":   6905,
 "population": 983404,
-"rate": 702.15,
+"rate": "  702",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -1018,7 +1018,7 @@
 "year": 1998,
 "averiguaciones":  61085,
 "population": 7191469,
-"rate": 849.41,
+"rate": "  849",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -1028,9 +1028,9 @@
 "year": 1998,
 "averiguaciones":  45293,
 "population": 1682140,
-"rate": 2692.6,
+"rate": "2,693",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -1038,30 +1038,30 @@
 "year": 1998,
 "averiguaciones":   9555,
 "population": 1426816,
-"rate": 669.67,
+"rate": "  670",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[145 - 822)" 
 } 
 },
 "1999": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 1999,
 "averiguaciones":  11219,
 "population": 1000152,
-"rate": 1121.7,
-"name": "AGU",
+"rate": "1,122",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 1999,
 "averiguaciones": 1.3212e+05,
 "population": 2509531,
-"rate": 5264.5,
-"name": "BCN",
+"rate": "5,265",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -1070,7 +1070,7 @@
 "year": 1999,
 "averiguaciones":  12377,
 "population": 459898,
-"rate": 2691.2,
+"rate": "2,691",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -1080,7 +1080,7 @@
 "year": 1999,
 "averiguaciones":   8666,
 "population": 694065,
-"rate": 1248.6,
+"rate": "1,249",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[1,057 - 1,438)" 
@@ -1090,7 +1090,7 @@
 "year": 1999,
 "averiguaciones":  19619,
 "population": 2374093,
-"rate": 826.38,
+"rate": "  826",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[822 - 1,057)" 
@@ -1100,38 +1100,38 @@
 "year": 1999,
 "averiguaciones":   5088,
 "population": 547220,
-"rate": 929.79,
+"rate": "  930",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[822 - 1,057)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 1999,
 "averiguaciones":  31767,
 "population": 4124132,
-"rate": 770.27,
-"name": "CHP",
+"rate": "  770",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 1999,
 "averiguaciones":  57970,
 "population": 2957462,
-"rate": 1960.1,
-"name": "CHH",
+"rate": "1,960",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 1999,
 "averiguaciones": 2.2721e+05,
 "population": 8936556,
-"rate": 2542.5,
-"name": "DIF",
+"rate": "2,542",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -1140,18 +1140,18 @@
 "year": 1999,
 "averiguaciones":  12934,
 "population": 1492959,
-"rate": 866.33,
+"rate": "  866",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[822 - 1,057)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 1999,
 "averiguaciones":  34870,
 "population": 5128910,
-"rate": 679.87,
-"name": "GUA",
+"rate": "  680",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[145 - 822)" 
 },
@@ -1160,18 +1160,18 @@
 "year": 1999,
 "averiguaciones":  29474,
 "population": 3221127,
-"rate": 915.02,
+"rate": "  915",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 1999,
 "averiguaciones":  17921,
 "population": 2382633,
-"rate": 752.15,
-"name": "HID",
+"rate": "  752",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[145 - 822)" 
 },
@@ -1180,7 +1180,7 @@
 "year": 1999,
 "averiguaciones":  82468,
 "population": 6482823,
-"rate": 1272.1,
+"rate": "1,272",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -1190,19 +1190,19 @@
 "year": 1999,
 "averiguaciones": 1.8733e+05,
 "population": 12805993,
-"rate": 1462.8,
+"rate": "1,463",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 1999,
 "averiguaciones":  29625,
 "population": 4160466,
-"rate": 712.06,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  712",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -1210,7 +1210,7 @@
 "year": 1999,
 "averiguaciones":  28836,
 "population": 1584898,
-"rate": 1819.4,
+"rate": "1,819",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -1220,19 +1220,19 @@
 "year": 1999,
 "averiguaciones":   6378,
 "population": 933374,
-"rate": 683.33,
+"rate": "  683",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 1999,
 "averiguaciones":  54317,
 "population": 3913478,
-"rate":   1388,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,388",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -1240,7 +1240,7 @@
 "year": 1999,
 "averiguaciones":  32330,
 "population": 3663176,
-"rate": 882.57,
+"rate": "  883",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -1250,19 +1250,19 @@
 "year": 1999,
 "averiguaciones":  49865,
 "population": 5219266,
-"rate":  955.4,
+"rate": "  955",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 1999,
 "averiguaciones":  18254,
 "population": 1540766,
-"rate": 1184.7,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,185",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -1270,7 +1270,7 @@
 "year": 1999,
 "averiguaciones":  18278,
 "population": 919795,
-"rate": 1987.2,
+"rate": "1,987",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -1280,9 +1280,9 @@
 "year": 1999,
 "averiguaciones":  42455,
 "population": 2384274,
-"rate": 1780.6,
+"rate": "1,781",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -1290,7 +1290,7 @@
 "year": 1999,
 "averiguaciones":  19088,
 "population": 2523038,
-"rate": 756.55,
+"rate": "  757",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -1300,7 +1300,7 @@
 "year": 1999,
 "averiguaciones":  27622,
 "population": 2268909,
-"rate": 1217.4,
+"rate": "1,217",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -1310,7 +1310,7 @@
 "year": 1999,
 "averiguaciones":  26933,
 "population": 1961040,
-"rate": 1373.4,
+"rate": "1,373",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,057 - 1,438)" 
@@ -1320,7 +1320,7 @@
 "year": 1999,
 "averiguaciones":  41809,
 "population": 2760094,
-"rate": 1514.8,
+"rate": "1,515",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -1330,7 +1330,7 @@
 "year": 1999,
 "averiguaciones":   5305,
 "population": 1002730,
-"rate": 529.06,
+"rate": "  529",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -1340,7 +1340,7 @@
 "year": 1999,
 "averiguaciones":  58976,
 "population": 7220880,
-"rate": 816.74,
+"rate": "  817",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[145 - 822)" 
@@ -1350,9 +1350,9 @@
 "year": 1999,
 "averiguaciones":  47735,
 "population": 1708452,
-"rate": 2794.1,
+"rate": "2,794",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -1360,30 +1360,30 @@
 "year": 1999,
 "averiguaciones":  11630,
 "population": 1422351,
-"rate": 817.66,
+"rate": "  818",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[145 - 822)" 
 } 
 },
 "2000": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2000,
 "averiguaciones":  10834,
 "population": 1017005,
-"rate": 1065.3,
-"name": "AGU",
+"rate": "1,065",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2000,
 "averiguaciones": 1.0985e+05,
 "population": 2588605,
-"rate": 4243.5,
-"name": "BCN",
+"rate": "4,244",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -1392,7 +1392,7 @@
 "year": 2000,
 "averiguaciones":  13371,
 "population": 473322,
-"rate": 2824.9,
+"rate": "2,825",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -1402,7 +1402,7 @@
 "year": 2000,
 "averiguaciones":   5999,
 "population": 707358,
-"rate": 848.09,
+"rate": "  848",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[822 - 1,057)" 
@@ -1412,7 +1412,7 @@
 "year": 2000,
 "averiguaciones":  26397,
 "population": 2413499,
-"rate": 1093.7,
+"rate": "1,094",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -1422,38 +1422,38 @@
 "year": 2000,
 "averiguaciones":   4480,
 "population": 554130,
-"rate": 808.47,
+"rate": "  808",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[145 - 822)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2000,
 "averiguaciones":  29804,
 "population": 4202342,
-"rate": 709.22,
-"name": "CHP",
+"rate": "  709",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2000,
 "averiguaciones":  52955,
 "population": 3018308,
-"rate": 1754.5,
-"name": "CHH",
+"rate": "1,754",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2000,
 "averiguaciones": 1.7675e+05,
 "population": 8953032,
-"rate": 1974.2,
-"name": "DIF",
+"rate": "1,974",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -1462,18 +1462,18 @@
 "year": 2000,
 "averiguaciones":  22012,
 "population": 1504712,
-"rate": 1462.9,
+"rate": "1,463",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,438 - 1,949)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2000,
 "averiguaciones":  52929,
 "population": 5157152,
-"rate": 1026.3,
-"name": "GUA",
+"rate": "1,026",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[822 - 1,057)" 
 },
@@ -1482,18 +1482,18 @@
 "year": 2000,
 "averiguaciones":  33582,
 "population": 3233460,
-"rate": 1038.6,
+"rate": "1,039",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2000,
 "averiguaciones":  16760,
 "population": 2399371,
-"rate": 698.52,
-"name": "HID",
+"rate": "  699",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[145 - 822)" 
 },
@@ -1502,7 +1502,7 @@
 "year": 2000,
 "averiguaciones":  85984,
 "population": 6552940,
-"rate": 1312.1,
+"rate": "1,312",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -1512,19 +1512,19 @@
 "year": 2000,
 "averiguaciones": 1.9022e+05,
 "population": 13064174,
-"rate":   1456,
+"rate": "1,456",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2000,
 "averiguaciones":  24334,
 "population": 4169568,
-"rate": 583.61,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  584",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -1532,7 +1532,7 @@
 "year": 2000,
 "averiguaciones":  28199,
 "population": 1601568,
-"rate": 1760.7,
+"rate": "1,761",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -1542,19 +1542,19 @@
 "year": 2000,
 "averiguaciones":   9350,
 "population": 941794,
-"rate": 992.79,
+"rate": "  993",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[822 - 1,057)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2000,
 "averiguaciones":  57284,
 "population": 3988482,
-"rate": 1436.2,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,436",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -1562,7 +1562,7 @@
 "year": 2000,
 "averiguaciones":  31870,
 "population": 3674628,
-"rate":  867.3,
+"rate": "  867",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -1572,19 +1572,19 @@
 "year": 2000,
 "averiguaciones":  54340,
 "population": 5275734,
-"rate":   1030,
+"rate": "1,030",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2000,
 "averiguaciones":  15739,
 "population": 1566797,
-"rate": 1004.5,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,005",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -1592,7 +1592,7 @@
 "year": 2000,
 "averiguaciones":  22757,
 "population": 957640,
-"rate": 2376.4,
+"rate": "2,376",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -1602,9 +1602,9 @@
 "year": 2000,
 "averiguaciones":  48442,
 "population": 2398757,
-"rate": 2019.5,
+"rate": "2,019",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,949 - 6,322]" 
 },
 "SIN": {
@@ -1612,7 +1612,7 @@
 "year": 2000,
 "averiguaciones":  21013,
 "population": 2554568,
-"rate": 822.57,
+"rate": "  823",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -1622,7 +1622,7 @@
 "year": 2000,
 "averiguaciones":  21429,
 "population": 2310246,
-"rate": 927.56,
+"rate": "  928",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[822 - 1,057)" 
@@ -1632,7 +1632,7 @@
 "year": 2000,
 "averiguaciones":  38275,
 "population": 1990196,
-"rate": 1923.2,
+"rate": "1,923",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -1642,7 +1642,7 @@
 "year": 2000,
 "averiguaciones":  42686,
 "population": 2821330,
-"rate":   1513,
+"rate": "1,513",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -1652,7 +1652,7 @@
 "year": 2000,
 "averiguaciones":   5579,
 "population": 1019616,
-"rate": 547.17,
+"rate": "  547",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -1662,7 +1662,7 @@
 "year": 2000,
 "averiguaciones":  57750,
 "population": 7245217,
-"rate": 797.08,
+"rate": "  797",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[145 - 822)" 
@@ -1672,9 +1672,9 @@
 "year": 2000,
 "averiguaciones":  44105,
 "population": 1733690,
-"rate":   2544,
+"rate": "2,544",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -1682,30 +1682,30 @@
 "year": 2000,
 "averiguaciones":  12640,
 "population": 1419814,
-"rate": 890.26,
+"rate": "  890",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2001": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2001,
 "averiguaciones":  11012,
 "population": 1034673,
-"rate": 1064.3,
-"name": "AGU",
+"rate": "1,064",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2001,
 "averiguaciones": 1.0576e+05,
 "population": 2665100,
-"rate": 3968.5,
-"name": "BCN",
+"rate": "3,968",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -1714,7 +1714,7 @@
 "year": 2001,
 "averiguaciones":  13021,
 "population": 487856,
-"rate":   2669,
+"rate": "2,669",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -1724,7 +1724,7 @@
 "year": 2001,
 "averiguaciones":   4061,
 "population": 720777,
-"rate": 563.42,
+"rate": "  563",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -1734,7 +1734,7 @@
 "year": 2001,
 "averiguaciones":  29426,
 "population": 2453082,
-"rate": 1199.5,
+"rate": "1,200",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -1744,38 +1744,38 @@
 "year": 2001,
 "averiguaciones":   4815,
 "population": 562178,
-"rate": 856.49,
+"rate": "  856",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[822 - 1,057)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2001,
 "averiguaciones":  34878,
 "population": 4279389,
-"rate": 815.02,
-"name": "CHP",
+"rate": "  815",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2001,
 "averiguaciones":  61610,
 "population": 3078290,
-"rate": 2001.4,
-"name": "CHH",
+"rate": "2,001",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2001,
 "averiguaciones": 1.7147e+05,
 "population": 8967336,
-"rate": 1912.2,
-"name": "DIF",
+"rate": "1,912",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -1784,18 +1784,18 @@
 "year": 2001,
 "averiguaciones":  21841,
 "population": 1518804,
-"rate":   1438,
+"rate": "1,438",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,438 - 1,949)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2001,
 "averiguaciones":  63843,
 "population": 5189584,
-"rate": 1230.2,
-"name": "GUA",
+"rate": "1,230",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -1804,18 +1804,18 @@
 "year": 2001,
 "averiguaciones":  30530,
 "population": 3249338,
-"rate": 939.58,
+"rate": "  940",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2001,
 "averiguaciones":  21881,
 "population": 2419951,
-"rate": 904.19,
-"name": "HID",
+"rate": "  904",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[822 - 1,057)" 
 },
@@ -1824,7 +1824,7 @@
 "year": 2001,
 "averiguaciones":  94905,
 "population": 6632028,
-"rate":   1431,
+"rate": "1,431",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -1834,19 +1834,19 @@
 "year": 2001,
 "averiguaciones": 2.0948e+05,
 "population": 13327545,
-"rate": 1571.8,
+"rate": "1,572",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2001,
 "averiguaciones":  26648,
 "population": 4185422,
-"rate": 636.69,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  637",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -1854,7 +1854,7 @@
 "year": 2001,
 "averiguaciones":  33815,
 "population": 1620334,
-"rate": 2086.9,
+"rate": "2,087",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -1864,19 +1864,19 @@
 "year": 2001,
 "averiguaciones":   9662,
 "population": 952620,
-"rate": 1014.3,
+"rate": "1,014",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[822 - 1,057)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2001,
 "averiguaciones":  61887,
 "population": 4065193,
-"rate": 1522.4,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,522",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,438 - 1,949)" 
 },
 "OAX": {
@@ -1884,7 +1884,7 @@
 "year": 2001,
 "averiguaciones":  39544,
 "population": 3687110,
-"rate": 1072.5,
+"rate": "1,072",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,057 - 1,438)" 
@@ -1894,19 +1894,19 @@
 "year": 2001,
 "averiguaciones":  59764,
 "population": 5332966,
-"rate": 1120.7,
+"rate": "1,121",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2001,
 "averiguaciones":  18943,
 "population": 1593332,
-"rate": 1188.9,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,189",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -1914,7 +1914,7 @@
 "year": 2001,
 "averiguaciones":  22685,
 "population": 995884,
-"rate": 2277.9,
+"rate": "2,278",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -1924,9 +1924,9 @@
 "year": 2001,
 "averiguaciones":  46160,
 "population": 2416516,
-"rate": 1910.2,
+"rate": "1,910",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -1934,7 +1934,7 @@
 "year": 2001,
 "averiguaciones":  19937,
 "population": 2586842,
-"rate": 770.71,
+"rate": "  771",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -1944,7 +1944,7 @@
 "year": 2001,
 "averiguaciones":  17391,
 "population": 2351912,
-"rate": 739.44,
+"rate": "  739",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[145 - 822)" 
@@ -1954,7 +1954,7 @@
 "year": 2001,
 "averiguaciones":  37986,
 "population": 2019088,
-"rate": 1881.3,
+"rate": "1,881",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -1964,7 +1964,7 @@
 "year": 2001,
 "averiguaciones":  45952,
 "population": 2881544,
-"rate": 1594.7,
+"rate": "1,595",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -1974,7 +1974,7 @@
 "year": 2001,
 "averiguaciones":   5050,
 "population": 1036475,
-"rate": 487.23,
+"rate": "  487",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -1984,7 +1984,7 @@
 "year": 2001,
 "averiguaciones":  58838,
 "population": 7275892,
-"rate": 808.67,
+"rate": "  809",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[145 - 822)" 
@@ -1994,9 +1994,9 @@
 "year": 2001,
 "averiguaciones":  43052,
 "population": 1758905,
-"rate": 2447.7,
+"rate": "2,448",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -2004,30 +2004,30 @@
 "year": 2001,
 "averiguaciones":  12485,
 "population": 1424152,
-"rate": 876.66,
+"rate": "  877",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2002": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2002,
 "averiguaciones":  11991,
 "population": 1053016,
-"rate": 1138.7,
-"name": "AGU",
+"rate": "1,139",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2002,
 "averiguaciones":  99883,
 "population": 2739379,
-"rate": 3646.2,
-"name": "BCN",
+"rate": "3,646",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -2036,7 +2036,7 @@
 "year": 2002,
 "averiguaciones":  13663,
 "population": 503676,
-"rate": 2712.7,
+"rate": "2,713",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -2046,7 +2046,7 @@
 "year": 2002,
 "averiguaciones":   2910,
 "population": 734330,
-"rate": 396.28,
+"rate": "  396",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -2056,7 +2056,7 @@
 "year": 2002,
 "averiguaciones":  27119,
 "population": 2492591,
-"rate":   1088,
+"rate": "1,088",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -2066,38 +2066,38 @@
 "year": 2002,
 "averiguaciones":   4867,
 "population": 570900,
-"rate": 852.51,
+"rate": "  853",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[822 - 1,057)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2002,
 "averiguaciones":  35605,
 "population": 4358108,
-"rate": 816.98,
-"name": "CHP",
+"rate": "  817",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2002,
 "averiguaciones":  63043,
 "population": 3136673,
-"rate": 2009.9,
-"name": "CHH",
+"rate": "2,010",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2002,
 "averiguaciones": 1.7809e+05,
 "population": 8977879,
-"rate": 1983.7,
-"name": "DIF",
+"rate": "1,984",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -2106,18 +2106,18 @@
 "year": 2002,
 "averiguaciones":  16535,
 "population": 1533026,
-"rate": 1078.6,
+"rate": "1,079",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,057 - 1,438)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2002,
 "averiguaciones":  62973,
 "population": 5228205,
-"rate": 1204.5,
-"name": "GUA",
+"rate": "1,204",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -2126,18 +2126,18 @@
 "year": 2002,
 "averiguaciones":  29791,
 "population": 3267370,
-"rate": 911.77,
+"rate": "  912",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2002,
 "averiguaciones":  21962,
 "population": 2443912,
-"rate": 898.64,
-"name": "HID",
+"rate": "  899",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[822 - 1,057)" 
 },
@@ -2146,7 +2146,7 @@
 "year": 2002,
 "averiguaciones":  96196,
 "population": 6712270,
-"rate": 1433.1,
+"rate": "1,433",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -2156,19 +2156,19 @@
 "year": 2002,
 "averiguaciones": 2.1867e+05,
 "population": 13591628,
-"rate": 1608.8,
+"rate": "1,609",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2002,
 "averiguaciones":  27444,
 "population": 4203024,
-"rate": 652.96,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  653",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -2176,7 +2176,7 @@
 "year": 2002,
 "averiguaciones":  31869,
 "population": 1639014,
-"rate": 1944.4,
+"rate": "1,944",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -2186,19 +2186,19 @@
 "year": 2002,
 "averiguaciones":   6411,
 "population": 964650,
-"rate": 664.59,
+"rate": "  665",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2002,
 "averiguaciones":  57299,
 "population": 4141875,
-"rate": 1383.4,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,383",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -2206,7 +2206,7 @@
 "year": 2002,
 "averiguaciones":  35109,
 "population": 3706164,
-"rate": 947.31,
+"rate": "  947",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -2216,19 +2216,19 @@
 "year": 2002,
 "averiguaciones":  60627,
 "population": 5396324,
-"rate": 1123.5,
+"rate": "1,123",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2002,
 "averiguaciones":  19667,
 "population": 1622074,
-"rate": 1212.5,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,212",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -2236,7 +2236,7 @@
 "year": 2002,
 "averiguaciones":  24634,
 "population": 1034970,
-"rate": 2380.2,
+"rate": "2,380",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -2246,9 +2246,9 @@
 "year": 2002,
 "averiguaciones":  42811,
 "population": 2435418,
-"rate": 1757.8,
+"rate": "1,758",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -2256,7 +2256,7 @@
 "year": 2002,
 "averiguaciones":  19911,
 "population": 2617824,
-"rate": 760.59,
+"rate": "  761",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -2266,7 +2266,7 @@
 "year": 2002,
 "averiguaciones":  16831,
 "population": 2394924,
-"rate": 702.78,
+"rate": "  703",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[145 - 822)" 
@@ -2276,7 +2276,7 @@
 "year": 2002,
 "averiguaciones":  38493,
 "population": 2048198,
-"rate": 1879.4,
+"rate": "1,879",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -2286,7 +2286,7 @@
 "year": 2002,
 "averiguaciones":  45799,
 "population": 2939834,
-"rate": 1557.9,
+"rate": "1,558",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -2296,7 +2296,7 @@
 "year": 2002,
 "averiguaciones":   5378,
 "population": 1054524,
-"rate": 509.99,
+"rate": "  510",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -2306,7 +2306,7 @@
 "year": 2002,
 "averiguaciones":  62522,
 "population": 7313628,
-"rate": 854.87,
+"rate": "  855",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -2316,9 +2316,9 @@
 "year": 2002,
 "averiguaciones":  46780,
 "population": 1784528,
-"rate": 2621.4,
+"rate": "2,621",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -2326,30 +2326,30 @@
 "year": 2002,
 "averiguaciones":  14602,
 "population": 1428980,
-"rate": 1021.9,
+"rate": "1,022",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2003": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2003,
 "averiguaciones":  12170,
 "population": 1071032,
-"rate": 1136.3,
-"name": "AGU",
+"rate": "1,136",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2003,
 "averiguaciones":  96139,
 "population": 2810931,
-"rate": 3420.2,
-"name": "BCN",
+"rate": "3,420",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -2358,7 +2358,7 @@
 "year": 2003,
 "averiguaciones":  13300,
 "population": 520478,
-"rate": 2555.3,
+"rate": "2,555",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -2368,7 +2368,7 @@
 "year": 2003,
 "averiguaciones":   2203,
 "population": 747868,
-"rate": 294.57,
+"rate": "  295",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -2378,7 +2378,7 @@
 "year": 2003,
 "averiguaciones":  28228,
 "population": 2531234,
-"rate": 1115.2,
+"rate": "1,115",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -2388,38 +2388,38 @@
 "year": 2003,
 "averiguaciones":   5022,
 "population": 579781,
-"rate": 866.19,
+"rate": "  866",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[822 - 1,057)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2003,
 "averiguaciones":  34832,
 "population": 4436926,
-"rate": 785.05,
-"name": "CHP",
+"rate": "  785",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2003,
 "averiguaciones":  60166,
 "population": 3192160,
-"rate": 1884.8,
-"name": "CHH",
+"rate": "1,885",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2003,
 "averiguaciones": 1.7283e+05,
 "population": 8982537,
-"rate":   1924,
-"name": "DIF",
+"rate": "1,924",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -2428,18 +2428,18 @@
 "year": 2003,
 "averiguaciones":  12537,
 "population": 1545979,
-"rate": 810.94,
+"rate": "  811",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2003,
 "averiguaciones":  60941,
 "population": 5265170,
-"rate": 1157.4,
-"name": "GUA",
+"rate": "1,157",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -2448,18 +2448,18 @@
 "year": 2003,
 "averiguaciones":  29354,
 "population": 3284024,
-"rate": 893.84,
+"rate": "  894",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[822 - 1,057)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2003,
 "averiguaciones":  24680,
 "population": 2468402,
-"rate": 999.84,
-"name": "HID",
+"rate": "1,000",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[822 - 1,057)" 
 },
@@ -2468,7 +2468,7 @@
 "year": 2003,
 "averiguaciones":  91587,
 "population": 6788019,
-"rate": 1349.2,
+"rate": "1,349",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -2478,19 +2478,19 @@
 "year": 2003,
 "averiguaciones": 2.1833e+05,
 "population": 13850796,
-"rate": 1576.3,
+"rate": "1,576",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2003,
 "averiguaciones":  27031,
 "population": 4216484,
-"rate": 641.08,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  641",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -2498,7 +2498,7 @@
 "year": 2003,
 "averiguaciones":  31529,
 "population": 1656148,
-"rate": 1903.8,
+"rate": "1,904",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,438 - 1,949)" 
@@ -2508,19 +2508,19 @@
 "year": 2003,
 "averiguaciones":   5676,
 "population": 976988,
-"rate": 580.97,
+"rate": "  581",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2003,
 "averiguaciones":  52151,
 "population": 4217487,
-"rate": 1236.5,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,237",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -2528,7 +2528,7 @@
 "year": 2003,
 "averiguaciones":  40761,
 "population": 3727409,
-"rate": 1093.5,
+"rate": "1,094",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,057 - 1,438)" 
@@ -2538,19 +2538,19 @@
 "year": 2003,
 "averiguaciones":  64752,
 "population": 5460820,
-"rate": 1185.8,
+"rate": "1,186",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2003,
 "averiguaciones":  20441,
 "population": 1651460,
-"rate": 1237.8,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,238",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -2558,7 +2558,7 @@
 "year": 2003,
 "averiguaciones":  26127,
 "population": 1074714,
-"rate": 2431.1,
+"rate": "2,431",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -2568,9 +2568,9 @@
 "year": 2003,
 "averiguaciones":  44357,
 "population": 2452722,
-"rate": 1808.5,
+"rate": "1,808",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -2578,7 +2578,7 @@
 "year": 2003,
 "averiguaciones":  20391,
 "population": 2646634,
-"rate": 770.45,
+"rate": "  770",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -2588,7 +2588,7 @@
 "year": 2003,
 "averiguaciones":  16185,
 "population": 2438414,
-"rate": 663.75,
+"rate": "  664",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[145 - 822)" 
@@ -2598,7 +2598,7 @@
 "year": 2003,
 "averiguaciones":  39747,
 "population": 2077382,
-"rate": 1913.3,
+"rate": "1,913",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,438 - 1,949)" 
@@ -2608,7 +2608,7 @@
 "year": 2003,
 "averiguaciones":  47504,
 "population": 2995520,
-"rate": 1585.8,
+"rate": "1,586",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -2618,7 +2618,7 @@
 "year": 2003,
 "averiguaciones":   5264,
 "population": 1073033,
-"rate": 490.57,
+"rate": "  491",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -2628,7 +2628,7 @@
 "year": 2003,
 "averiguaciones":  66708,
 "population": 7352821,
-"rate": 907.24,
+"rate": "  907",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -2638,9 +2638,9 @@
 "year": 2003,
 "averiguaciones":  51131,
 "population": 1810254,
-"rate": 2824.5,
+"rate": "2,825",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -2648,30 +2648,30 @@
 "year": 2003,
 "averiguaciones":  14602,
 "population": 1432102,
-"rate": 1019.6,
+"rate": "1,020",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2004": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2004,
 "averiguaciones":  12344,
 "population": 1088275,
-"rate": 1134.3,
-"name": "AGU",
+"rate": "1,134",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2004,
 "averiguaciones": 1.122e+05,
 "population": 2879305,
-"rate": 3896.8,
-"name": "BCN",
+"rate": "3,897",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -2680,7 +2680,7 @@
 "year": 2004,
 "averiguaciones":  13934,
 "population": 537950,
-"rate": 2590.2,
+"rate": "2,590",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -2690,7 +2690,7 @@
 "year": 2004,
 "averiguaciones":   1885,
 "population": 761360,
-"rate": 247.58,
+"rate": "  248",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -2700,7 +2700,7 @@
 "year": 2004,
 "averiguaciones":  28832,
 "population": 2568863,
-"rate": 1122.4,
+"rate": "1,122",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -2710,38 +2710,38 @@
 "year": 2004,
 "averiguaciones":   6425,
 "population": 588989,
-"rate": 1090.8,
+"rate": "1,091",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,057 - 1,438)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2004,
 "averiguaciones":  36173,
 "population": 4512810,
-"rate": 801.56,
-"name": "CHP",
+"rate": "  802",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2004,
 "averiguaciones":  59289,
 "population": 3244587,
-"rate": 1827.3,
-"name": "CHH",
+"rate": "1,827",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2004,
 "averiguaciones": 1.6248e+05,
 "population": 8982860,
-"rate": 1808.8,
-"name": "DIF",
+"rate": "1,809",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -2750,18 +2750,18 @@
 "year": 2004,
 "averiguaciones":  13251,
 "population": 1558966,
-"rate": 849.99,
+"rate": "  850",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[822 - 1,057)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2004,
 "averiguaciones":  66933,
 "population": 5295090,
-"rate": 1264.1,
-"name": "GUA",
+"rate": "1,264",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -2770,18 +2770,18 @@
 "year": 2004,
 "averiguaciones":  20910,
 "population": 3298900,
-"rate": 633.85,
+"rate": "  634",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2004,
 "averiguaciones":  27744,
 "population": 2492457,
-"rate": 1113.1,
-"name": "HID",
+"rate": "1,113",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -2790,7 +2790,7 @@
 "year": 2004,
 "averiguaciones":  81558,
 "population": 6863332,
-"rate": 1188.3,
+"rate": "1,188",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -2800,19 +2800,19 @@
 "year": 2004,
 "averiguaciones": 2.2143e+05,
 "population": 14105797,
-"rate": 1569.8,
+"rate": "1,570",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2004,
 "averiguaciones":  26322,
 "population": 4227404,
-"rate": 622.65,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  623",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -2820,7 +2820,7 @@
 "year": 2004,
 "averiguaciones":  34768,
 "population": 1672916,
-"rate": 2078.3,
+"rate": "2,078",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -2830,19 +2830,19 @@
 "year": 2004,
 "averiguaciones":   4299,
 "population": 990286,
-"rate": 434.12,
+"rate": "  434",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2004,
 "averiguaciones":  49807,
 "population": 4292596,
-"rate": 1160.3,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,160",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -2850,7 +2850,7 @@
 "year": 2004,
 "averiguaciones":  37616,
 "population": 3744217,
-"rate": 1004.6,
+"rate": "1,005",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -2860,19 +2860,19 @@
 "year": 2004,
 "averiguaciones":  64438,
 "population": 5519573,
-"rate": 1167.5,
+"rate": "1,167",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2004,
 "averiguaciones":  18462,
 "population": 1679348,
-"rate": 1099.4,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,099",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -2880,7 +2880,7 @@
 "year": 2004,
 "averiguaciones":  24990,
 "population": 1114536,
-"rate": 2242.2,
+"rate": "2,242",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -2890,9 +2890,9 @@
 "year": 2004,
 "averiguaciones":  45373,
 "population": 2469055,
-"rate": 1837.7,
+"rate": "1,838",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -2900,7 +2900,7 @@
 "year": 2004,
 "averiguaciones":  18522,
 "population": 2674642,
-"rate":  692.5,
+"rate": "  692",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -2910,7 +2910,7 @@
 "year": 2004,
 "averiguaciones":  28279,
 "population": 2480978,
-"rate": 1139.8,
+"rate": "1,140",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -2920,7 +2920,7 @@
 "year": 2004,
 "averiguaciones":  23989,
 "population": 2106198,
-"rate":   1139,
+"rate": "1,139",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,057 - 1,438)" 
@@ -2930,7 +2930,7 @@
 "year": 2004,
 "averiguaciones":  51376,
 "population": 3048880,
-"rate": 1685.1,
+"rate": "1,685",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -2940,7 +2940,7 @@
 "year": 2004,
 "averiguaciones":   4673,
 "population": 1090566,
-"rate": 428.49,
+"rate": "  428",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -2950,7 +2950,7 @@
 "year": 2004,
 "averiguaciones":  63754,
 "population": 7391162,
-"rate": 862.57,
+"rate": "  863",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -2960,9 +2960,9 @@
 "year": 2004,
 "averiguaciones":  48423,
 "population": 1835636,
-"rate": 2637.9,
+"rate": "2,638",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -2970,30 +2970,30 @@
 "year": 2004,
 "averiguaciones":  13835,
 "population": 1434982,
-"rate": 964.12,
+"rate": "  964",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2005": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2005,
 "averiguaciones":  12163,
 "population": 1105418,
-"rate": 1100.3,
-"name": "AGU",
+"rate": "1,100",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2005,
 "averiguaciones": 1.0117e+05,
 "population": 2945057,
-"rate": 3435.1,
-"name": "BCN",
+"rate": "3,435",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -3002,7 +3002,7 @@
 "year": 2005,
 "averiguaciones":  16993,
 "population": 555900,
-"rate": 3056.8,
+"rate": "3,057",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -3012,7 +3012,7 @@
 "year": 2005,
 "averiguaciones":   1547,
 "population": 774858,
-"rate": 199.65,
+"rate": "  200",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -3022,7 +3022,7 @@
 "year": 2005,
 "averiguaciones":  24927,
 "population": 2606425,
-"rate": 956.37,
+"rate": "  956",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[822 - 1,057)" 
@@ -3032,38 +3032,38 @@
 "year": 2005,
 "averiguaciones":   9794,
 "population": 599444,
-"rate": 1633.8,
+"rate": "1,634",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,438 - 1,949)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2005,
 "averiguaciones":  31789,
 "population": 4582616,
-"rate": 693.69,
-"name": "CHP",
+"rate": "  694",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2005,
 "averiguaciones":  67690,
 "population": 3296374,
-"rate": 2053.5,
-"name": "CHH",
+"rate": "2,053",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2005,
 "averiguaciones": 1.54e+05,
 "population": 8981434,
-"rate": 1714.6,
-"name": "DIF",
+"rate": "1,715",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -3072,18 +3072,18 @@
 "year": 2005,
 "averiguaciones":  10209,
 "population": 1575853,
-"rate": 647.84,
+"rate": "  648",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2005,
 "averiguaciones":  75732,
 "population": 5320564,
-"rate": 1423.4,
-"name": "GUA",
+"rate": "1,423",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -3092,18 +3092,18 @@
 "year": 2005,
 "averiguaciones":  18051,
 "population": 3315913,
-"rate": 544.37,
+"rate": "  544",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2005,
 "averiguaciones":  30723,
 "population": 2518216,
-"rate":   1220,
-"name": "HID",
+"rate": "1,220",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -3112,7 +3112,7 @@
 "year": 2005,
 "averiguaciones":  68928,
 "population": 6952212,
-"rate": 991.45,
+"rate": "  991",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[822 - 1,057)" 
@@ -3122,19 +3122,19 @@
 "year": 2005,
 "averiguaciones": 2.3427e+05,
 "population": 14365268,
-"rate": 1630.8,
+"rate": "1,631",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2005,
 "averiguaciones":  26010,
 "population": 4246321,
-"rate": 612.53,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  613",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -3142,7 +3142,7 @@
 "year": 2005,
 "averiguaciones":  40601,
 "population": 1693254,
-"rate": 2397.8,
+"rate": "2,398",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -3152,19 +3152,19 @@
 "year": 2005,
 "averiguaciones":  10021,
 "population": 1006746,
-"rate": 995.39,
+"rate": "  995",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[822 - 1,057)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2005,
 "averiguaciones":  44254,
 "population": 4369661,
-"rate": 1012.8,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,013",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -3172,7 +3172,7 @@
 "year": 2005,
 "averiguaciones":  29603,
 "population": 3751652,
-"rate": 789.07,
+"rate": "  789",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[145 - 822)" 
@@ -3182,19 +3182,19 @@
 "year": 2005,
 "averiguaciones":  55918,
 "population": 5568212,
-"rate": 1004.2,
+"rate": "1,004",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2005,
 "averiguaciones":  16996,
 "population": 1704588,
-"rate": 997.07,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "  997",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -3202,7 +3202,7 @@
 "year": 2005,
 "averiguaciones":  23718,
 "population": 1154464,
-"rate": 2054.5,
+"rate": "2,054",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -3212,9 +3212,9 @@
 "year": 2005,
 "averiguaciones":  39345,
 "population": 2488784,
-"rate": 1580.9,
+"rate": "1,581",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -3222,7 +3222,7 @@
 "year": 2005,
 "averiguaciones":  22418,
 "population": 2705409,
-"rate": 828.64,
+"rate": "  829",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[822 - 1,057)" 
@@ -3232,7 +3232,7 @@
 "year": 2005,
 "averiguaciones":  43512,
 "population": 2521866,
-"rate": 1725.4,
+"rate": "1,725",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,438 - 1,949)" 
@@ -3242,7 +3242,7 @@
 "year": 2005,
 "averiguaciones":   7527,
 "population": 2133711,
-"rate": 352.77,
+"rate": "  353",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[145 - 822)" 
@@ -3252,7 +3252,7 @@
 "year": 2005,
 "averiguaciones":  52515,
 "population": 3102344,
-"rate": 1692.8,
+"rate": "1,693",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -3262,7 +3262,7 @@
 "year": 2005,
 "averiguaciones":  17794,
 "population": 1105902,
-"rate":   1609,
+"rate": "1,609",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[1,438 - 1,949)" 
@@ -3272,7 +3272,7 @@
 "year": 2005,
 "averiguaciones":  66182,
 "population": 7430703,
-"rate": 890.66,
+"rate": "  891",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -3282,9 +3282,9 @@
 "year": 2005,
 "averiguaciones":  49052,
 "population": 1860330,
-"rate": 2636.7,
+"rate": "2,637",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -3292,30 +3292,30 @@
 "year": 2005,
 "averiguaciones":  12232,
 "population": 1442668,
-"rate": 847.87,
+"rate": "  848",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2006": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2006,
 "averiguaciones":  14235,
 "population": 1123566,
-"rate":   1267,
-"name": "AGU",
+"rate": "1,267",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,057 - 1,438)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2006,
 "averiguaciones": 1.1208e+05,
 "population": 3009612,
-"rate": 3724.1,
-"name": "BCN",
+"rate": "3,724",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -3324,7 +3324,7 @@
 "year": 2006,
 "averiguaciones":  16689,
 "population": 574832,
-"rate": 2903.3,
+"rate": "2,903",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -3334,7 +3334,7 @@
 "year": 2006,
 "averiguaciones":   1963,
 "population": 788535,
-"rate": 248.94,
+"rate": "  249",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -3344,7 +3344,7 @@
 "year": 2006,
 "averiguaciones":  26928,
 "population": 2644676,
-"rate": 1018.2,
+"rate": "1,018",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[822 - 1,057)" 
@@ -3354,38 +3354,38 @@
 "year": 2006,
 "averiguaciones":   9777,
 "population": 611104,
-"rate": 1599.9,
+"rate": "1,600",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,438 - 1,949)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2006,
 "averiguaciones":  28855,
 "population": 4652106,
-"rate": 620.26,
-"name": "CHP",
+"rate": "  620",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2006,
 "averiguaciones":  67766,
 "population": 3349492,
-"rate": 2023.2,
-"name": "CHH",
+"rate": "2,023",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2006,
 "averiguaciones": 1.4927e+05,
 "population": 8978979,
-"rate": 1662.5,
-"name": "DIF",
+"rate": "1,662",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -3394,18 +3394,18 @@
 "year": 2006,
 "averiguaciones":   7728,
 "population": 1595446,
-"rate": 484.38,
+"rate": "  484",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2006,
 "averiguaciones":  79680,
 "population": 5355276,
-"rate": 1487.9,
-"name": "GUA",
+"rate": "1,488",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -3414,18 +3414,18 @@
 "year": 2006,
 "averiguaciones":  19765,
 "population": 3337660,
-"rate": 592.18,
+"rate": "  592",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2006,
 "averiguaciones":  31172,
 "population": 2548586,
-"rate": 1223.1,
-"name": "HID",
+"rate": "1,223",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -3434,7 +3434,7 @@
 "year": 2006,
 "averiguaciones":  72225,
 "population": 7051282,
-"rate": 1024.3,
+"rate": "1,024",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[822 - 1,057)" 
@@ -3444,19 +3444,19 @@
 "year": 2006,
 "averiguaciones": 2.3776e+05,
 "population": 14631162,
-"rate":   1625,
+"rate": "1,625",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2006,
 "averiguaciones":  31480,
 "population": 4274492,
-"rate": 736.46,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  736",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -3464,7 +3464,7 @@
 "year": 2006,
 "averiguaciones":  42447,
 "population": 1716033,
-"rate": 2473.6,
+"rate": "2,474",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -3474,19 +3474,19 @@
 "year": 2006,
 "averiguaciones":  24208,
 "population": 1025905,
-"rate": 2359.7,
+"rate": "2,360",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[1,949 - 6,322]" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2006,
 "averiguaciones":  46212,
 "population": 4448021,
-"rate": 1038.9,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,039",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -3494,7 +3494,7 @@
 "year": 2006,
 "averiguaciones":  35959,
 "population": 3763658,
-"rate": 955.43,
+"rate": "  955",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -3504,19 +3504,19 @@
 "year": 2006,
 "averiguaciones":  49576,
 "population": 5620901,
-"rate": 881.99,
+"rate": "  882",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2006,
 "averiguaciones":  16707,
 "population": 1731919,
-"rate": 964.65,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "  965",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -3524,7 +3524,7 @@
 "year": 2006,
 "averiguaciones":  24859,
 "population": 1196419,
-"rate": 2077.8,
+"rate": "2,078",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -3534,9 +3534,9 @@
 "year": 2006,
 "averiguaciones":  44410,
 "population": 2512494,
-"rate": 1767.6,
+"rate": "1,768",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -3544,7 +3544,7 @@
 "year": 2006,
 "averiguaciones":  21095,
 "population": 2737707,
-"rate": 770.54,
+"rate": "  771",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[145 - 822)" 
@@ -3554,7 +3554,7 @@
 "year": 2006,
 "averiguaciones":  37321,
 "population": 2564069,
-"rate": 1455.5,
+"rate": "1,456",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,438 - 1,949)" 
@@ -3564,7 +3564,7 @@
 "year": 2006,
 "averiguaciones":  26597,
 "population": 2160778,
-"rate": 1230.9,
+"rate": "1,231",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,057 - 1,438)" 
@@ -3574,7 +3574,7 @@
 "year": 2006,
 "averiguaciones":  53246,
 "population": 3156966,
-"rate": 1686.6,
+"rate": "1,687",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -3584,7 +3584,7 @@
 "year": 2006,
 "averiguaciones":   6565,
 "population": 1121774,
-"rate": 585.23,
+"rate": "  585",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -3594,7 +3594,7 @@
 "year": 2006,
 "averiguaciones":  70830,
 "population": 7478378,
-"rate": 947.13,
+"rate": "  947",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -3604,9 +3604,9 @@
 "year": 2006,
 "averiguaciones":  51170,
 "population": 1885603,
-"rate": 2713.7,
+"rate": "2,714",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -3614,30 +3614,30 @@
 "year": 2006,
 "averiguaciones":  12521,
 "population": 1453956,
-"rate": 861.17,
+"rate": "  861",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2007": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2007,
 "averiguaciones":  18331,
 "population": 1143522,
-"rate":   1603,
-"name": "AGU",
+"rate": "1,603",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2007,
 "averiguaciones": 1.2921e+05,
 "population": 3073746,
-"rate": 4203.7,
-"name": "BCN",
+"rate": "4,204",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -3646,7 +3646,7 @@
 "year": 2007,
 "averiguaciones":  19781,
 "population": 594991,
-"rate": 3324.6,
+"rate": "3,325",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -3656,7 +3656,7 @@
 "year": 2007,
 "averiguaciones":   1654,
 "population": 802543,
-"rate": 206.09,
+"rate": "  206",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -3666,7 +3666,7 @@
 "year": 2007,
 "averiguaciones":  32891,
 "population": 2683962,
-"rate": 1225.5,
+"rate": "1,225",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,057 - 1,438)" 
@@ -3676,38 +3676,38 @@
 "year": 2007,
 "averiguaciones":  10654,
 "population": 623876,
-"rate": 1707.7,
+"rate": "1,708",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,438 - 1,949)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2007,
 "averiguaciones":  31170,
 "population": 4725047,
-"rate": 659.68,
-"name": "CHP",
+"rate": "  660",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2007,
 "averiguaciones":  51825,
 "population": 3404030,
-"rate": 1522.5,
-"name": "CHH",
+"rate": "1,522",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2007,
 "averiguaciones": 1.6255e+05,
 "population": 8975327,
-"rate":   1811,
-"name": "DIF",
+"rate": "1,811",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -3716,18 +3716,18 @@
 "year": 2007,
 "averiguaciones":   8712,
 "population": 1616868,
-"rate": 538.82,
+"rate": "  539",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[145 - 822)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2007,
 "averiguaciones":  83899,
 "population": 5407332,
-"rate": 1551.6,
-"name": "GUA",
+"rate": "1,552",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -3736,18 +3736,18 @@
 "year": 2007,
 "averiguaciones":  24547,
 "population": 3365386,
-"rate":  729.4,
+"rate": "  729",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2007,
 "averiguaciones":  31585,
 "population": 2585203,
-"rate": 1221.8,
-"name": "HID",
+"rate": "1,222",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -3756,7 +3756,7 @@
 "year": 2007,
 "averiguaciones":  73610,
 "population": 7157616,
-"rate": 1028.4,
+"rate": "1,028",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[822 - 1,057)" 
@@ -3766,19 +3766,19 @@
 "year": 2007,
 "averiguaciones": 2.4681e+05,
 "population": 14902842,
-"rate": 1656.1,
+"rate": "1,656",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2007,
 "averiguaciones":  36236,
 "population": 4311970,
-"rate": 840.36,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  840",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[822 - 1,057)" 
 },
 "MOR": {
@@ -3786,7 +3786,7 @@
 "year": 2007,
 "averiguaciones":  43422,
 "population": 1740340,
-"rate":   2495,
+"rate": "2,495",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -3796,19 +3796,19 @@
 "year": 2007,
 "averiguaciones":  13642,
 "population": 1047288,
-"rate": 1302.6,
+"rate": "1,303",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[1,057 - 1,438)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2007,
 "averiguaciones":  53554,
 "population": 4527038,
-"rate":   1183,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,183",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -3816,7 +3816,7 @@
 "year": 2007,
 "averiguaciones":  32762,
 "population": 3788825,
-"rate":  864.7,
+"rate": "  865",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[822 - 1,057)" 
@@ -3826,19 +3826,19 @@
 "year": 2007,
 "averiguaciones":  53481,
 "population": 5686766,
-"rate": 940.45,
+"rate": "  940",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2007,
 "averiguaciones":  17463,
 "population": 1763790,
-"rate": 990.08,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "  990",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -3846,7 +3846,7 @@
 "year": 2007,
 "averiguaciones":  26433,
 "population": 1240082,
-"rate": 2131.6,
+"rate": "2,132",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -3856,9 +3856,9 @@
 "year": 2007,
 "averiguaciones":  49659,
 "population": 2540415,
-"rate": 1954.8,
+"rate": "1,955",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,949 - 6,322]" 
 },
 "SIN": {
@@ -3866,7 +3866,7 @@
 "year": 2007,
 "averiguaciones":  25684,
 "population": 2770426,
-"rate": 927.08,
+"rate": "  927",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[822 - 1,057)" 
@@ -3876,7 +3876,7 @@
 "year": 2007,
 "averiguaciones":  40489,
 "population": 2609126,
-"rate": 1551.8,
+"rate": "1,552",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,438 - 1,949)" 
@@ -3886,7 +3886,7 @@
 "year": 2007,
 "averiguaciones":  59351,
 "population": 2188334,
-"rate": 2712.2,
+"rate": "2,712",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -3896,7 +3896,7 @@
 "year": 2007,
 "averiguaciones":  51794,
 "population": 3211860,
-"rate": 1612.6,
+"rate": "1,613",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -3906,7 +3906,7 @@
 "year": 2007,
 "averiguaciones":   6586,
 "population": 1139929,
-"rate": 577.76,
+"rate": "  578",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -3916,7 +3916,7 @@
 "year": 2007,
 "averiguaciones":  76560,
 "population": 7538346,
-"rate": 1015.6,
+"rate": "1,016",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -3926,9 +3926,9 @@
 "year": 2007,
 "averiguaciones":  59174,
 "population": 1912247,
-"rate": 3094.5,
+"rate": "3,094",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -3936,30 +3936,30 @@
 "year": 2007,
 "averiguaciones":  13513,
 "population": 1468020,
-"rate": 920.49,
+"rate": "  920",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2008": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2008,
 "averiguaciones":  19289,
 "population": 1164976,
-"rate": 1655.7,
-"name": "AGU",
+"rate": "1,656",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2008,
 "averiguaciones": 1.3376e+05,
 "population": 3137014,
-"rate":   4264,
-"name": "BCN",
+"rate": "4,264",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -3968,7 +3968,7 @@
 "year": 2008,
 "averiguaciones":  19669,
 "population": 616122,
-"rate": 3192.4,
+"rate": "3,192",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -3978,7 +3978,7 @@
 "year": 2008,
 "averiguaciones":   1560,
 "population": 816854,
-"rate": 190.98,
+"rate": "  191",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -3988,7 +3988,7 @@
 "year": 2008,
 "averiguaciones":  44115,
 "population": 2723936,
-"rate": 1619.5,
+"rate": "1,620",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,438 - 1,949)" 
@@ -3998,38 +3998,38 @@
 "year": 2008,
 "averiguaciones":   8915,
 "population": 637828,
-"rate": 1397.7,
+"rate": "1,398",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,057 - 1,438)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2008,
 "averiguaciones":  25392,
 "population": 4799203,
-"rate": 529.09,
-"name": "CHP",
+"rate": "  529",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2008,
 "averiguaciones":  69275,
 "population": 3458305,
-"rate": 2003.2,
-"name": "CHH",
+"rate": "2,003",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2008,
 "averiguaciones": 1.7272e+05,
 "population": 8971100,
-"rate": 1925.3,
-"name": "DIF",
+"rate": "1,925",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -4038,18 +4038,18 @@
 "year": 2008,
 "averiguaciones":  15564,
 "population": 1639182,
-"rate":  949.5,
+"rate": "  950",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[822 - 1,057)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2008,
 "averiguaciones":  81571,
 "population": 5470487,
-"rate": 1491.1,
-"name": "GUA",
+"rate": "1,491",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -4058,18 +4058,18 @@
 "year": 2008,
 "averiguaciones":  26483,
 "population": 3398068,
-"rate": 779.35,
+"rate": "  779",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2008,
 "averiguaciones":  37755,
 "population": 2627220,
-"rate": 1437.1,
-"name": "HID",
+"rate": "1,437",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -4078,7 +4078,7 @@
 "year": 2008,
 "averiguaciones":  69941,
 "population": 7272788,
-"rate": 961.68,
+"rate": "  962",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[822 - 1,057)" 
@@ -4088,19 +4088,19 @@
 "year": 2008,
 "averiguaciones": 2.5586e+05,
 "population": 15178014,
-"rate": 1685.8,
+"rate": "1,686",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2008,
 "averiguaciones":  40547,
 "population": 4357648,
-"rate": 930.48,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  930",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[822 - 1,057)" 
 },
 "MOR": {
@@ -4108,7 +4108,7 @@
 "year": 2008,
 "averiguaciones":  44073,
 "population": 1766432,
-"rate":   2495,
+"rate": "2,495",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -4118,19 +4118,19 @@
 "year": 2008,
 "averiguaciones":   6987,
 "population": 1071224,
-"rate": 652.24,
+"rate": "  652",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2008,
 "averiguaciones":  51863,
 "population": 4606526,
-"rate": 1125.9,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,126",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -4138,7 +4138,7 @@
 "year": 2008,
 "averiguaciones":  27150,
 "population": 3821208,
-"rate": 710.51,
+"rate": "  711",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[145 - 822)" 
@@ -4148,19 +4148,19 @@
 "year": 2008,
 "averiguaciones":  57447,
 "population": 5759463,
-"rate": 997.44,
+"rate": "  997",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[822 - 1,057)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2008,
 "averiguaciones":  17623,
 "population": 1798021,
-"rate": 980.13,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "  980",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -4168,7 +4168,7 @@
 "year": 2008,
 "averiguaciones":  34709,
 "population": 1283928,
-"rate": 2703.3,
+"rate": "2,703",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -4178,9 +4178,9 @@
 "year": 2008,
 "averiguaciones":  38393,
 "population": 2572386,
-"rate": 1492.5,
+"rate": "1,493",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -4188,7 +4188,7 @@
 "year": 2008,
 "averiguaciones":  25692,
 "population": 2804003,
-"rate": 916.26,
+"rate": "  916",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[822 - 1,057)" 
@@ -4198,7 +4198,7 @@
 "year": 2008,
 "averiguaciones":  35776,
 "population": 2655846,
-"rate": 1347.1,
+"rate": "1,347",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -4208,7 +4208,7 @@
 "year": 2008,
 "averiguaciones":  67934,
 "population": 2215935,
-"rate": 3065.7,
+"rate": "3,066",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -4218,7 +4218,7 @@
 "year": 2008,
 "averiguaciones":  55214,
 "population": 3264686,
-"rate": 1691.2,
+"rate": "1,691",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -4228,7 +4228,7 @@
 "year": 2008,
 "averiguaciones":   5369,
 "population": 1159150,
-"rate": 463.18,
+"rate": "  463",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -4238,7 +4238,7 @@
 "year": 2008,
 "averiguaciones":  68463,
 "population": 7608848,
-"rate": 899.78,
+"rate": "  900",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -4248,9 +4248,9 @@
 "year": 2008,
 "averiguaciones":  55330,
 "population": 1939845,
-"rate": 2852.3,
+"rate": "2,852",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -4258,30 +4258,30 @@
 "year": 2008,
 "averiguaciones":  13607,
 "population": 1485152,
-"rate":  916.2,
+"rate": "  916",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2009": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2009,
 "averiguaciones":  20301,
 "population": 1185864,
-"rate": 1711.9,
-"name": "AGU",
+"rate": "1,712",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2009,
 "averiguaciones": 1.2301e+05,
 "population": 3196582,
-"rate": 3848.3,
-"name": "BCN",
+"rate": "3,848",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -4290,7 +4290,7 @@
 "year": 2009,
 "averiguaciones":  16261,
 "population": 638258,
-"rate": 2547.7,
+"rate": "2,548",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -4300,7 +4300,7 @@
 "year": 2009,
 "averiguaciones":   1493,
 "population": 830410,
-"rate": 179.79,
+"rate": "  180",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -4310,7 +4310,7 @@
 "year": 2009,
 "averiguaciones":  49798,
 "population": 2762990,
-"rate": 1802.3,
+"rate": "1,802",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,438 - 1,949)" 
@@ -4320,38 +4320,38 @@
 "year": 2009,
 "averiguaciones":   9016,
 "population": 651980,
-"rate": 1382.9,
+"rate": "1,383",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,057 - 1,438)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2009,
 "averiguaciones":  20859,
 "population": 4870040,
-"rate": 428.31,
-"name": "CHP",
+"rate": "  428",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2009,
 "averiguaciones":  67815,
 "population": 3505183,
-"rate": 1934.7,
-"name": "CHH",
+"rate": "1,935",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2009,
 "averiguaciones": 1.883e+05,
 "population": 8964855,
-"rate": 2100.4,
-"name": "DIF",
+"rate": "2,100",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -4360,18 +4360,18 @@
 "year": 2009,
 "averiguaciones":  15231,
 "population": 1659928,
-"rate": 917.57,
+"rate": "  918",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[822 - 1,057)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2009,
 "averiguaciones":  84439,
 "population": 5530928,
-"rate": 1526.7,
-"name": "GUA",
+"rate": "1,527",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -4380,18 +4380,18 @@
 "year": 2009,
 "averiguaciones":  27624,
 "population": 3429734,
-"rate": 805.43,
+"rate": "  805",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2009,
 "averiguaciones":  37810,
 "population": 2669675,
-"rate": 1416.3,
-"name": "HID",
+"rate": "1,416",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -4400,7 +4400,7 @@
 "year": 2009,
 "averiguaciones":  71843,
 "population": 7387309,
-"rate": 972.52,
+"rate": "  973",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[822 - 1,057)" 
@@ -4410,19 +4410,19 @@
 "year": 2009,
 "averiguaciones": 2.6993e+05,
 "population": 15443662,
-"rate": 1747.8,
+"rate": "1,748",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2009,
 "averiguaciones":  41210,
 "population": 4400943,
-"rate": 936.39,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  936",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[822 - 1,057)" 
 },
 "MOR": {
@@ -4430,7 +4430,7 @@
 "year": 2009,
 "averiguaciones":  46603,
 "population": 1791524,
-"rate": 2601.3,
+"rate": "2,601",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -4440,19 +4440,19 @@
 "year": 2009,
 "averiguaciones":   6883,
 "population": 1096316,
-"rate": 627.83,
+"rate": "  628",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2009,
 "averiguaciones":  46489,
 "population": 4684726,
-"rate": 992.35,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "  992",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -4460,7 +4460,7 @@
 "year": 2009,
 "averiguaciones":  56611,
 "population": 3853224,
-"rate": 1469.2,
+"rate": "1,469",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,438 - 1,949)" 
@@ -4470,19 +4470,19 @@
 "year": 2009,
 "averiguaciones":  68795,
 "population": 5830130,
-"rate":   1180,
+"rate": "1,180",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2009,
 "averiguaciones":  16390,
 "population": 1831825,
-"rate": 894.74,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "  895",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -4490,7 +4490,7 @@
 "year": 2009,
 "averiguaciones":  35785,
 "population": 1328415,
-"rate": 2693.8,
+"rate": "2,694",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -4500,9 +4500,9 @@
 "year": 2009,
 "averiguaciones":  40915,
 "population": 2602748,
-"rate":   1572,
+"rate": "1,572",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -4510,7 +4510,7 @@
 "year": 2009,
 "averiguaciones":  26702,
 "population": 2836121,
-"rate":  941.5,
+"rate": "  942",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[822 - 1,057)" 
@@ -4520,7 +4520,7 @@
 "year": 2009,
 "averiguaciones":  30506,
 "population": 2703266,
-"rate": 1128.5,
+"rate": "1,128",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -4530,7 +4530,7 @@
 "year": 2009,
 "averiguaciones":  68417,
 "population": 2241154,
-"rate": 3052.8,
+"rate": "3,053",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -4540,7 +4540,7 @@
 "year": 2009,
 "averiguaciones":  53295,
 "population": 3312431,
-"rate": 1608.9,
+"rate": "1,609",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,438 - 1,949)" 
@@ -4550,7 +4550,7 @@
 "year": 2009,
 "averiguaciones":   4378,
 "population": 1177494,
-"rate": 371.81,
+"rate": "  372",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -4560,7 +4560,7 @@
 "year": 2009,
 "averiguaciones":  49615,
 "population": 7679265,
-"rate": 646.09,
+"rate": "  646",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[145 - 822)" 
@@ -4570,9 +4570,9 @@
 "year": 2009,
 "averiguaciones":  56939,
 "population": 1967260,
-"rate": 2894.3,
+"rate": "2,894",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -4580,30 +4580,30 @@
 "year": 2009,
 "averiguaciones":  12532,
 "population": 1501594,
-"rate": 834.58,
+"rate": "  835",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2010": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2010,
 "averiguaciones":  20122,
 "population": 1205440,
-"rate": 1669.3,
-"name": "AGU",
+"rate": "1,669",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2010,
 "averiguaciones": 1.1081e+05,
 "population": 3250122,
-"rate": 3409.4,
-"name": "BCN",
+"rate": "3,409",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -4612,7 +4612,7 @@
 "year": 2010,
 "averiguaciones":  15778,
 "population": 661149,
-"rate": 2386.4,
+"rate": "2,386",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -4622,7 +4622,7 @@
 "year": 2010,
 "averiguaciones":   2054,
 "population": 844560,
-"rate":  243.2,
+"rate": "  243",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -4632,7 +4632,7 @@
 "year": 2010,
 "averiguaciones":  49777,
 "population": 2800045,
-"rate": 1777.7,
+"rate": "1,778",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,438 - 1,949)" 
@@ -4642,38 +4642,38 @@
 "year": 2010,
 "averiguaciones":   7658,
 "population": 665586,
-"rate": 1150.6,
+"rate": "1,151",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,057 - 1,438)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2010,
 "averiguaciones":  23152,
 "population": 4942194,
-"rate": 468.46,
-"name": "CHP",
+"rate": "  468",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2010,
 "averiguaciones":  69632,
 "population": 3542260,
-"rate": 1965.8,
-"name": "CHH",
+"rate": "1,966",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,949 - 6,322]" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2010,
 "averiguaciones": 1.9553e+05,
 "population": 8951680,
-"rate": 2184.3,
-"name": "DIF",
+"rate": "2,184",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -4682,18 +4682,18 @@
 "year": 2010,
 "averiguaciones":  30068,
 "population": 1680116,
-"rate": 1789.6,
+"rate": "1,790",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,438 - 1,949)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2010,
 "averiguaciones":  79363,
 "population": 5586600,
-"rate": 1420.6,
-"name": "GUA",
+"rate": "1,421",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -4702,18 +4702,18 @@
 "year": 2010,
 "averiguaciones":  24962,
 "population": 3458859,
-"rate": 721.68,
+"rate": "  722",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[145 - 822)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2010,
 "averiguaciones":  41110,
 "population": 2710328,
-"rate": 1516.8,
-"name": "HID",
+"rate": "1,517",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -4722,7 +4722,7 @@
 "year": 2010,
 "averiguaciones":  84844,
 "population": 7492929,
-"rate": 1132.3,
+"rate": "1,132",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -4732,19 +4732,19 @@
 "year": 2010,
 "averiguaciones": 2.6842e+05,
 "population": 15708618,
-"rate": 1708.7,
+"rate": "1,709",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2010,
 "averiguaciones":  33096,
 "population": 4439186,
-"rate": 745.54,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  746",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -4752,7 +4752,7 @@
 "year": 2010,
 "averiguaciones":  44235,
 "population": 1815264,
-"rate": 2436.8,
+"rate": "2,437",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -4762,19 +4762,19 @@
 "year": 2010,
 "averiguaciones":   7660,
 "population": 1120538,
-"rate":  683.6,
+"rate": "  684",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2010,
 "averiguaciones":  52312,
 "population": 4760268,
-"rate": 1098.9,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,099",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -4782,7 +4782,7 @@
 "year": 2010,
 "averiguaciones":  56846,
 "population": 3884764,
-"rate": 1463.3,
+"rate": "1,463",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,438 - 1,949)" 
@@ -4792,19 +4792,19 @@
 "year": 2010,
 "averiguaciones":  69349,
 "population": 5899418,
-"rate": 1175.5,
+"rate": "1,176",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2010,
 "averiguaciones":  19386,
 "population": 1864648,
-"rate": 1039.7,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,040",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[822 - 1,057)" 
 },
 "QROO": {
@@ -4812,7 +4812,7 @@
 "year": 2010,
 "averiguaciones":  34965,
 "population": 1373151,
-"rate": 2546.3,
+"rate": "2,546",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -4822,9 +4822,9 @@
 "year": 2010,
 "averiguaciones":  44522,
 "population": 2632014,
-"rate": 1691.6,
+"rate": "1,692",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,438 - 1,949)" 
 },
 "SIN": {
@@ -4832,7 +4832,7 @@
 "year": 2010,
 "averiguaciones":  33809,
 "population": 2864930,
-"rate": 1180.1,
+"rate": "1,180",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[1,057 - 1,438)" 
@@ -4842,7 +4842,7 @@
 "year": 2010,
 "averiguaciones":  29410,
 "population": 2747198,
-"rate": 1070.5,
+"rate": "1,071",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -4852,7 +4852,7 @@
 "year": 2010,
 "averiguaciones":  66747,
 "population": 2267890,
-"rate": 2943.1,
+"rate": "2,943",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -4862,7 +4862,7 @@
 "year": 2010,
 "averiguaciones":  47633,
 "population": 3355590,
-"rate": 1419.5,
+"rate": "1,420",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,057 - 1,438)" 
@@ -4872,7 +4872,7 @@
 "year": 2010,
 "averiguaciones":   5341,
 "population": 1196217,
-"rate": 446.49,
+"rate": "  446",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -4882,7 +4882,7 @@
 "year": 2010,
 "averiguaciones":  69719,
 "population": 7752024,
-"rate": 899.37,
+"rate": "  899",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -4892,9 +4892,9 @@
 "year": 2010,
 "averiguaciones":  54810,
 "population": 1994925,
-"rate": 2747.5,
+"rate": "2,747",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -4902,30 +4902,30 @@
 "year": 2010,
 "averiguaciones":  14317,
 "population": 1515880,
-"rate": 944.47,
+"rate": "  944",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2011": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2011,
 "averiguaciones":  23610,
 "population": 1224508,
-"rate": 1928.1,
-"name": "AGU",
+"rate": "1,928",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2011,
 "averiguaciones": 1.1533e+05,
 "population": 3302011,
-"rate": 3492.7,
-"name": "BCN",
+"rate": "3,493",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -4934,7 +4934,7 @@
 "year": 2011,
 "averiguaciones":  18443,
 "population": 684046,
-"rate": 2696.2,
+"rate": "2,696",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -4944,7 +4944,7 @@
 "year": 2011,
 "averiguaciones":   2488,
 "population": 859374,
-"rate": 289.51,
+"rate": "  290",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -4954,7 +4954,7 @@
 "year": 2011,
 "averiguaciones":  48882,
 "population": 2836206,
-"rate": 1723.5,
+"rate": "1,724",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,438 - 1,949)" 
@@ -4964,38 +4964,38 @@
 "year": 2011,
 "averiguaciones":  10136,
 "population": 678828,
-"rate": 1493.2,
+"rate": "1,493",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,438 - 1,949)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2011,
 "averiguaciones":  24945,
 "population": 5015600,
-"rate": 497.35,
-"name": "CHP",
+"rate": "  497",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2011,
 "averiguaciones":  65560,
 "population": 3579020,
-"rate": 1831.8,
-"name": "CHH",
+"rate": "1,832",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2011,
 "averiguaciones": 1.8548e+05,
 "population": 8935150,
-"rate": 2075.8,
-"name": "DIF",
+"rate": "2,076",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -5004,18 +5004,18 @@
 "year": 2011,
 "averiguaciones":  31386,
 "population": 1700080,
-"rate": 1846.2,
+"rate": "1,846",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,438 - 1,949)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2011,
 "averiguaciones":  81378,
 "population": 5641440,
-"rate": 1442.5,
-"name": "GUA",
+"rate": "1,442",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,438 - 1,949)" 
 },
@@ -5024,18 +5024,18 @@
 "year": 2011,
 "averiguaciones":  43298,
 "population": 3486480,
-"rate": 1241.9,
+"rate": "1,242",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[1,057 - 1,438)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2011,
 "averiguaciones":  30228,
 "population": 2749772,
-"rate": 1099.3,
-"name": "HID",
+"rate": "1,099",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -5044,7 +5044,7 @@
 "year": 2011,
 "averiguaciones":  87382,
 "population": 7593692,
-"rate": 1150.7,
+"rate": "1,151",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -5054,19 +5054,19 @@
 "year": 2011,
 "averiguaciones": 2.6742e+05,
 "population": 15976022,
-"rate": 1673.9,
+"rate": "1,674",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2011,
 "averiguaciones":  33740,
 "population": 4476415,
-"rate": 753.73,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  754",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -5074,7 +5074,7 @@
 "year": 2011,
 "averiguaciones":  41767,
 "population": 1839000,
-"rate": 2271.2,
+"rate": "2,271",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -5084,19 +5084,19 @@
 "year": 2011,
 "averiguaciones":   7562,
 "population": 1143832,
-"rate": 661.11,
+"rate": "  661",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2011,
 "averiguaciones":  56230,
 "population": 4833054,
-"rate": 1163.5,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "1,163",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[1,057 - 1,438)" 
 },
 "OAX": {
@@ -5104,7 +5104,7 @@
 "year": 2011,
 "averiguaciones":  49250,
 "population": 3916126,
-"rate": 1257.6,
+"rate": "1,258",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,057 - 1,438)" 
@@ -5114,19 +5114,19 @@
 "year": 2011,
 "averiguaciones":  83225,
 "population": 5968588,
-"rate": 1394.4,
+"rate": "1,394",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2011,
 "averiguaciones":  23346,
 "population": 1896954,
-"rate": 1230.7,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,231",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -5134,7 +5134,7 @@
 "year": 2011,
 "averiguaciones":  32900,
 "population": 1417736,
-"rate": 2320.6,
+"rate": "2,321",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -5144,9 +5144,9 @@
 "year": 2011,
 "averiguaciones":  37308,
 "population": 2661440,
-"rate": 1401.8,
+"rate": "1,402",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,057 - 1,438)" 
 },
 "SIN": {
@@ -5154,7 +5154,7 @@
 "year": 2011,
 "averiguaciones":  36542,
 "population": 2892138,
-"rate": 1263.5,
+"rate": "1,263",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[1,057 - 1,438)" 
@@ -5164,7 +5164,7 @@
 "year": 2011,
 "averiguaciones":  30769,
 "population": 2788585,
-"rate": 1103.4,
+"rate": "1,103",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -5174,7 +5174,7 @@
 "year": 2011,
 "averiguaciones":  67091,
 "population": 2296106,
-"rate": 2921.9,
+"rate": "2,922",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -5184,7 +5184,7 @@
 "year": 2011,
 "averiguaciones":  48861,
 "population": 3397926,
-"rate":   1438,
+"rate": "1,438",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,057 - 1,438)" 
@@ -5194,7 +5194,7 @@
 "year": 2011,
 "averiguaciones":   7080,
 "population": 1215464,
-"rate": 582.49,
+"rate": "  582",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -5204,7 +5204,7 @@
 "year": 2011,
 "averiguaciones":  74241,
 "population": 7825202,
-"rate": 948.74,
+"rate": "  949",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -5214,9 +5214,9 @@
 "year": 2011,
 "averiguaciones":  49841,
 "population": 2022927,
-"rate": 2463.8,
+"rate": "2,464",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -5224,30 +5224,30 @@
 "year": 2011,
 "averiguaciones":  14224,
 "population": 1529708,
-"rate": 929.85,
+"rate": "  930",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2012": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2012,
 "averiguaciones":  23937,
 "population": 1243093,
-"rate": 1925.6,
-"name": "AGU",
+"rate": "1,926",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2012,
 "averiguaciones": 1.0868e+05,
 "population": 3354852,
-"rate": 3239.6,
-"name": "BCN",
+"rate": "3,240",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -5256,7 +5256,7 @@
 "year": 2012,
 "averiguaciones":  20889,
 "population": 706802,
-"rate": 2955.4,
+"rate": "2,955",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -5266,7 +5266,7 @@
 "year": 2012,
 "averiguaciones":   1266,
 "population": 873337,
-"rate": 144.96,
+"rate": "  145",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -5276,7 +5276,7 @@
 "year": 2012,
 "averiguaciones":  48642,
 "population": 2872221,
-"rate": 1693.5,
+"rate": "1,694",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,438 - 1,949)" 
@@ -5286,38 +5286,38 @@
 "year": 2012,
 "averiguaciones":  12521,
 "population": 691844,
-"rate": 1809.8,
+"rate": "1,810",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,438 - 1,949)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2012,
 "averiguaciones":  23095,
 "population": 5084877,
-"rate": 454.19,
-"name": "CHP",
+"rate": "  454",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2012,
 "averiguaciones":  61039,
 "population": 3617379,
-"rate": 1687.4,
-"name": "CHH",
+"rate": "1,687",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2012,
 "averiguaciones": 1.7915e+05,
 "population": 8918638,
-"rate": 2008.7,
-"name": "DIF",
+"rate": "2,009",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -5326,18 +5326,18 @@
 "year": 2012,
 "averiguaciones":  27314,
 "population": 1719085,
-"rate": 1588.9,
+"rate": "1,589",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,438 - 1,949)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2012,
 "averiguaciones":  79068,
 "population": 5693945,
-"rate": 1388.6,
-"name": "GUA",
+"rate": "1,389",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -5346,18 +5346,18 @@
 "year": 2012,
 "averiguaciones":  39978,
 "population": 3511682,
-"rate": 1138.4,
+"rate": "1,138",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[1,057 - 1,438)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2012,
 "averiguaciones":  29367,
 "population": 2787654,
-"rate": 1053.5,
-"name": "HID",
+"rate": "1,053",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[822 - 1,057)" 
 },
@@ -5366,7 +5366,7 @@
 "year": 2012,
 "averiguaciones":  89854,
 "population": 7693228,
-"rate":   1168,
+"rate": "1,168",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -5376,19 +5376,19 @@
 "year": 2012,
 "averiguaciones": 2.6912e+05,
 "population": 16235348,
-"rate": 1657.6,
+"rate": "1,658",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2012,
 "averiguaciones":  33187,
 "population": 4512322,
-"rate": 735.47,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  735",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -5396,7 +5396,7 @@
 "year": 2012,
 "averiguaciones":  46664,
 "population": 1862500,
-"rate": 2505.4,
+"rate": "2,505",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -5406,19 +5406,19 @@
 "year": 2012,
 "averiguaciones":   7113,
 "population": 1166926,
-"rate": 609.55,
+"rate": "  610",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2012,
 "averiguaciones":  42346,
 "population": 4904952,
-"rate": 863.33,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "  863",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -5426,7 +5426,7 @@
 "year": 2012,
 "averiguaciones":  50272,
 "population": 3944938,
-"rate": 1274.3,
+"rate": "1,274",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,057 - 1,438)" 
@@ -5436,19 +5436,19 @@
 "year": 2012,
 "averiguaciones":  91651,
 "population": 6034884,
-"rate": 1518.7,
+"rate": "1,519",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,438 - 1,949)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2012,
 "averiguaciones":  26032,
 "population": 1928346,
-"rate":   1350,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,350",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -5456,7 +5456,7 @@
 "year": 2012,
 "averiguaciones":  35284,
 "population": 1462538,
-"rate": 2412.5,
+"rate": "2,413",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -5466,9 +5466,9 @@
 "year": 2012,
 "averiguaciones":  31521,
 "population": 2688728,
-"rate": 1172.3,
+"rate": "1,172",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[1,057 - 1,438)" 
 },
 "SIN": {
@@ -5476,7 +5476,7 @@
 "year": 2012,
 "averiguaciones":  34711,
 "population": 2919032,
-"rate": 1189.1,
+"rate": "1,189",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[1,057 - 1,438)" 
@@ -5486,7 +5486,7 @@
 "year": 2012,
 "averiguaciones":  34198,
 "population": 2830634,
-"rate": 1208.1,
+"rate": "1,208",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -5496,7 +5496,7 @@
 "year": 2012,
 "averiguaciones":  65613,
 "population": 2321782,
-"rate":   2826,
+"rate": "2,826",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -5506,7 +5506,7 @@
 "year": 2012,
 "averiguaciones":  44309,
 "population": 3440337,
-"rate": 1287.9,
+"rate": "1,288",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[1,057 - 1,438)" 
@@ -5516,7 +5516,7 @@
 "year": 2012,
 "averiguaciones":   7473,
 "population": 1233686,
-"rate": 605.75,
+"rate": "  606",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -5526,7 +5526,7 @@
 "year": 2012,
 "averiguaciones":  77937,
 "population": 7890901,
-"rate": 987.68,
+"rate": "  988",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -5536,9 +5536,9 @@
 "year": 2012,
 "averiguaciones":  46715,
 "population": 2050422,
-"rate": 2278.3,
+"rate": "2,278",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -5546,30 +5546,30 @@
 "year": 2012,
 "averiguaciones":  15978,
 "population": 1543426,
-"rate": 1035.2,
+"rate": "1,035",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 
 } 
 },
 "2013": {
- "AGU": {
+ "AGS": {
  "state_code": 1,
 "year": 2013,
 "averiguaciones":  22085,
 "population": 1261220,
-"rate": 1751.1,
-"name": "AGU",
+"rate": "1,751",
+"name": "AGS",
 "long_name": "Aguascalientes",
 "fillKey": "[1,438 - 1,949)" 
 },
-"BCN": {
+"BC": {
  "state_code": 2,
 "year": 2013,
 "averiguaciones": 1.0403e+05,
 "population": 3407012,
-"rate": 3053.4,
-"name": "BCN",
+"rate": "3,053",
+"name": "BC",
 "long_name": "Baja California",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -5578,7 +5578,7 @@
 "year": 2013,
 "averiguaciones":  23573,
 "population": 729616,
-"rate": 3230.9,
+"rate": "3,231",
 "name": "BCS",
 "long_name": "Baja California Sur",
 "fillKey": "[1,949 - 6,322]" 
@@ -5588,7 +5588,7 @@
 "year": 2013,
 "averiguaciones":   1775,
 "population": 887218,
-"rate": 200.06,
+"rate": "  200",
 "name": "CAM",
 "long_name": "Campeche",
 "fillKey": "[145 - 822)" 
@@ -5598,7 +5598,7 @@
 "year": 2013,
 "averiguaciones":  49329,
 "population": 2907851,
-"rate": 1696.4,
+"rate": "1,696",
 "name": "COA",
 "long_name": "Coahuila de Zaragoza",
 "fillKey": "[1,438 - 1,949)" 
@@ -5608,38 +5608,38 @@
 "year": 2013,
 "averiguaciones":  11187,
 "population": 704638,
-"rate": 1587.6,
+"rate": "1,588",
 "name": "COL",
 "long_name": "Colima",
 "fillKey": "[1,438 - 1,949)" 
 },
-"CHP": {
+"CHIS": {
  "state_code": 7,
 "year": 2013,
 "averiguaciones":  23052,
 "population": 5152879,
-"rate": 447.36,
-"name": "CHP",
+"rate": "  447",
+"name": "CHIS",
 "long_name": "Chiapas",
 "fillKey": "[145 - 822)" 
 },
-"CHH": {
+"CHIH": {
  "state_code": 8,
 "year": 2013,
 "averiguaciones":  61478,
 "population": 3654654,
-"rate": 1682.2,
-"name": "CHH",
+"rate": "1,682",
+"name": "CHIH",
 "long_name": "Chihuahua",
 "fillKey": "[1,438 - 1,949)" 
 },
-"DIF": {
+"DF": {
  "state_code": 9,
 "year": 2013,
 "averiguaciones": 1.7682e+05,
 "population": 8901210,
-"rate": 1986.4,
-"name": "DIF",
+"rate": "1,986",
+"name": "DF",
 "long_name": "Distrito Federal",
 "fillKey": "[1,949 - 6,322]" 
 },
@@ -5648,18 +5648,18 @@
 "year": 2013,
 "averiguaciones":  26809,
 "population": 1737617,
-"rate": 1542.9,
+"rate": "1,543",
 "name": "DUR",
 "long_name": "Durango",
 "fillKey": "[1,438 - 1,949)" 
 },
-"GUA": {
+"GTO": {
  "state_code": 11,
 "year": 2013,
 "averiguaciones":  80622,
 "population": 5744616,
-"rate": 1403.4,
-"name": "GUA",
+"rate": "1,403",
+"name": "GTO",
 "long_name": "Guanajuato",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -5668,18 +5668,18 @@
 "year": 2013,
 "averiguaciones":  39664,
 "population": 3535284,
-"rate":   1122,
+"rate": "1,122",
 "name": "GRO",
 "long_name": "Guerrero",
 "fillKey": "[1,057 - 1,438)" 
 },
-"HID": {
+"HGO": {
  "state_code": 13,
 "year": 2013,
 "averiguaciones":  34435,
 "population": 2824559,
-"rate": 1219.1,
-"name": "HID",
+"rate": "1,219",
+"name": "HGO",
 "long_name": "Hidalgo",
 "fillKey": "[1,057 - 1,438)" 
 },
@@ -5688,7 +5688,7 @@
 "year": 2013,
 "averiguaciones": 1.0197e+05,
 "population": 7790156,
-"rate":   1309,
+"rate": "1,309",
 "name": "JAL",
 "long_name": "Jalisco",
 "fillKey": "[1,057 - 1,438)" 
@@ -5698,19 +5698,19 @@
 "year": 2013,
 "averiguaciones": 2.73e+05,
 "population": 16491570,
-"rate": 1655.4,
+"rate": "1,655",
 "name": "MEX",
-"long_name": "Estado de MÃ©xico",
+"long_name": "Estado de MÌ©xico",
 "fillKey": "[1,438 - 1,949)" 
 },
-"MIC": {
+"MICH": {
  "state_code": 16,
 "year": 2013,
 "averiguaciones":  33284,
 "population": 4546882,
-"rate": 732.02,
-"name": "MIC",
-"long_name": "MichoacÃ¡n de Ocampo",
+"rate": "  732",
+"name": "MICH",
+"long_name": "Michoacü¾˜¶Œ¼ü¾Œ–Œ¼n de Ocampo",
 "fillKey": "[145 - 822)" 
 },
 "MOR": {
@@ -5718,7 +5718,7 @@
 "year": 2013,
 "averiguaciones":  49647,
 "population": 1885790,
-"rate": 2632.7,
+"rate": "2,633",
 "name": "MOR",
 "long_name": "Morelos",
 "fillKey": "[1,949 - 6,322]" 
@@ -5728,19 +5728,19 @@
 "year": 2013,
 "averiguaciones":   7585,
 "population": 1189802,
-"rate":  637.5,
+"rate": "  638",
 "name": "NAY",
 "long_name": "Nayarit",
 "fillKey": "[145 - 822)" 
 },
-"NLE": {
+"NL": {
  "state_code": 19,
 "year": 2013,
 "averiguaciones":  43972,
 "population": 4977324,
-"rate": 883.45,
-"name": "NLE",
-"long_name": "Nuevo LeÃ³n",
+"rate": "  883",
+"name": "NL",
+"long_name": "Nuevo Leü¾˜¶Œ¼_n",
 "fillKey": "[822 - 1,057)" 
 },
 "OAX": {
@@ -5748,7 +5748,7 @@
 "year": 2013,
 "averiguaciones":  44816,
 "population": 3972624,
-"rate": 1128.1,
+"rate": "1,128",
 "name": "OAX",
 "long_name": "Oaxaca",
 "fillKey": "[1,057 - 1,438)" 
@@ -5758,19 +5758,19 @@
 "year": 2013,
 "averiguaciones":  81428,
 "population": 6099552,
-"rate":   1335,
+"rate": "1,335",
 "name": "PUE",
 "long_name": "Puebla",
 "fillKey": "[1,057 - 1,438)" 
 },
-"QUE": {
+"QR": {
  "state_code": 22,
 "year": 2013,
 "averiguaciones":  27863,
 "population": 1959162,
-"rate": 1422.2,
-"name": "QUE",
-"long_name": "QuerÃ©taro",
+"rate": "1,422",
+"name": "QR",
+"long_name": "QuerÌ©taro",
 "fillKey": "[1,057 - 1,438)" 
 },
 "QROO": {
@@ -5778,7 +5778,7 @@
 "year": 2013,
 "averiguaciones":  35271,
 "population": 1507418,
-"rate": 2339.8,
+"rate": "2,340",
 "name": "QROO",
 "long_name": "Quintana Roo",
 "fillKey": "[1,949 - 6,322]" 
@@ -5788,9 +5788,9 @@
 "year": 2013,
 "averiguaciones":  20104,
 "population": 2715176,
-"rate": 740.43,
+"rate": "  740",
 "name": "SLP",
-"long_name": "San Luis PotosÃ­",
+"long_name": "San Luis Potosü¾˜¶Œ¼_",
 "fillKey": "[145 - 822)" 
 },
 "SIN": {
@@ -5798,7 +5798,7 @@
 "year": 2013,
 "averiguaciones":  33777,
 "population": 2945502,
-"rate": 1146.7,
+"rate": "1,147",
 "name": "SIN",
 "long_name": "Sinaloa",
 "fillKey": "[1,057 - 1,438)" 
@@ -5808,7 +5808,7 @@
 "year": 2013,
 "averiguaciones":  34492,
 "population": 2871963,
-"rate":   1201,
+"rate": "1,201",
 "name": "SON",
 "long_name": "Sonora",
 "fillKey": "[1,057 - 1,438)" 
@@ -5818,7 +5818,7 @@
 "year": 2013,
 "averiguaciones":  61819,
 "population": 2346968,
-"rate":   2634,
+"rate": "2,634",
 "name": "TAB",
 "long_name": "Tabasco",
 "fillKey": "[1,949 - 6,322]" 
@@ -5828,7 +5828,7 @@
 "year": 2013,
 "averiguaciones":  36739,
 "population": 3482028,
-"rate": 1055.1,
+"rate": "1,055",
 "name": "TAM",
 "long_name": "Tamaulipas",
 "fillKey": "[822 - 1,057)" 
@@ -5838,7 +5838,7 @@
 "year": 2013,
 "averiguaciones":   7993,
 "population": 1251681,
-"rate": 638.58,
+"rate": "  639",
 "name": "TLA",
 "long_name": "Tlaxcala",
 "fillKey": "[145 - 822)" 
@@ -5848,7 +5848,7 @@
 "year": 2013,
 "averiguaciones":  72164,
 "population": 7954546,
-"rate":  907.2,
+"rate": "  907",
 "name": "VER",
 "long_name": "Veracruz de Ignacio de la Llave",
 "fillKey": "[822 - 1,057)" 
@@ -5858,9 +5858,9 @@
 "year": 2013,
 "averiguaciones":  44594,
 "population": 2077832,
-"rate": 2146.2,
+"rate": "2,146",
 "name": "YUC",
-"long_name": "YucatÃ¡n",
+"long_name": "Yucatü¾˜¶Œ¼ü¾Œ–Œ¼n",
 "fillKey": "[1,949 - 6,322]" 
 },
 "ZAC": {
@@ -5868,7 +5868,7 @@
 "year": 2013,
 "averiguaciones":  14542,
 "population": 1556752,
-"rate": 934.12,
+"rate": "  934",
 "name": "ZAC",
 "long_name": "Zacatecas",
 "fillKey": "[822 - 1,057)" 

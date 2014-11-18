@@ -8,25 +8,14 @@ require(reshape)
 require(plyr)
 require(ggplot2)
 
-#### Cargar datos para los Estados y municipios
+#### Cargar datos para los Estados
 #====
-# Municipios
-mun  <- read.csv("data/fuero-comun-municipios.csv")
+
 # Estados
 edo  <- read.csv("data/fuero-comun-estados.csv")
 
 # La informacion esta disponible para distintas fechas
-unique(mun$year) # 2011, 2012, 2013 y 2014
 unique(edo$year) # 1997 - 2014
-
-# Diferencia entre las averiguaciones previas registradas por estados y municipios:
-# 237,567 obs
-format(sum(subset(edo$count, edo$year >= 2011), na.rm=T) - sum(subset(mun$count, mun$year < 2014), na.rm=T),
-  big.mark=",")
-
-# Ambos archivos contienen todos los delitos del fuero comun reportados
-
-unique(mun[,c("crime")])
 unique(edo[,c("crime")])
 head(edo[edo$crime=="HOMICIDIOS",],40)
 table(edo$type)
@@ -36,6 +25,9 @@ table(edo$crime,edo$type)
 
 edo  <- subset(edo, year < 2014)
 unique(edo$type)
+unique(edo$category)
+head(edo)
+
 # Agregar datos para crímenes en los siguientes grupos: homicidios, secuestros, robos, otros delitos
 
 # Agregar DELITOS PATRIMONIALES, DELITOS SEXUALES, LESIONES, OTROS DELITOS, en una sola categoría llamada OTROS DELITOS
@@ -50,8 +42,12 @@ for(x in other){
 names(edo)
 table(edo$type)
 edo$group[edo$group =="HOMICIDIOS" & edo$type =="DOLOSOS"]  <- "HOMICIDIOS DOLOSOS"
-edo$group[edo$group =="HOMICIDIOS" & edo$type =="CULPOSOS"]  <- "HOMICIDIOS CULPOSOS"
 
+# Agregar el robo de vehiculos como grupo
+edo$group[edo$subtype =="DE VEHICULOS"]  <- "ROBO DE VEHICULOS"
+# Agregar el robo con violencia como grupo
+edo$group[edo$group =="ROBOS" & edo$type =="CON VIOLENCIA"]  <- "ROBO CON VIOLENCIA"
+table(edo$group)
 # Cambiar nombre secuestro
 edo$group  <- gsub("PRIV. DE LA LIBERTAD \\(SECUESTRO\\)","SECUESTRO",edo$group)
 table(edo$group)
@@ -64,8 +60,8 @@ aveEdo <- ddply(edo, c("state_code","year","group"), summarize,
                averiguaciones = sum(count,na.rm=T))
 head(aveEdo)
 # Revisar si coinciden los numeros de averiguaciones
-format(sum(edo$count,na.rm=T),big.mark=",") # Numero total de averiguaciones 26,457,133
-format(sum(aveEdo$averiguaciones,na.rm=T), big.mark=",") # Numero total de averiguaciones 26,457,133
+format(sum(edo$count,na.rm=T),big.mark=",") # Numero total de averiguaciones 25,922,782
+format(sum(aveEdo$averiguaciones,na.rm=T), big.mark=",") # Numero total de averiguaciones 25,922,782
 
 # Estimaciones de poblacion por estado 
 population <- ddply(edo, c("state_code","year"), summarize,
@@ -90,11 +86,13 @@ summary(aveEdo$rate)
 aveEdo$rate  <- as.numeric(format(round(as.numeric(aveEdo$rate),2), nsmall = 2))
 
 # Agregar abreviaturas de los estados
-temp  <- read.csv("data/state_names.csv",stringsAsFactors=F, encoding="utf8")
-temp
-aveEdo  <- merge(aveEdo,temp)
-head(aveEdo)
+temp  <- read.csv("data/state_names.csv",stringsAsFactors=F)
+head(temp)
+table(aveEdo$state_code)
+aveEdo  <- merge(aveEdo,temp, by.x="state_code", by.y="state_code")
 table(aveEdo$name)
+head(aveEdo)
+length(table(aveEdo$name))
 table(aveEdo$group)
 
 # Total de delitos del fuero común:
@@ -102,8 +100,8 @@ aveTot <- ddply(edo, c("state_code","year"), summarize,
                 averiguaciones = sum(count,na.rm=T))
 head(aveTot)
 # Revisar si coinciden los numeros de averiguaciones
-format(sum(edo$count,na.rm=T),big.mark=",") # Numero total de averiguaciones 26,457,133
-format(sum(aveTot$averiguaciones,na.rm=T), big.mark=",") # Numero total de averiguaciones 26,457,133
+format(sum(edo$count,na.rm=T),big.mark=",") # Numero total de averiguaciones 25,922,782
+format(sum(aveTot$averiguaciones,na.rm=T), big.mark=",") # Numero total de averiguaciones 25,922,782
 
 # Calcular tasa del total de delitos del fuero común
 aveTot  <- merge(aveTot, population, by= c("state_code","year"))
@@ -115,24 +113,27 @@ aveTot$rate  <- as.numeric(format(round(as.numeric(aveTot$rate),2), nsmall = 2))
 
 # Agregar abreviaturas de los estados
 temp  <- read.csv("data/state_names.csv",stringsAsFactors=F, encoding="utf8")
-aveTot  <- merge(aveTot,temp)
+aveTot  <- merge(aveTot,temp, by.x="state_code", by.y="state_code")
 head(aveTot)
 table(aveTot$name)
+length(table(aveTot$name)) # 32 estados
 
 # Estrucurar datos para mapas
 #======
 # Delitos del fuero común por grupo:
 # Para los homicidios sólo se publicarán los homicidios dolosos
+table(aveEdo$group)
 homicidios  <- subset(aveEdo, aveEdo$group == "HOMICIDIOS DOLOSOS")
 secuestro  <- subset(aveEdo, aveEdo$group == "SECUESTRO")
-robos  <- subset(aveEdo, aveEdo$group == "ROBOS")
+robosViolencia  <- subset(aveEdo, aveEdo$group == "ROBO CON VIOLENCIA")
+robosVehiculos  <- subset(aveEdo, aveEdo$group == "ROBO DE VEHICULOS")
 otros  <- subset(aveEdo, aveEdo$group == "OTROS DELITOS")
-
 
 # Exportar datos en formato csv
 write.csv(homicidios,"data/homicidios_estado.csv",row.names=F,fileEncoding="utf8")
 write.csv(secuestro,"data/secuestros_estado.csv",row.names=F,fileEncoding="utf8")
-write.csv(robos,"data/robos_estado.csv",row.names=F,fileEncoding="utf8")
+write.csv(robosViolencia,"data/robos_estado_violencia.csv",row.names=F,fileEncoding="utf8")
+write.csv(robosVehiculos,"data/robos_estado_vehiculos.csv",row.names=F,fileEncoding="utf8")
 write.csv(otros,"data/otros_estado.csv",row.names=F,fileEncoding="utf8")
 
 

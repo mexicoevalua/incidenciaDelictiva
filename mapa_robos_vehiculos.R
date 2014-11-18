@@ -9,17 +9,18 @@
 #====
 
 # Separar Otros Delitos en intervalos
-dat <- transform(robos,
+dat <- transform(robosVehiculos,
                  fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
 )
 table(dat$fillKey)
-l  <-  c("[47 - 246)","[246 - 370)","[370 - 504)","[504 - 749)","[749 - 2,825]")
+l  <-  c("[2 - 33)","[33 - 55)","[55 - 95)","[95 - 180)","[180 - 1,200]")
 
 # Quitar decimales y ajustar leyenda
-dat <- transform(robos,
+dat <- transform(robosVehiculos,
                  fillKey = cut(rate,labels=l, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
 )
-
+dat$rate  <- format(dat$rate, big.mark=",", digits=2)
+summary(robosVehiculos$rate)
 keyNames <- levels(dat$fillKey)
 keyNames
 # Colores
@@ -44,7 +45,7 @@ d1$set(
   geographyConfig = list(
     dataUrl = "shapefiles/mx_states.json",
     popupTemplate =  "#! function(geography, data) { //this function should just return a string
-    return '<div class=hoverinfo><strong>' + geography.properties.name + '</strong></div>';
+    return '<div class=hoverinfo>' + geography.properties.name + ': ' + data.rate + '</div>';
     }  !#"
   ),
   dom = 'chart_1',
@@ -70,7 +71,7 @@ d1$set(
   legend = TRUE,
   labels = TRUE
 )
-d1$save("robos.html", cdn = TRUE)
+d1$save("robos_vehiculos.html", cdn = TRUE)
 
 #####
 #### Map with slider with slider
@@ -94,4 +95,4 @@ d1$setTemplate(chartDiv = "
   </div>   "
 )
 d1$set(newData = dat2)
-d1$save("robos.html", cdn = TRUE)
+d1$save("robos_vehiculos.html", cdn = TRUE)

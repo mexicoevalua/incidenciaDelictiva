@@ -1,4 +1,6 @@
-# Mapa interactivo homicidios por Estado 1997-2014
+# Mapa interactivo de Otros Delitos por Estado 1997-2014
+# Véase incidencia_delictiva.R para la definición de otros delitos ya que es diferente de la del
+# Secretariado Ejectutivo de Seguridad Pública
 # Basado en: http://rmaps.github.io/blog/posts/animated-choropleths/index.html y
 # http://bl.ocks.org/diegovalle/8967565
 
@@ -6,28 +8,21 @@
 # Requiere un servidor local, en la terminal de Mac usar: python -m SimpleHTTPServer 8888
 #====
 
-# Separar homicidios en intervalos
-# Calcular cortes por quintil
-#homicidios  <- read.csv("data/homicidios_estado.csv", stringsAsFactors= F)
-str(homicidios)
-table(with(homicidios, cut(rate,
-                           breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 1, include.lowest=T, right=F)))
-
-# Labels
-l  <-  c("[0 - 5)","[5 - 8)","[8 - 12)","[12 - 20)","[20 - 110]")
-
-# Eliminar decimales
-dat <- transform(homicidios,
-                 fillKey = cut(rate,
-                               labels= l,
-                               breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 2, include.lowest=T, right=F)
+# Separar Otros Delitos en intervalos
+dat <- transform(robosViolencia,
+                 fillKey = cut(rate, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
 )
-
 table(dat$fillKey)
-str(dat$fillKey)
+l  <-  c("[0 - 35)","[35 - 58)","[58 - 88)","[88 - 178)","[178 - 1,114]")
+
+# Quitar decimales y ajustar leyenda
+dat <- transform(robosViolencia,
+                 fillKey = cut(rate,labels=l, breaks=c(quantile(rate, probs = seq(0, 1, by = 0.20))), dig.lab = 3, include.lowest=T, right=F)
+)
+dat$rate  <- format(dat$rate, big.mark=",", digits=2)
+summary(robosViolencia$rate)
 keyNames <- levels(dat$fillKey)
-head(dat)
-dat$rate  <- format(dat$rate, big.mark=",", digits=1)
+keyNames
 # Colores
 
 fills = setNames(
@@ -35,7 +30,6 @@ fills = setNames(
   c(levels(dat$fillKey), 'defaultFill')
 )
 str(fills)
-fills
 
 dat2 <- plyr::dlply(na.omit(dat), "year", function(x){
   y = rCharts::toJSONArray2(x, json = F)
@@ -77,7 +71,7 @@ d1$set(
   legend = TRUE,
   labels = TRUE
 )
-d1$save("homicidios.html", cdn = TRUE)
+d1$save("robos_violencia.html", cdn = TRUE)
 
 #####
 #### Map with slider with slider
@@ -86,19 +80,19 @@ d1$addAssets(
   jshead = "http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"
 )
 d1$setTemplate(chartDiv = "
-               <div id = 'chart_1' class = 'rChart datamaps'>
-               <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
-               <span ng-bind='year'></span>
-               
-               <script>
-               function rChartsCtrl($scope){
-               $scope.year = '2013';
-               $scope.$watch('year', function(newYear){
-               mapchart_1.updateChoropleth(chartParams.newData[newYear]);
-               })
-               }
-               </script>
-               </div>   "
+  <div id = 'chart_1' class = 'rChart datamaps'>
+  <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+  <span ng-bind='year'></span>
+    
+  <script>
+    function rChartsCtrl($scope){
+      $scope.year = '2013';
+      $scope.$watch('year', function(newYear){
+        mapchart_1.updateChoropleth(chartParams.newData[newYear]);
+      })
+    }
+  </script>
+  </div>   "
 )
 d1$set(newData = dat2)
-d1$save("homicidios.html", cdn = TRUE)
+d1$save("robos_violencia.html", cdn = TRUE)
