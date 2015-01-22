@@ -13,14 +13,14 @@
 *
 * DATA OUT: 
 *			fuero-comun-estados.csv
-*			fuero-comun-estados.dta
+*			
 *******************************************************************************
 clear
 set more off
 
 
-* Defining globals. Change working folder HERE*
-global files "/Users/leoxnv/Micrositio/incidenciaDelictiva/data"
+* Defining globals. Change working directory HERE*
+global files "/Users/leoxnv/desktop/Micrositio/incidenciaDelictiva/data"
 
 *Downloading datasets*
 cd "$files"
@@ -78,7 +78,8 @@ gen crime = category
 replace crime = "ROBO" if word(category,1) == "ROBO"
 
 *Merging with population data base*
-merge m:1 year state_code using "$files/statepop.dta", keepusing(total) nogenerate
+merge m:1 year state_code using "$files/statepop.dta", keepusing(total)///
+			nogenerate
 rename total population
 
 *Ordering variables and sorting cases*
@@ -90,5 +91,12 @@ export delimited using "$files/fuero-comun-estados.csv", nolabel replace
 save delitos-fuero-comun.dta, replace
 
 
+*Stop here if you want to keep all files 
+*deleting files*
+rm incidencia.zip
+rm IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.xlsx
+rm statepop.dta
+rm delitos-fuero-comun.dta
 
+************************End of do-file*****************************************
 
