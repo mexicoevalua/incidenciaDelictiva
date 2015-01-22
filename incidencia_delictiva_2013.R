@@ -3,8 +3,6 @@
 # Crea mapas interactivos sobre crímenes del fuero común a nivel municipal
 #======
 # Vease el script "descarga_datos.R" para referencia de cómo se obtuvieron las estadísticas
-#Dado que el script de Diego Valle sólo contiene información a oct 2013 se descargó la información del Secretariado y Sistematizó ver descarga_de_datos.do
-
 
 require(reshape)
 require(plyr)
@@ -12,12 +10,23 @@ require(ggplot2)
 
 #### Cargar datos para los Estados y municipios
 #====
+# Municipios
+mun  <- read.csv("data/fuero-comun-municipios.csv")
 # Estados
 edo  <- read.csv("data/fuero-comun-estados.csv")
 
+# La informacion esta disponible para distintas fechas
+unique(mun$year) # 2011, 2012, 2013 y 2014
 unique(edo$year) # 1997 - 2014
 
+# Diferencia entre las averiguaciones previas registradas por estados y municipios:
+# 237,567 obs
+format(sum(subset(edo$count, edo$year >= 2011), na.rm=T) - sum(subset(mun$count, mun$year < 2014), na.rm=T),
+  big.mark=",")
 
+# Ambos archivos contienen todos los delitos del fuero comun reportados
+
+unique(mun[,c("crime")])
 unique(edo[,c("crime")])
 head(edo[edo$crime=="HOMICIDIOS",],40)
 table(edo$type)
@@ -25,6 +34,7 @@ table(edo$crime,edo$type)
 #=====
 # Tasas por cada 100 mil habitantes para el periodo 2011 - 2013
 
+edo  <- subset(edo, year < 2014)
 unique(edo$type)
 # Agregar datos para crímenes en los siguientes grupos: homicidios, secuestros, robos, otros delitos
 
@@ -51,7 +61,7 @@ format(table(edo$group)  / length(edo$group)*100, digits=2)
 summary(edo$count)
 names(edo)
 aveEdo <- ddply(edo, c("state_code","year","group"), summarize,
-                averiguaciones = sum(count,na.rm=T))
+               averiguaciones = sum(count,na.rm=T))
 head(aveEdo)
 # Revisar si coinciden los numeros de averiguaciones
 format(sum(edo$count,na.rm=T),big.mark=",") # Numero total de averiguaciones 26,457,133
@@ -59,15 +69,15 @@ format(sum(aveEdo$averiguaciones,na.rm=T), big.mark=",") # Numero total de averi
 
 # Estimaciones de poblacion por estado 
 population <- ddply(edo, c("state_code","year"), summarize,
-                    population = max(population))
+                        population = max(population))
 table(is.na(edo$population)) # Todas las obs tienen pob
 
-##### Fixed
+##### Fix required
 ddply(population, c("year"), summarize, population = prettyNum(sum(population), big.mark =",")) # Las estimaciones de poblacion se ven un poco altas
 # Como los resultados se ven un poco altos (casi un million arriba) es necesario utilizar
 # el archivo original de CONAPO http://www.conapo.gob.mx/es/CONAPO/Proyecciones_Datos 
-#**Se utilizó el año medio de la sistematización que Diego Valle hizo directamente de CONAPO. Ver descarga_de_datos.do
-##### Fixed
+
+##### Fix required
 
 # Tasa de averiguaciones previas por cada 100 mil habitantes
 head(aveEdo)
@@ -115,7 +125,7 @@ table(aveTot$name)
 # Para los homicidios sólo se publicarán los homicidios dolosos
 homicidios  <- subset(aveEdo, aveEdo$group == "HOMICIDIOS DOLOSOS")
 secuestro  <- subset(aveEdo, aveEdo$group == "SECUESTRO")
-robos  <- subset(aveEdo, aveEdo$group == "ROBO")
+robos  <- subset(aveEdo, aveEdo$group == "ROBOS")
 otros  <- subset(aveEdo, aveEdo$group == "OTROS DELITOS")
 
 
@@ -131,8 +141,8 @@ write.csv(otros,"data/otros_estado.csv",row.names=F,fileEncoding="utf8")
 #======
 # Instalar librerías en Mac
 
-require(reshape2)
-require(devtools)
+#require(reshape2)
+#require(devtools)
 #install_github(repo='rCharts',username='ramnathv',ref="dev")
 #install_github(repo='rMaps',username='ramnathv',ref="master")
 require(rCharts)
@@ -144,5 +154,4 @@ source("mapa_otros_delitos.R")
 source("mapa_robos.R")
 source("mapa_secuestro.R")
 source("mapa_total_delitos_comun.R")
-
 

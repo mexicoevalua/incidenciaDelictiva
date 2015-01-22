@@ -86,12 +86,12 @@ d1$addAssets(
 )
 d1$setTemplate(chartDiv = "
                <div id = 'chart_1' class = 'rChart datamaps'>
-               <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+               <input id='slider' type='range' min=1997 max=2014 ng-model='year' width=200>
                <span ng-bind='year'></span>
                
                <script>
                function rChartsCtrl($scope){
-               $scope.year = '2013';
+               $scope.year = '2014';
                $scope.$watch('year', function(newYear){
                mapchart_1.updateChoropleth(chartParams.newData[newYear]);
                })

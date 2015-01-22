@@ -1,4 +1,3 @@
-# Mapa interactivo de Otros Delitos por Estado 1997-2014
 # Véase incidencia_delictiva.R para la definición de otros delitos ya que es diferente de la del
 # Secretariado Ejectutivo de Seguridad Pública
 # Basado en: http://rmaps.github.io/blog/posts/animated-choropleths/index.html y
@@ -78,12 +77,12 @@ d1$addAssets(
 )
 d1$setTemplate(chartDiv = "
   <div id = 'chart_1' class = 'rChart datamaps'>
-  <input id='slider' type='range' min=1997 max=2013 ng-model='year' width=200>
+  <input id='slider' type='range' min=1997 max=2014 ng-model='year' width=200>
   <span ng-bind='year'></span>
     
   <script>
     function rChartsCtrl($scope){
-      $scope.year = '2013';
+      $scope.year = '2014';
       $scope.$watch('year', function(newYear){
         mapchart_1.updateChoropleth(chartParams.newData[newYear]);
       })
