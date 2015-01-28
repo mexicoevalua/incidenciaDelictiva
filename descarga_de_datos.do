@@ -78,7 +78,7 @@ gen crime = category
 replace crime = "ROBO" if word(category,1) == "ROBO"
 
 *Merging with population data base*
-merge m:1 year state_code using "$files/statepop.dta", keepusing(total)///
+merge m:1 year state_code using "$files/statepop.dta", keepusing(total) ///
 			nogenerate
 rename total population
 
