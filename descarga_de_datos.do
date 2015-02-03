@@ -100,3 +100,95 @@ rm delitos-fuero-comun.dta
 
 ************************End of do-file*****************************************
 
+/*ACTUALZIACIîN MUNICIPIOS*/
+
+clear
+set more off
+
+* Defining globals. Change working directory HERE*
+global files "/Users/leoxnv/Crime rates in Mexico/Municipalities/Files"
+
+*Downloading datasets*
+cd "$files"
+
+**IMPORTANT: Change updated URL after the 20th of each month*
+copy "http://secretariadoejecutivo.gob.mx/Incidencia%20Municipal%20Diciembre/IncidenciaDelictiva-Municipal2011-2014.zip" incidencia.zip, replace
+unzipfile "incidencia.zip", replace
+copy "https://raw.githubusercontent.com/diegovalle/conapo-2010/master/clean-data/municipio-population2010-2030.csv" munpop.csv, replace
+copy "$files/Incidencia Delictiva FC Municipal 2011 - 2014.xlsx" IncidenciaDelictivaMunicipal.xlsx, replace
+
+*Cleaning population data set*
+clear
+import delimited "$files/munpop.csv"
+drop if sex == "Males" | sex == "Females" 
+drop sex
+drop if year == 2010 | year >2014
+nsplit code, d(2 3) gen(state_code mun_code)
+format code %05.0f
+rename code id
+
+save munpop.dta, replace
+
+*Cleaning SESNSP's crime data set*
+
+clear
+set excelxlsxlargefile on
+import excel using "IncidenciaDelictivaMunicipal.xlsx", firstrow
+drop if AO == .
+save delitos-fuero-comun.dta, replace
+
+**Erase leading, trailing and intermediate blank spaces in all string variables
+replace  ENTIDAD = trim(itrim(ENTIDAD))
+replace  MUNICIPIO = trim(itrim(MUNICIPIO))
+replace  MODALIDAD = trim(itrim(MODALIDAD))
+replace  TIPO = trim(itrim(TIPO))
+replace  SUBTIPO = trim(itrim(SUBTIPO))
+
+replace SUBTIPO ="CON ARMA DE FUEGO" if SUBTIPO == "POR ARMA DE FUEGO"
+replace SUBTIPO ="CON ARMA BLANCA" if SUBTIPO == "POR ARMA BLANCA"
+
+
+*Encoding state codes*
+
+drop ENTIDAD MUNICIPIO
+
+
+*renaming variables*
+rename (AO INEGI MODALIDAD TIPO SUBTIPO ENERO FEBRERO MARZO ABRIL MAYO JUNIO JULIO /// 
+		AGOSTO SEPTIEMBRE OCTUBRE NOVIEMBRE DICIEMBRE) 						 ///
+       (year id category type subtype count1 count2 count3 count4 count5 count6 ///
+		count7 count8 count9 count10 count11 count12)
+		
+nsplit id, d(2 3) gen(state_code mun_code)
+		
+*Reshaping to long format*		
+reshape long count, i(year id category type subtype state_code mun_code) j(month)
+destring count, replace
+
+*Creating crime variable wich groups all categories of "ROBO" in just one*
+gen crime = category
+replace crime = "ROBOS" if word(category,1) == "ROBO"
+
+*Merging with population data base*
+merge m:1 year state_code mun_code id using "$files/munpop.dta", keepusing(population) ///
+			nogenerate
+
+
+*Ordering variables and sorting cases*
+order state_code mun_code year month crime category type subtype count population id
+sort state_code mun_code year crime category type subtype month
+
+*Exporting to .cvs and saveing in .dta*
+export delimited using "$files/fuero-comun-municipios.csv", nolabel replace
+save delitos-fuero-comun.dta, replace
+
+
+*Stop here if you want to keep all files 
+*deleting files*
+rm incidencia.zip
+rm "Incidencia Delictiva FC Municipal 2011 - 2014.xlsx"
+rm munpop.dta
+rm delitos-fuero-comun.dta
+
+************************End of do-file*****************************************
+
