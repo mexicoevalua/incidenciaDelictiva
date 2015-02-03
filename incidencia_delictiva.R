@@ -23,7 +23,7 @@ head(edo[edo$crime=="HOMICIDIOS",],40)
 table(edo$type)
 table(edo$crime,edo$type)
 #=====
-# Tasas por cada 100 mil habitantes para el periodo 2011 - 2013
+# Tasas por cada 100 mil habitantes para el periodo 2011 - 2014
 
 unique(edo$type)
 # Agregar datos para crímenes en los siguientes grupos: homicidios, secuestros, robos, otros delitos
