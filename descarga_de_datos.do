@@ -1,36 +1,58 @@
-*******************************************************************************
-* AUTHORS: Leonel Fernandez 
-* DATE:January, 2015
-* PURPOSE: Create clean database and indicators of official crime data in Mexico
-* DATA IN: 
-*			-IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.xls 
-*			(Raw monthly data of 66 crime types in the 32 federative entities 
-*			of México, 1997-actual [Updates in the 20th of each month])
-*			
-*			-state-population.csv (Cleaned estimated mid-year population data at 
-*			the state and county level from the CONAPO (2010) by Diego Valle
-*			https://github.com/diegovalle/conapo-2010
-*
-* DATA OUT: 
-*			fuero-comun-estados.csv
-*			
-*******************************************************************************
-clear
+/*******************************************************************************
+AUTHOR: Leonel Fernandez 
+ORGANIZATION: Mexico Evalua
+URL: github.com/mexicoevalua/incidenciaDelictiva/blob/master/descarga_de_datos.do
+DATE:January, 2015
+PURPOSE: Create clean database and indicators of official crime data in Mexico
+DATA IN: 
+			-IncidenciaDelictiva_FueroComun_Estatal_1997-{MONTH_YEAR}.xls 
+			(Raw monthly data of 66 crime types in the 32 federative entities 
+			of México, 1997-actual [Updates in the 20th of each month])
+			
+			-Incidencia Delictiva FC Municipal 2011 -{YEAR}.xlsx"(Raw monthly 
+			data of 66 crime types in all the municipalities 
+			of México, 1997-actual [Updates in the 20th of each month])
+			
+			-state-population.csv (Cleaned estimated mid-year population data at 
+			the state level from the CONAPO (2010) by Diego Valle
+			https://github.com/diegovalle/conapo-2010
+			
+			-municipio-population2010-2030.csv (Cleaned estimated mid-year 
+			population data at the municipal level from the CONAPO (2010)
+			by Diego Valle.  https://github.com/diegovalle/conapo-2010
+
+DATA OUT: 
+			fuero-comun-estados.csv
+			fuero-comun-municipios.csv
+*******************************************************************************/
+version 13.1
+clear all
 set more off
 
 
 * Defining globals. Change working directory HERE*
-global files "/Users/leoxnv/desktop/Micrositio/incidenciaDelictiva/data"
+global micrositio "~/Desktop" /*Change the '~' simbol with the directory where the
+						Micrositio is stored */
+global files "$micrositio/Micrositio/incidenciaDelictiva/data"
 
-*Downloading datasets*
+
+*Downloading datasets. The program needs at least 2.5 GB of free Hard Disk space*
 cd "$files"
-
-**IMPORTANT: Change updated URL after the 20th of each month*
-copy "http://www.secretariadoejecutivo.gob.mx/docs/pdfs/incidencia%20delictiva%20del%20fuero%20comun/IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.zip" incidencia.zip, replace
-unzipfile "incidencia.zip", replace
+/*IMPORTANT:After the 20th of each month check the new URL in SESNSP site and  
+			1)Change updated URLs in /*1*/ & /*3*/ (lines 44 & 48)
+			2)Chamge updated files names in /*2*/ & /*4*/(line 46 & 50)		*/
+/*1*/ copy "http://www.secretariadoejecutivo.gob.mx/docs/pdfs/incidencia%20delictiva%20del%20fuero%20comun/IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.zip" incidencia_e.zip, replace
+		unzipfile "incidencia_e.zip", replace
+/*2*/ global state "$files/IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.xlsx"
+		copy "$state" IncidenciaDelictivaEstatal.xlsx, replace
+/*3*/ copy "http://secretariadoejecutivo.gob.mx/Incidencia%20Municipal%20Diciembre/IncidenciaDelictiva-Municipal2011-2014.zip" incidencia_m.zip, replace
+		unzipfile "incidencia_m.zip", replace
+/*4*/ global municip "$files/Incidencia Delictiva FC Municipal 2011 - 2014.xlsx"
+		copy "$municip" IncidenciaDelictivaMunicipal.xlsx, replace
 copy "https://raw.githubusercontent.com/diegovalle/conapo-2010/master/clean-data/state-population.csv" statepop.csv
-copy "$files/IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.xlsx" IncidenciaDelictivaEstatal.xlsx, replace
+copy "https://raw.githubusercontent.com/diegovalle/conapo-2010/master/clean-data/municipio-population2010-2030.csv" munpop.csv, replace
 
+*STATES***********************************************************************
 *Cleaning population data set*
 clear
 import delimited "$files/statepop.csv"
@@ -44,7 +66,7 @@ clear
 import excel using "IncidenciaDelictivaEstatal.xlsx", firstrow
 drop if AO == .
 
-**Erase leading, trailing and intermediate blank spaces in all string variables
+*Erase leading, trailing and intermediate blank spaces in all string variables
 replace  ENTIDAD = trim(itrim(ENTIDAD))
 replace  MODALIDAD = trim(itrim(MODALIDAD))
 replace  TIPO = trim(itrim(TIPO))
@@ -63,7 +85,7 @@ label define state_code 6 "COLIMA", modify
 label define state_code 7 "CHIAPAS", modify
 label define state_code 8 "CHIHUAHUA", modify
 
-*renaming variables*
+*Renaming variables*
 rename (AO MODALIDAD TIPO SUBTIPO ENERO FEBRERO MARZO ABRIL MAYO JUNIO JULIO /// 
 		AGOSTO SEPTIEMBRE OCTUBRE NOVIEMBRE DICIEMBRE) 						 ///
        (year category type subtype count1 count2 count3 count4 count5 count6 ///
@@ -88,35 +110,18 @@ sort state_code year crime category type subtype month
 
 *Exporting to .cvs and saveing in .dta*
 export delimited using "$files/fuero-comun-estados.csv", nolabel replace
-save delitos-fuero-comun.dta, replace
+save fuero-comun-estados.dta, replace
 
 
 *Stop here if you want to keep all files 
 *deleting files*
-rm incidencia.zip
-rm IncidenciaDelictiva_FueroComun_Estatal_1997-Diciembre2014.xlsx
+rm incidencia_e.zip
+rm "$state"
 rm statepop.dta
-rm delitos-fuero-comun.dta
+rm fuero-comun-estados.dta
+rm IncidenciaDelictivaEstatal.xlsx
 
-************************End of do-file*****************************************
-
-/*ACTUALZIACIÓN MUNICIPIOS*/
-
-clear
-set more off
-
-* Defining globals. Change working directory HERE*
-global files "/Users/leoxnv/Crime rates in Mexico/Municipalities/Files"
-
-*Downloading datasets*
-cd "$files"
-
-**IMPORTANT: Change updated URL after the 20th of each month*
-copy "http://secretariadoejecutivo.gob.mx/Incidencia%20Municipal%20Diciembre/IncidenciaDelictiva-Municipal2011-2014.zip" incidencia.zip, replace
-unzipfile "incidencia.zip", replace
-copy "https://raw.githubusercontent.com/diegovalle/conapo-2010/master/clean-data/municipio-population2010-2030.csv" munpop.csv, replace
-copy "$files/Incidencia Delictiva FC Municipal 2011 - 2014.xlsx" IncidenciaDelictivaMunicipal.xlsx, replace
-
+*MUNICIPALITIES****************************************************************
 *Cleaning population data set*
 clear
 import delimited "$files/munpop.csv"
@@ -135,7 +140,7 @@ clear
 set excelxlsxlargefile on
 import excel using "IncidenciaDelictivaMunicipal.xlsx", firstrow
 drop if AO == .
-save delitos-fuero-comun.dta, replace
+save fuero-comun-municipios.dta, replace
 
 **Erase leading, trailing and intermediate blank spaces in all string variables
 replace  ENTIDAD = trim(itrim(ENTIDAD))
@@ -180,15 +185,16 @@ sort state_code mun_code year crime category type subtype month
 
 *Exporting to .cvs and saveing in .dta*
 export delimited using "$files/fuero-comun-municipios.csv", nolabel replace
-save delitos-fuero-comun.dta, replace
+save fuero-comun-municipios.dta, replace
 
 
 *Stop here if you want to keep all files 
 *deleting files*
-rm incidencia.zip
-rm "Incidencia Delictiva FC Municipal 2011 - 2014.xlsx"
+rm incidencia_m.zip
+rm "$municip"
 rm munpop.dta
-rm delitos-fuero-comun.dta
+rm fuero-comun-municipios.dta
+rm IncidenciaDelictivaMunicipal.xlsx
 
 ************************End of do-file*****************************************
 
